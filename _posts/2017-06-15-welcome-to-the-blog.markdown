@@ -2,7 +2,7 @@
 layout: post
 title:  "Welcome to the blog!"
 date:   2017-06-15 15:32:58 -0400
-categories: babelgraph rstats meta
+categories: babelgraph blog meta
 ---
 
 Welcome to this blog, which is the new home for thoughts and technical things. As `babelgraph.org` has been retired, you can still get the code at:
