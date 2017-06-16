@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Welcome to the blog!"
-date:   2017-06-15 15:32:58 -0400
+date:   2017-06-15 11:32:58 -0400
 categories: babelgraph blog meta
 ---
 
