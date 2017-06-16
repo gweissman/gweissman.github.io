@@ -13,7 +13,7 @@ This example uses the [igraph](http://igraph.org/) package for [R](http://www.r-
 
 {% highlight R %}
 library(igraph)
-ga.data <- read.csv('ga_edgelist.csv')
+ga.data <- read.csv('ga_edgelist.csv', header = TRUE)
 g <- graph.data.frame(ga.data, directed=FALSE)
 summary(g)
 g$layout <- layout.fruchterman.reingold(g)
