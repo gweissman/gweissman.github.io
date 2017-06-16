@@ -5,7 +5,7 @@ date:   2017-06-15 14:00:00 -0400
 categories: babelgraph blog
 ---
 
-_Here's the blog post originally posted on `babelgraph.org` on July 11, 2012. Thanks to Hadley Wickham for referencing some of content here, and apologies for the broken URL. NB. The C++ code doesn't seem to compile on my computer today, no doubt due to updates in `Rcpp`. I'll take another look soon..._
+_Here's the blog post originally posted on `babelgraph.org` on July 11, 2012. Thanks to Hadley Wickham for referencing some of content here, and apologies for the broken URL. NB. The original C++ code didn't seem to compile on my computer today. It required a small tweak with `NumericVector::create` -- see below._
 
  In particular, R data frames provide a simple framework for representing large cohorts of agents in stochastic epidemiological models, such as those representing disease transmission. This approach is much easier and likely faster than trying to implement cohorts of R objects. In this post we’ll explore a simple agent-based model, and then benchmark a few different approaches to iterating through the cohort. Rcpp outperforms all of them by a few orders of magnitude. Priceless.
 
@@ -67,6 +67,7 @@ do_plyr <- function (df) {
      v_prob <- ddply (df, names(df), function(x)
                 vaccinate(x$age,x$female,x$ily))
      data.frame(cbind(df,p=v_prob$V1))
+}
 {% endhighlight %}
 
 ## Enter Rcpp
@@ -109,6 +110,8 @@ do_rcpp_src <- '
 '
  
 # write the helper function also in C++
+# Note small change here from original to include Rcpp:NumericVector::create
+# for use with min and max
 vaccinate_cxx_src <- '
 double vaccinate_cxx (double age, int female, int ily){
         // this is based on some pretend regression equation
@@ -116,7 +119,8 @@ double vaccinate_cxx (double age, int female, int ily){
         // use some logic
         p = p * (female ? 1.25 : 0.75);
         // boundary checking
-        p = max(0,p); p = min(1,p);
+        p = max(Rcpp::NumericVector::create(0,p)); 
+        p = min(Rcpp::NumericVector::create(1,p));
         return(p);
 }
 '
@@ -136,17 +140,19 @@ library(rbenchmark)
 bm_results <- benchmark(do_forloop(cohort),
            do_apply(cohort),
            do_plyr(cohort),
-           do_rcpp(cohort)
+           do_rcpp(cohort),
            replications=1000)
  
 library(lattice)
 strategy <- with(bm_results, reorder(test,relative))
-barchart(relative ~ strategy, bm_results, ylab='Relative performance', 
-         xlab='Strategy',
+barchart(relative ~ strategy, bm_results, 
+        ylab='Relative performance', 
+        xlab='Strategy',
         main='Performance of iteration strategies over data frames in R', 
-         col='firebrick',scales=list(x=list(cex=1.2)))
+        col='firebrick',scales=list(x=list(cex=1.2)))
 {% endhighlight %}
+
+![](/images/looping_speed_compare.png)
 
 Ree – donc – u – lous. 
 
-![](#)
