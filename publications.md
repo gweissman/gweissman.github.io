@@ -10,7 +10,7 @@ __Weissman GE__, Hubbard RA, Kohn R, Anesi GL, Manaker S, Kerlin MP, Halpern SD.
 
 __Weissman GE__, Harhay MO, Lugo RM, Fuchs BD, Halpern SD, Mikkelsen ME. Natural Language Processing to Assess Documentation of Features of Critical Illness in Discharge Documents of Acute Respiratory Distress Syndrome Survivors. _Ann Am Thorac Soc_ 2016;13(9):1538-1545. PMID: [27333269](https://www.ncbi.nlm.nih.gov/pubmed/27333269)
 
-__Weissman GE__, Gabler NB, Brown SES, Halpern SD. Intensive care unit capacity strain and adherence to prophylaxis guidelines. _J Crit Care_2015;30:1303–1309. PMID: [26376062](https://www.ncbi.nlm.nih.gov/pubmed/?term=26376062)
+__Weissman GE__, Gabler NB, Brown SES, Halpern SD. Intensive care unit capacity strain and adherence to prophylaxis guidelines. _J Crit Care_ 2015;30:1303–1309. PMID: [26376062](https://www.ncbi.nlm.nih.gov/pubmed/?term=26376062)
 
 #### Editorials
 
