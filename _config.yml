@@ -33,6 +33,8 @@ exclude:
   - Gemfile
   - Gemfile.lock
   
-# extra settings:
+# extra settings by Gary:
 google_analytics: UA-101177272-1
+highlighter: rouge
+
 
