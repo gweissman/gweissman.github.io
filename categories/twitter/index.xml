@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>twitter on Gary Weissman, MD, MSHP</title>
+    <link>/categories/twitter/</link>
+    <description>Recent content in twitter on Gary Weissman, MD, MSHP</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/twitter/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The structure of twitter participant relationships in conversations around #Libya, #Bieber, and #Rstats</title>
+      <link>/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</link>
+      <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</guid>
+      <description>Here&amp;rsquo;s the blog post originally posted on babelgraph.org on April 4, 2011. I suspect the twitter API and much of the code below are not up to date.
+I am a recent comer to twitter, and it took me a few weeks to figure out what this was all about. Who are all these people tweeting each other and what do all these trending hashtags mean? Do these people all know each other?</description>
+    </item>
+    
+  </channel>
+</rss>

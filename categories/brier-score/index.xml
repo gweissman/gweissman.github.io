@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>brier score on Gary Weissman, MD, MSHP</title>
+    <link>/categories/brier-score/</link>
+    <description>Recent content in brier score on Gary Weissman, MD, MSHP</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/brier-score/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Evaluating the equivalence of different formulations of the scaled Brier score</title>
+      <link>/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</guid>
+      <description>Background The Brier Score is a composite measure of discrimination and calibration for a prediction model. The Brier Score is defined as
+\[ BS = \frac{1}{N} \sum (y_i - \hat y_i)^2, \]
+where \(N\) is the number of observations, \(y_i\) is the observed outcome, either 0 or 1, and \(\hat y_i\) is the predicted probability for the \(i\)th observation. Let’s create an R function calculate the Brier Score:
+brier_score &amp;lt;- function(obs, pred) { mean((obs - pred)^2) } The scaled Brier Score accounts for the event rate and provides an immediate comparison to an uninformative model that is equivalent to “just guess the event rate.</description>
+    </item>
+    
+  </channel>
+</rss>

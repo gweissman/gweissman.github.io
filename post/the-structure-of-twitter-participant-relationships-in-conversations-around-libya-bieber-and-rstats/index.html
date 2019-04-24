@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.2.5">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Gary Weissman">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Here&rsquo;s the blog post originally posted on babelgraph.org on April 4, 2011. I suspect the twitter API and much of the code below are not up to date.
+I am a recent comer to twitter, and it took me a few weeks to figure out what this was all about. Who are all these people tweeting each other and what do all these trending hashtags mean? Do these people all know each other?">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@garyweissman">
+  <meta property="twitter:creator" content="@garyweissman">
+  
+  <meta property="og:site_name" content="Gary Weissman, MD, MSHP">
+  <meta property="og:url" content="/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/">
+  <meta property="og:title" content="The structure of twitter participant relationships in conversations around #Libya, #Bieber, and #Rstats | Gary Weissman, MD, MSHP">
+  <meta property="og:description" content="Here&rsquo;s the blog post originally posted on babelgraph.org on April 4, 2011. I suspect the twitter API and much of the code below are not up to date.
+I am a recent comer to twitter, and it took me a few weeks to figure out what this was all about. Who are all these people tweeting each other and what do all these trending hashtags mean? Do these people all know each other?"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2017-06-15T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-04-24T12:25:49-04:00">
+  
+
+  
+
+  
+
+  <title>The structure of twitter participant relationships in conversations around #Libya, #Bieber, and #Rstats | Gary Weissman, MD, MSHP</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Gary Weissman, MD, MSHP</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#publications">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">The structure of twitter participant relationships in conversations around #Libya, #Bieber, and #Rstats</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2017-06-15 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-04-24 12:25:49 -0400 EDT" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    <time>Apr 24, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="/categories/twitter/">twitter</a>, 
+    
+    <a href="/categories/r/">r</a>, 
+    
+    <a href="/categories/babelgraph/">babelgraph</a>, 
+    
+    <a href="/categories/blog/">blog</a>
+    
+  </span>
+  
+  
+
+  
+    
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      <p><em>Here&rsquo;s the blog post originally posted on <code>babelgraph.org</code> on April 4, 2011. I suspect the twitter API and much of the code below are <strong>not</strong> up to date.</em></p>
+
+<p>I am a recent comer to <a href="twitter.com" target="_blank">twitter</a>, and it took me a few weeks to figure out what this was all about. Who are all these people tweeting each other and what do all these trending hashtags mean? Do these people all know each other? How do they get involved in these conversations? Are people really talking/listening to each other, or just spewing 140 character projectiles out into the void?</p>
+
+<p>This piqued my interest in the structure of relationships of participants in different twitter conversations. Using <a href="http://www.r-project.org/" target="_blank">R</a>, with the <a href="http://cran.r-project.org/web/packages/twitteR/index.html" target="_blank">twitteR</a> and <a href="http://igraph.org/" target="_blank">igraph</a> packages, I wondered what I would find&hellip;</p>
+
+<p>In terms of mapping twitter networks with R, I found <a href="http://blog.ynada.com/247" target="_blank">this post</a> for mapping one’s own personal network of connections. For other visualizations, I found a <a href="http://flowingdata.com/2008/03/12/17-ways-to-visualize-the-twitter-universe/" target="_blank">collection</a> of various visualizations for the twitterverse, and an <a href="http://www.orgnet.com/twitter.html" target="_blank">interactive map</a> of connected users.</p>
+
+<p>Here I am really interested in the network of participants in a particular conversation. I started off with “#Rstats,” expecting to see a tightly knit community of users who all seem to know each other (at least virtually), sending each other personal updates or tech support tweets. Next I looked at “#Libya,” where I imagined there would be a lot of twitterers with massive followings, but who were unlikely following each other, and producing hordes of news-type updates. Finally I looked at “#Bieber,” (I swear didn’t even know who he was up until a few weeks ago), where I expected to see platoons of small-time twitterers, who likely don’t follow each other, pouring out disconnected digital adulations into the twitterverse.</p>
+
+<p>The following script was used to construct the networks for each search item.</p>
+
+<pre><code class="language-r"># an R script to generate the social network of contributors
+# to a particular search term
+# author: Gary Weissman
+# twitter: @garyweissman
+ 
+# choose a conversation and size of search
+search.term &lt;- '#Rstats'
+search.size &lt;- 50
+ 
+# load required libraries
+library(igraph)
+library(twitteR)
+ 
+# get recent results from search
+search.results &lt;- searchTwitter(search.term,n=search.size)
+ 
+# build the vertex list
+vl &lt;- vector()
+for (twt in search.results)
+  vl &lt;- c(vl,screenName(twt))
+ 
+# calculate contribution of each user in the conversation
+vl &lt;- as.data.frame(table(vl))
+ 
+# provide nice names for data
+colnames(vl) &lt;- c('user','tweets')
+ 
+# build the network of relations between contributors
+g &lt;- graph.empty(directed=TRUE)
+g &lt;- add.vertices(g,nrow(vl),name=as.character(vl$user),
+      tweets=vl$tweets)
+ 
+V(g)$followers &lt;- 0 # default to zero
+ 
+# count total number of followers in the larger twitterverse and
+# add relationships based on who follows whom within the conversation
+for (usr in V(g)) {
+ 
+  # get the user info by name
+  tuser &lt;- getUser(V(g)$name[usr+1])
+  print(paste(&quot;Getting info on&quot;,screenName(tuser)))
+ 
+  # count total followers in larger twitterverse
+  V(g)$followers[usr+1] &lt;- followersCount(tuser)
+ 
+  # access as many followers as we can to see if any
+  # appeared in the search results
+  followers.list &lt;- userFollowers(tuser,n=1200)
+  for (tflwr in followers.list) {
+   if (screenName(tflwr) %in% V(g)$name)
+    g &lt;- add.edges(g,c(as.vector(V(g)[ name == screenName(tflwr) ]),usr))
+  }
+  print('Sleeping 10 min...')
+  Sys.sleep(600); # don't exceed request limit
+}
+ 
+# layout the graph
+g$layout &lt;- layout.fruchterman.reingold(g)
+# adjust size based on number of total followers
+# scale accordingly to keep readable
+V(g)$size = log( V(g)$followers ) * 1.8
+# set label name and size
+V(g)$label=V(g)$name
+V(g)$label.cex = 0.6
+# do something with color...
+tcolors &lt;- rev(heat.colors(max(V(g)$tweets)))
+V(g)$color &lt;- tcolors[ V(g)$tweets ]
+# make edge arrows less intrusive
+E(g)$arrow.size &lt;- 0.3
+# make symmetric connections a little easier to read
+E(g)$curved &lt;- FALSE # fun to play with
+E(g)$color &lt;- 'blue'
+# now plot...
+plot(g)
+</code></pre>
+
+<p>Technical notes: It wasn’t always clear to me what counted as a “request” in the twitter API, because even a small handful of requests with long results would sometimes seem to count as more toward the hourly quota. Putting a ten minute delay between requests with Sys.sleep(600) was enough to solve the problem. I also tweaked the layouts a bit using tkplot.getcoords(). NB. tkplot() does not permit certain graph attributes such as label.vertex.cex, so you have to remove it before opening the graph in tkplot. You can then just add it back later. More details on this tkplot issue <a href="https://bugs.launchpad.net/igraph/+bug/572559" target="_blank">here</a>.</p>
+
+<p>The size of the vertex is proportional to the log of the number of followers in the wider twitterverse, and the color of vertex represents the number of tweets found in the search results by that user. See code above for specifics.</p>
+
+<p>#Bieber</p>
+
+<p><img src="/images/babelgraph/twitter/bieber_plot.png" alt="" /></p>
+
+<p>#Libya</p>
+
+<p><img src="/images/babelgraph/twitter/libya_plot.png" alt="" /></p>
+
+<p>#Rstats</p>
+
+<p><img src="/images/babelgraph/twitter/rstats_plot.png" alt="" /></p>
+
+<p>The networks obviously look very different. Here is a plot of the degree distribution of each graph:</p>
+
+<p><img src="/images/babelgraph/twitter/abs_deg_dist_by_search_term.png" alt="" /></p>
+
+<p>Even more interesting is the simple comparison of the number of edges in each graph. Very telling.</p>
+
+<p><img src="/images/babelgraph/twitter/vertex_edge_counts_by_search_term.png" alt="" /></p>
+
+<p>I did not look at the clustering coefficient here, but that would be interesting, too.</p>
+
+<p>Does this mean that R users are part of a twitter <em>community</em>?</p>
+
+<p>Limitations on this approach include the size of the user sample (limited by the twitter API to 150 requests per hour), as well as limits on the size of lists retrieved by the <code>userFriends()</code> method (I believe the limit is 1200 items). These former limits the sample size significantly, and provides only a brief snapshot in time of the participants in any one conversation. The latter favors the construction of edges between twitterers with fewer followers, thus understestimating the total edges that may exist in the network. Is there a workaround for these limitations on the API? I believe requesting whitelist status from twitter, or perhaps authenticating with ROAuth would increase the number of permitted requests, but I haven’t tried them yet.</p>
+
+<p>Do you know to whom you tweet?</p>
+
+    </div>
+
+    
+
+
+
+
+
+    
+      
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+  
+  <img class="portrait mr-3" src="/author/admin/avatar_hu52a603635ecebd45650b162dadabb4e5_12861_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+  
+
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="/authors/admin">Gary Weissman</a></h5>
+    <h6 class="card-subtitle">Instructor of Medicine</h6>
+    <p class="card-text" itemprop="description">I am a pulmonary and critical care physician at the University of Pennsylvania Perelman School of Medicine, based at the Palliative and Advanced Illness Research (PAIR) Center. My research interests include clinical informatics, natural language processing, machine learning, population health, and pragmatic trials.</p>
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="/#contact" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://twitter.com/garyweissman" target="_blank" rel="noopener">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://scholar.google.com/citations?hl=en&amp;user=Ollx0JMAAAAJ" target="_blank" rel="noopener">
+          <i class="ai ai-google-scholar"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/gweissman" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+      
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.eeda67bb2d1f96265d85659d1edc7a5e.js"></script>
+
+  </body>
+</html>
+

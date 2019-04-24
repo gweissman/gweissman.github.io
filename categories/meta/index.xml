@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>meta on Gary Weissman, MD, MSHP</title>
+    <link>/categories/meta/</link>
+    <description>Recent content in meta on Gary Weissman, MD, MSHP</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/meta/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Welcome to the blog!</title>
+      <link>/post/welcome-to-the-blog/</link>
+      <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/welcome-to-the-blog/</guid>
+      <description>Welcome to this blog, which is the new home for thoughts and technical things. As babelgraph.org has been retired, you can still get the code at:
+BabelGraph Alpha
+Over time I will try to migrate the old blog posts (mostly dealing with network analyses and C++ using R) to here along with the very informative user comments, and updates.
+For old time&amp;rsquo;s sake, here is the old thumbnail gallery from the BabelGraph Alpha release (mixed Linux and Mac screenshots).</description>
+    </item>
+    
+  </channel>
+</rss>

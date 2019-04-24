@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications on Gary Weissman, MD, MSHP</title>
+    <link>/publication/</link>
+    <description>Recent content in Publications on Gary Weissman, MD, MSHP</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hierarchical condition categories for pulmonary diseases</title>
+      <link>/publication/journal-article/</link>
+      <pubDate>Mon, 01 Apr 2019 00:00:00 -0400</pubDate>
+      
+      <guid>/publication/journal-article/</guid>
+      <description>Pulmonary diseases and various forms of critical illness play a significant role in this risk adjustment process both through their associated HCC codes and through interactions with other risk categories representing cardiac and psychiatric diseases.</description>
+    </item>
+    
+  </channel>
+</rss>

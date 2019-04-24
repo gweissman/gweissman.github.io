@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2019-04-24T12:32:15-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</loc>
+    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-04-24T12:32:15-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/brier-score/</loc>
+    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/predictive-modeling/</loc>
+    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/</loc>
+    <lastmod>2019-04-24T12:20:09-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/publication/journal-article/</loc>
+    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/admin/</loc>
+    <lastmod>2019-04-24T12:20:09-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/privacy/</loc>
+    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/</loc>
+    <lastmod>2019-04-23T21:12:47-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/keras/</loc>
+    <lastmod>2019-04-23T21:12:47-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/python/</loc>
+    <lastmod>2019-04-23T21:12:47-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/rnn/</loc>
+    <lastmod>2019-04-23T21:12:47-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/making-choropleth-maps-by-zip-code/</loc>
+    <lastmod>2019-04-23T21:15:21-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/maps/</loc>
+    <lastmod>2019-04-24T12:22:35-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2019-04-24T12:32:15-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/grey-s-anatomy-network-of-sexual-relations/</loc>
+    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</loc>
+    <lastmod>2019-04-24T12:25:49-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/transportation-data-in-r-why-yes-yes-you-can/</loc>
+    <lastmod>2019-04-24T12:22:35-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/welcome-to-the-blog/</loc>
+    <lastmod>2019-04-24T12:20:09-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/babelgraph/</loc>
+    <lastmod>2019-04-24T12:32:15-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/blog/</loc>
+    <lastmod>2019-04-24T12:32:15-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/meta/</loc>
+    <lastmod>2019-04-24T12:20:09-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/social-network-analysis/</loc>
+    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/twitter/</loc>
+    <lastmod>2019-04-24T12:25:49-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/r-can-write-r-code-too/</loc>
+    <lastmod>2019-04-24T12:32:15-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</loc>
+    <lastmod>2019-04-24T12:30:51-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/rcpp/</loc>
+    <lastmod>2019-04-24T12:30:51-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/author/admin/</loc>
+    <lastmod>2019-04-24T12:20:09-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/author/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication_types/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/publication/</loc>
+    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
