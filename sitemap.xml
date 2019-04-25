@@ -4,7 +4,42 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2019-04-24T12:32:15-04:00</lastmod>
+    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</loc>
+    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-04-25T09:33:08-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/blog/</loc>
+    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/bootstrapping/</loc>
+    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/predictive-modeling/</loc>
+    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -14,37 +49,25 @@
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2019-04-24T12:32:15-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/categories/brier-score/</loc>
     <lastmod>2019-04-23T21:06:34-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/predictive-modeling/</loc>
-    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/authors/</loc>
-    <lastmod>2019-04-24T12:20:09-04:00</lastmod>
+    <lastmod>2019-04-25T09:33:08-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/publication/journal-article/</loc>
-    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
+    <lastmod>2019-04-25T09:33:08-04:00</lastmod>
   </url>
   
   <url>
     <loc>/authors/admin/</loc>
-    <lastmod>2019-04-24T12:20:09-04:00</lastmod>
+    <lastmod>2019-04-25T09:33:08-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -88,12 +111,6 @@
   </url>
   
   <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2019-04-24T12:32:15-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/post/grey-s-anatomy-network-of-sexual-relations/</loc>
     <lastmod>2019-04-23T21:06:34-04:00</lastmod>
   </url>
@@ -115,12 +132,6 @@
   
   <url>
     <loc>/categories/babelgraph/</loc>
-    <lastmod>2019-04-24T12:32:15-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/blog/</loc>
     <lastmod>2019-04-24T12:32:15-04:00</lastmod>
     <priority>0</priority>
   </url>

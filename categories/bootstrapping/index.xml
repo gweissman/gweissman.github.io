@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bootstrapping on Gary Weissman, MD, MSHP</title>
+    <link>/categories/bootstrapping/</link>
+    <description>Recent content in bootstrapping on Gary Weissman, MD, MSHP</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/bootstrapping/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Comparison of bootstrapping approaches for identifying variance of predictive performance</title>
+      <link>/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</link>
+      <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</guid>
+      <description>Background Bootstrapping is a helpful technique for identifying the variance of an estimate in a given sample when no other data are available. In the case of the evaluation of clinical prediction models, bootstrapping can be used to estimate confidence intervals around performance metrics such as the Brier score, the c-statistic, and others. When the original model and its tuning parameters, and the original dataset are available, the data can be resampled and the model refit on each replicate to make predictions.</description>
+    </item>
+    
+  </channel>
+</rss>
