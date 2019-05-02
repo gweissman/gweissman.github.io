@@ -233,7 +233,7 @@ BS_{scaled} = 1 - \frac{\frac{1}{N} \sum (y_i - \hat y_i)^2}{\frac{1}{N} \sum (y
 &lt;h2&gt;Definition 2&lt;/h2&gt;
 &lt;p&gt;A second formulation of the scaled Brier Score is defined with a slightly different definition of &lt;span class=&#34;math inline&#34;&gt;\(BS_{max}\)&lt;/span&gt;, which is in this case described in &lt;a href=&#34;https://www.ncbi.nlm.nih.gov/pubmed/20010215&#34; class=&#34;uri&#34;&gt;https://www.ncbi.nlm.nih.gov/pubmed/20010215&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-BS_{max} = \hat p \times (1 - \hat p).
+BS_{max} = \bar p \times (1 - \bar p).
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Let’s create an R function to calculate this measure.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scaled_brier_score_2 &amp;lt;- function(obs, pred) {
@@ -244,7 +244,7 @@ BS_{max} = \hat p \times (1 - \hat p).
 &lt;h2&gt;Definition 3&lt;/h2&gt;
 &lt;p&gt;A third formulation of the scaled Brier Score is defined with a slightly different definition of &lt;span class=&#34;math inline&#34;&gt;\(BS_{max}\)&lt;/span&gt;, which is in this case described in &lt;a href=&#34;https://www.ncbi.nlm.nih.gov/pubmed/22961910&#34; class=&#34;uri&#34;&gt;https://www.ncbi.nlm.nih.gov/pubmed/22961910&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-BS_{max} = \hat p \times (1 - \hat p)^2 + (1 - \hat p) \times \hat p^2.
+BS_{max} = \bar p \times (1 - \bar p)^2 + (1 - \bar p) \times \bar p^2.
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Let’s create an R function to calculate this measure.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scaled_brier_score_3 &amp;lt;- function(obs, pred) {
@@ -381,11 +381,28 @@ scaled_brier_score_1(df$rings &amp;gt; 3, preds_m2)&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title>Hierarchical Condition Categories for Pulmonary Diseases: Population Health Management and Policy Opportunities.</title>
-      <link>/publication/journal-article/</link>
+      <title>Construct validity of six sentiment analysis methods in the text of encounter notes of patients with critical illness</title>
+      <link>/publication/sentiment_2019/</link>
       <pubDate>Mon, 01 Apr 2019 00:00:00 -0400</pubDate>
       
-      <guid>/publication/journal-article/</guid>
+      <guid>/publication/sentiment_2019/</guid>
+      <description>&lt;!---
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hierarchical Condition Categories for Pulmonary Diseases: Population Health Management and Policy Opportunities.</title>
+      <link>/publication/hccs_2019/</link>
+      <pubDate>Mon, 01 Apr 2019 00:00:00 -0400</pubDate>
+      
+      <guid>/publication/hccs_2019/</guid>
       <description>&lt;!---
 &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;

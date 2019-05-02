@@ -12,11 +12,20 @@
     
     
     <item>
-      <title>Hierarchical Condition Categories for Pulmonary Diseases: Population Health Management and Policy Opportunities.</title>
-      <link>/publication/journal-article/</link>
+      <title>Construct validity of six sentiment analysis methods in the text of encounter notes of patients with critical illness</title>
+      <link>/publication/sentiment_2019/</link>
       <pubDate>Mon, 01 Apr 2019 00:00:00 -0400</pubDate>
       
-      <guid>/publication/journal-article/</guid>
+      <guid>/publication/sentiment_2019/</guid>
+      <description>Assessment of six commonly available sentiment methods trained in non-clinical domains. We evaluated their performance at predicting mortality, and other clinical tasks. Existing sentiment methods have serious limitations with clinical data and should not be deployed to support decision making tools.</description>
+    </item>
+    
+    <item>
+      <title>Hierarchical Condition Categories for Pulmonary Diseases: Population Health Management and Policy Opportunities.</title>
+      <link>/publication/hccs_2019/</link>
+      <pubDate>Mon, 01 Apr 2019 00:00:00 -0400</pubDate>
+      
+      <guid>/publication/hccs_2019/</guid>
       <description>Pulmonary diseases and various forms of critical illness play a significant role in this risk adjustment process both through their associated HCC codes and through interactions with other risk categories representing cardiac and psychiatric diseases.</description>
     </item>
     

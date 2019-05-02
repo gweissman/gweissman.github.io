@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Publications on Gary Weissman, MD, MSHP</title>
-    <link>/publication/</link>
-    <description>Recent content in Publications on Gary Weissman, MD, MSHP</description>
+    <title>Michael Harhay on Gary Weissman, MD, MSHP</title>
+    <link>/authors/michael-harhay/</link>
+    <description>Recent content in Michael Harhay on Gary Weissman, MD, MSHP</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 01 Apr 2019 00:00:00 -0400</lastBuildDate>
     
-	<atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/authors/michael-harhay/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,15 +18,6 @@
       
       <guid>/publication/sentiment_2019/</guid>
       <description>Assessment of six commonly available sentiment methods trained in non-clinical domains. We evaluated their performance at predicting mortality, and other clinical tasks. Existing sentiment methods have serious limitations with clinical data and should not be deployed to support decision making tools.</description>
-    </item>
-    
-    <item>
-      <title>Hierarchical Condition Categories for Pulmonary Diseases: Population Health Management and Policy Opportunities.</title>
-      <link>/publication/hccs_2019/</link>
-      <pubDate>Mon, 01 Apr 2019 00:00:00 -0400</pubDate>
-      
-      <guid>/publication/hccs_2019/</guid>
-      <description>Pulmonary diseases and various forms of critical illness play a significant role in this risk adjustment process both through their associated HCC codes and through interactions with other risk categories representing cardiac and psychiatric diseases.</description>
     </item>
     
   </channel>
