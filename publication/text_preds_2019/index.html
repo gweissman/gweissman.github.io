@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
@@ -29,10 +27,10 @@
   
     
   
-  <meta name="description" content="Academic web site for Gary Weissman, focused on clinical informatics, population health, and critical care.">
+  <meta name="description" content="Assessment of six commonly available sentiment methods trained in non-clinical domains. We evaluated their performance at predicting mortality, and other clinical tasks. Existing sentiment methods have serious limitations with clinical data and should not be deployed to support decision making tools.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/categories/r/">
+  <link rel="alternate" hreflang="en-us" href="/publication/text_preds_2019/">
 
   
 
@@ -97,15 +95,12 @@
   
 
   
-  <link rel="alternate" href="/categories/r/index.xml" type="application/rss+xml" title="Gary Weissman, MD, MSHP">
-  <link rel="feed" href="/categories/r/index.xml" type="application/rss+xml" title="Gary Weissman, MD, MSHP">
-  
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/categories/r/">
+  <link rel="canonical" href="/publication/text_preds_2019/">
 
   
   
@@ -120,19 +115,21 @@
   <meta property="twitter:creator" content="@garyweissman">
   
   <meta property="og:site_name" content="Gary Weissman, MD, MSHP">
-  <meta property="og:url" content="/categories/r/">
-  <meta property="og:title" content="r | Gary Weissman, MD, MSHP">
-  <meta property="og:description" content="Academic web site for Gary Weissman, focused on clinical informatics, population health, and critical care."><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:url" content="/publication/text_preds_2019/">
+  <meta property="og:title" content="Inclusion of unstructured clinical text improves early prediction of death or prolonged ICU stay | Gary Weissman, MD, MSHP">
+  <meta property="og:description" content="Assessment of six commonly available sentiment methods trained in non-clinical domains. We evaluated their performance at predicting mortality, and other clinical tasks. Existing sentiment methods have serious limitations with clinical data and should not be deployed to support decision making tools."><meta property="og:image" content="/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2019-04-25T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2018-07-01T00:00:00-04:00">
+  
+  <meta property="article:modified_time" content="2019-05-03T14:50:58-04:00">
   
 
   
 
   
 
-  <title>r | Gary Weissman, MD, MSHP</title>
+  <title>Inclusion of unstructured clinical text improves early prediction of death or prolonged ICU stay | Gary Weissman, MD, MSHP</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
@@ -268,8 +265,9 @@
   </div>
 </nav>
 
+<div class="pub" itemscope itemtype="http://schema.org/CreativeWork">
 
-
+  
 
 
 
@@ -285,90 +283,281 @@
   
 
   
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Inclusion of unstructured clinical text improves early prediction of death or prolonged ICU stay</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2018-07-01 00:00:00 -0400 EDT" itemprop="datePublished">
+<meta content="2019-05-03 14:50:58 -0400 EDT" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>July 2018</time>
+  </span>
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+    
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+<a class="btn btn-outline-primary my-1 mr-1" href="/papers/weissman_text_preds_ccm_2018.pdf" target="_blank" rel="noopener">
+  PDF
+</a>
+
+
+
+<button type="button" class="btn btn-outline-primary my-1 mr-1 js-cite-modal"
+        data-filename="/publication/text_preds_2019/cite.bib">
+  Cite
+</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a class="btn btn-outline-primary my-1 mr-1" href="https://doi.org/10.1097/CCM.0000000000003148" target="_blank" rel="noopener">
+  DOI
+</a>
+
+
+
+</div>
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    
+    <h3>Abstract</h3>
+    <p class="pub-abstract" itemprop="text">OBJECTIVES: Early prediction of undesired outcomes among newly hospitalized patients could improve patient triage and prompt conversations about patients&rsquo; goals of care. We evaluated the performance of logistic regression, gradient boosting machine, random forest, and elastic net regression models, with and without unstructured clinical text data, to predict a binary composite outcome of in-hospital death or ICU length of stay greater than or equal to 7 days using data from the first 48 hours of hospitalization. DESIGN: Retrospective cohort study with split sampling for model training and testing. SETTING: A single urban academic hospital. PATIENTS: All hospitalized patients who required ICU care at the Beth Israel Deaconess Medical Center in Boston, MA, from 2001 to 2012. INTERVENTIONS: None. MEASUREMENTS AND MAIN RESULTS: Among eligible 25,947 hospital admissions, we observed 5,504 (21.2%) in which patients died or had ICU length of stay greater than or equal to 7 days. The gradient boosting machine model had the highest discrimination without (area under the receiver operating characteristic curve, 0.83; 95% CI, 0.81-0.84) and with (area under the receiver operating characteristic curve, 0.89; 95% CI, 0.88-0.90) text-derived variables. Both gradient boosting machines and random forests outperformed logistic regression without text data (p &lt; 0.001), whereas all models outperformed logistic regression with text data (p &lt; 0.02). The inclusion of text data increased the discrimination of all four model types (p &lt; 0.001). Among those models using text data, the increasing presence of terms &lsquo;intubated&rsquo; and &lsquo;poor prognosis&rsquo; were positively associated with mortality and ICU length of stay, whereas the term &lsquo;extubated&rsquo; was inversely associated with them. CONCLUSIONS: Variables extracted from unstructured clinical text from the first 48 hours of hospital admission using natural language processing techniques significantly improved the abilities of logistic regression and other machine learning models to predict which patients died or had long ICU stays. Learning health systems may adapt such models using open-source approaches to capture local variation in care patterns.</p>
+    
+
+    
+
+    
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-12 col-md-3 pub-row-heading">Publication</div>
+          <div class="col-12 col-md-9"><em>Critical Care Medicine</em> 2018;46(7):1125-1132.</div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="d-md-none space-below"></div>
+    
+
+    <div class="space-below"></div>
+
+    <div class="article-style"><!---
+<div class="alert alert-note">
+  <div>
+    Supplementary notes can be added here, including <a href="https://sourcethemes.com/academic/docs/writing-markdown-latex/" target="_blank">code and math</a>.
+  </div>
+</div>
+
+-->
+</div>
+
+    
+
+    
+
+
+
+
+
+
   
   
     
   
-<div class="universal-wrapper pt-3">
-  <h1 itemprop="name">r</h1>
-
   
 
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
   
+  
+  <img class="portrait mr-3" src="/author/admin/avatar_hu52a603635ecebd45650b162dadabb4e5_12861_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+  
+
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="/authors/admin">Gary Weissman</a></h5>
+    <h6 class="card-subtitle">Instructor of Medicine</h6>
+    <p class="card-text" itemprop="description">I am a pulmonary and critical care physician at the University of Pennsylvania Perelman School of Medicine, based at the Palliative and Advanced Illness Research (PAIR) Center. My research interests include clinical informatics, natural language processing, machine learning, population health, and pragmatic trials.</p>
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="/#contact" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://twitter.com/garyweissman" target="_blank" rel="noopener">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://scholar.google.com/citations?hl=en&amp;user=Ollx0JMAAAAJ" target="_blank" rel="noopener">
+          <i class="ai ai-google-scholar"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/gweissman" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
 </div>
 
 
 
-<div class="universal-wrapper">
-  
 
-  
-  
-  <div>
-    <h2><a href="/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/">Comparison of bootstrapping approaches for identifying variance of predictive performance</a></h2>
-    <div class="article-style">
-      
-      Background Bootstrapping is a helpful technique for identifying the variance of an estimate in a given sample when no other data are available. In the case of the evaluation of clinical prediction models, bootstrapping can be used to estimate confidence intervals around performance metrics such as the Brier score, the c-statistic, and others. When the original model and its tuning parameters, and the original dataset are available, the data can be resampled and the model refit on each replicate to make predictions.
-      
-    </div>
   </div>
-  
-  <div>
-    <h2><a href="/post/making-choropleth-maps-by-zip-code/">Making choropleth maps by zip code</a></h2>
-    <div class="article-style">
-      
-      Every now and then it is useful to make a map. In times of political uncertainty, data can light a path forward. Your local elected officals may be interested in data, too, and how they impact policy (and re-election, of course).
-Let&rsquo;s say you wanted to know if people are still enrolling the Healthcare.gov plans in your local State Senatorial district. It&rsquo;s quite difficult to find data broken up at this level but zip codes can approximate such an approach.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/">The structure of twitter participant relationships in conversations around #Libya, #Bieber, and #Rstats</a></h2>
-    <div class="article-style">
-      
-      Here&rsquo;s the blog post originally posted on babelgraph.org on April 4, 2011. I suspect the twitter API and much of the code below are not up to date.
-I am a recent comer to twitter, and it took me a few weeks to figure out what this was all about. Who are all these people tweeting each other and what do all these trending hashtags mean? Do these people all know each other?
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/transportation-data-in-r-why-yes-yes-you-can/">Transportation data in R: Why yes, yes you can</a></h2>
-    <div class="article-style">
-      
-      Not infrequently I am in a research meeting and someone says, &ldquo;It would be really cool to get data on travel times for people. But I don&rsquo;t know where to find that.&rdquo; Here you will find just that. Please note that Google Maps terms of service are relevant for large data requests and potential privacy concerns for protected health information.
-Case Mr. Jones spends all his time at a coffee shop.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/r-can-write-r-code-too/">R can write R code, too</a></h2>
-    <div class="article-style">
-      
-      Here&rsquo;s the blog post originally posted on babelgraph.org on April 14, 2012.
-In a recent blog post by CMastication, a little meme puzzle is presented with the introduction that a preschooler could solve it in 5-10 minutes, a programmer in an hour. I took the bait.
-The original problem goes like this:
-8809=6 7111=0 2172=0 6666=4 1111=0 3213=0 7662=2 9313=1 0000=4 2222=0 3333=0 5555=0 8193=3 8096=5 7777=0 9999=4 7756=1 6855=3 9881=5 5531=0 2581=?
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/">Rcpp is smoking fast for agent based models in data frames</a></h2>
-    <div class="article-style">
-      
-      Here&rsquo;s the blog post originally posted on babelgraph.org on July 11, 2012. Thanks to Hadley Wickham for referencing some of content here, and apologies for the broken URL. NB. The original C++ code didn&rsquo;t seem to compile on my computer today. It required a small tweak with NumericVector::create &ndash; see below.
-In particular, R data frames provide a simple framework for representing large cohorts of agents in stochastic epidemiological models, such as those representing disease transmission.
-      
-    </div>
-  </div>
-  
-
-  
-
 </div>
+
+
+
 <div class="container">
   <footer class="site-footer">
   
@@ -530,6 +719,4 @@ In particular, R data frames provide a simple framework for representing large c
 
   </body>
 </html>
-
-
 

@@ -20,5 +20,14 @@
       <description>Assessment of six commonly available sentiment methods trained in non-clinical domains. We evaluated their performance at predicting mortality, and other clinical tasks. Existing sentiment methods have serious limitations with clinical data and should not be deployed to support decision making tools.</description>
     </item>
     
+    <item>
+      <title>Inclusion of unstructured clinical text improves early prediction of death or prolonged ICU stay</title>
+      <link>/publication/text_preds_2019/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 -0400</pubDate>
+      
+      <guid>/publication/text_preds_2019/</guid>
+      <description>Assessment of six commonly available sentiment methods trained in non-clinical domains. We evaluated their performance at predicting mortality, and other clinical tasks. Existing sentiment methods have serious limitations with clinical data and should not be deployed to support decision making tools.</description>
+    </item>
+    
   </channel>
 </rss>

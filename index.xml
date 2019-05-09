@@ -31,9 +31,9 @@
 set.seed(24601)
 
 # load libraries for plotting
-library(ggplot2)
-
-# get data
+library(ggplot2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.5.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# get data
 df &amp;lt;- read.csv(&amp;#39;https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data&amp;#39;)
 names(df) &amp;lt;- c(&amp;#39;sex&amp;#39;, &amp;#39;length&amp;#39;, &amp;#39;diameter&amp;#39;, &amp;#39;height&amp;#39;, &amp;#39;weight_whole&amp;#39;, 
                &amp;#39;weight_shucked&amp;#39;, &amp;#39;weight_viscera&amp;#39;, &amp;#39;weight_shell&amp;#39;, &amp;#39;rings&amp;#39;)
@@ -156,19 +156,33 @@ reps_pred &amp;lt;- replicate(N, get_boot_est_preds(preds_m, df$rings &amp;gt; 1
 
 reps_model &amp;lt;- replicate(N, get_boot_est_mod(df, brier_score))&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;div id=&#34;optimism-corrected-bootstrapping-to-refit-the-model-on-each-replicate&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Optimism corrected bootstrapping to refit the model on each replicate&lt;/h2&gt;
+&lt;p&gt;As pointed out by Ewout Steyerberg, these estimates should be optimism-corrected for potential overfitting. Let’s look at the difference in estimates if we make predictions on the initial dataset rather than on the bootstrapped sample.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;get_boot_est_mod &amp;lt;- function(df, metric) {
+    idx &amp;lt;- sample(nrow(df), replace = TRUE)
+    m_b &amp;lt;- glm(I(rings &amp;gt; 10) ~ ., data = df[idx,], family = binomial)
+    preds_m_b &amp;lt;- predict(m_b, data = df, type = &amp;#39;response&amp;#39;)
+    metric(preds_m_b, df$rings &amp;gt; 10)
+}
+
+reps_model_opt &amp;lt;- replicate(N, get_boot_est_mod(df, brier_score))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;div id=&#34;evaluate-results&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Evaluate results&lt;/h2&gt;
 &lt;p&gt;Let’s look at the distrbution of the Brier score estimates using both approaches.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;res &amp;lt;- rbind(data.frame(brier_score = reps_pred,
                         approach = &amp;#39;predictions&amp;#39;),
              data.frame(brier_score = reps_model,
-                        approach = &amp;#39;refit_model&amp;#39;))
+                        approach = &amp;#39;refit_model&amp;#39;),
+             data.frame(brier_score = reps_model_opt,
+                        approach = &amp;#39;refit_opt&amp;#39;))
 
 # Plot distribution of bootstrapped Brier scores
 ggplot(res, aes(brier_score, color = approach)) + 
   geom_density() +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-04-25-comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-04-25-comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We can calculate 95% confidence intervals using a simple percentile approach.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;calc_ci_95 &amp;lt;- function(v) {
   q &amp;lt;- format(quantile(v, probs = c(0.025, 0.975)), digits = 5)
@@ -181,10 +195,13 @@ cat(&amp;#39;CI using bootstrapped estimates from predictions only:&amp;#39;,
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cat(&amp;#39;CI using bootstrapped estimates from refitting the model:&amp;#39;,
     calc_ci_95(reps_model),&amp;#39;\n&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## CI using bootstrapped estimates from refitting the model: (0.14106 to 0.15401)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cat(&amp;#39;CI using bootstrapped estimates from refitting the model with an optimism correction:&amp;#39;,
+    calc_ci_95(reps_model_opt),&amp;#39;\n&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## CI using bootstrapped estimates from refitting the model with an optimism correction: (0.29688 to 0.31726)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;summary&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Summary&lt;/h2&gt;
-&lt;p&gt;While not exactly the same, the two approaches yield very similar results. However, this outcome may vary depending on potential bias in the original dataset, and the sensitivity of the model to such bias.&lt;/p&gt;
+&lt;p&gt;While not exactly the same, the first two approaches yield very similar results. However, this outcome may vary depending on potential bias in the original dataset, and the sensitivity of the model to such bias. The third approach demonstrates the likely high degree of overfitting in this model, and the need to properly correct for optimism when reporting predictive performance in the absence of a separate testing sample.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -403,6 +420,23 @@ scaled_brier_score_1(df$rings &amp;gt; 3, preds_m2)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Mon, 01 Apr 2019 00:00:00 -0400</pubDate>
       
       <guid>/publication/hccs_2019/</guid>
+      <description>&lt;!---
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Inclusion of unstructured clinical text improves early prediction of death or prolonged ICU stay</title>
+      <link>/publication/text_preds_2019/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 -0400</pubDate>
+      
+      <guid>/publication/text_preds_2019/</guid>
       <description>&lt;!---
 &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;

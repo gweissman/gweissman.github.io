@@ -15,13 +15,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-04-25T11:23:18-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2019-04-25T10:34:31-04:00</lastmod>
+    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -44,6 +38,12 @@
   </url>
   
   <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2019-04-25T10:34:31-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</loc>
     <lastmod>2019-04-25T11:23:18-04:00</lastmod>
   </url>
@@ -56,47 +56,70 @@
   
   <url>
     <loc>/authors/</loc>
-    <lastmod>2019-04-24T12:20:09-04:00</lastmod>
+    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/publication/sentiment_2019/</loc>
-    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+    <lastmod>2019-05-02T15:58:46-04:00</lastmod>
   </url>
   
   <url>
     <loc>/publication/hccs_2019/</loc>
-    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+    <lastmod>2019-05-02T15:58:46-04:00</lastmod>
   </url>
   
   <url>
     <loc>/authors/katherine-courtright/</loc>
-    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+    <lastmod>2019-05-02T15:58:46-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/authors/lyle-ungar/</loc>
-    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/authors/michael-harhay/</loc>
-    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/authors/scott-halpern/</loc>
-    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/authors/admin/</loc>
-    <lastmod>2019-04-24T12:20:09-04:00</lastmod>
+    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/blanca-himes/</loc>
+    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/casey-greene/</loc>
+    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/publication/text_preds_2019/</loc>
+    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/rebecca-hubbard/</loc>
+    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
     <priority>0</priority>
   </url>
   

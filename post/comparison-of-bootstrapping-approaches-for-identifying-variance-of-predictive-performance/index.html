@@ -321,7 +321,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    4 min read
   </span>
   
 
@@ -393,9 +393,9 @@
 set.seed(24601)
 
 # load libraries for plotting
-library(ggplot2)
-
-# get data
+library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.2</code></pre>
+<pre class="r"><code># get data
 df &lt;- read.csv(&#39;https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data&#39;)
 names(df) &lt;- c(&#39;sex&#39;, &#39;length&#39;, &#39;diameter&#39;, &#39;height&#39;, &#39;weight_whole&#39;, 
                &#39;weight_shucked&#39;, &#39;weight_viscera&#39;, &#39;weight_shell&#39;, &#39;rings&#39;)
@@ -518,19 +518,33 @@ reps_pred &lt;- replicate(N, get_boot_est_preds(preds_m, df$rings &gt; 10, brier
 
 reps_model &lt;- replicate(N, get_boot_est_mod(df, brier_score))</code></pre>
 </div>
+<div id="optimism-corrected-bootstrapping-to-refit-the-model-on-each-replicate" class="section level2">
+<h2>Optimism corrected bootstrapping to refit the model on each replicate</h2>
+<p>As pointed out by Ewout Steyerberg, these estimates should be optimism-corrected for potential overfitting. Let’s look at the difference in estimates if we make predictions on the initial dataset rather than on the bootstrapped sample.</p>
+<pre class="r"><code>get_boot_est_mod &lt;- function(df, metric) {
+    idx &lt;- sample(nrow(df), replace = TRUE)
+    m_b &lt;- glm(I(rings &gt; 10) ~ ., data = df[idx,], family = binomial)
+    preds_m_b &lt;- predict(m_b, data = df, type = &#39;response&#39;)
+    metric(preds_m_b, df$rings &gt; 10)
+}
+
+reps_model_opt &lt;- replicate(N, get_boot_est_mod(df, brier_score))</code></pre>
+</div>
 <div id="evaluate-results" class="section level2">
 <h2>Evaluate results</h2>
 <p>Let’s look at the distrbution of the Brier score estimates using both approaches.</p>
 <pre class="r"><code>res &lt;- rbind(data.frame(brier_score = reps_pred,
                         approach = &#39;predictions&#39;),
              data.frame(brier_score = reps_model,
-                        approach = &#39;refit_model&#39;))
+                        approach = &#39;refit_model&#39;),
+             data.frame(brier_score = reps_model_opt,
+                        approach = &#39;refit_opt&#39;))
 
 # Plot distribution of bootstrapped Brier scores
 ggplot(res, aes(brier_score, color = approach)) + 
   geom_density() +
   theme_bw()</code></pre>
-<p><img src="/post/2019-04-25-comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/post/2019-04-25-comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>We can calculate 95% confidence intervals using a simple percentile approach.</p>
 <pre class="r"><code>calc_ci_95 &lt;- function(v) {
   q &lt;- format(quantile(v, probs = c(0.025, 0.975)), digits = 5)
@@ -543,10 +557,13 @@ cat(&#39;CI using bootstrapped estimates from predictions only:&#39;,
 <pre class="r"><code>cat(&#39;CI using bootstrapped estimates from refitting the model:&#39;,
     calc_ci_95(reps_model),&#39;\n&#39;)</code></pre>
 <pre><code>## CI using bootstrapped estimates from refitting the model: (0.14106 to 0.15401)</code></pre>
+<pre class="r"><code>cat(&#39;CI using bootstrapped estimates from refitting the model with an optimism correction:&#39;,
+    calc_ci_95(reps_model_opt),&#39;\n&#39;)</code></pre>
+<pre><code>## CI using bootstrapped estimates from refitting the model with an optimism correction: (0.29688 to 0.31726)</code></pre>
 </div>
 <div id="summary" class="section level2">
 <h2>Summary</h2>
-<p>While not exactly the same, the two approaches yield very similar results. However, this outcome may vary depending on potential bias in the original dataset, and the sensitivity of the model to such bias.</p>
+<p>While not exactly the same, the first two approaches yield very similar results. However, this outcome may vary depending on potential bias in the original dataset, and the sensitivity of the model to such bias. The third approach demonstrates the likely high degree of overfitting in this model, and the need to properly correct for optimism when reporting predictive performance in the absence of a separate testing sample.</p>
 </div>
 
     </div>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rebecca Hubbard on Gary Weissman, MD, MSHP</title>
+    <link>/authors/rebecca-hubbard/</link>
+    <description>Recent content in Rebecca Hubbard on Gary Weissman, MD, MSHP</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 01 Jul 2018 00:00:00 -0400</lastBuildDate>
+    
+	<atom:link href="/authors/rebecca-hubbard/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Inclusion of unstructured clinical text improves early prediction of death or prolonged ICU stay</title>
+      <link>/publication/text_preds_2019/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 -0400</pubDate>
+      
+      <guid>/publication/text_preds_2019/</guid>
+      <description>Assessment of six commonly available sentiment methods trained in non-clinical domains. We evaluated their performance at predicting mortality, and other clinical tasks. Existing sentiment methods have serious limitations with clinical data and should not be deployed to support decision making tools.</description>
+    </item>
+    
+  </channel>
+</rss>
