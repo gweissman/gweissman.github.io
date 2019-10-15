@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yihao Yuan on Gary Weissman, MD, MSHP</title>
+    <link>/authors/yihao-yuan/</link>
+    <description>Recent content in Yihao Yuan on Gary Weissman, MD, MSHP</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Apr 2019 00:00:00 -0400</lastBuildDate>
+    
+	<atom:link href="/authors/yihao-yuan/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Potentially Preventable Intensive Care Unit Admissions in the United States, 2006 - 2015.</title>
+      <link>/publication/pot_prev_2019/</link>
+      <pubDate>Mon, 01 Apr 2019 00:00:00 -0400</pubDate>
+      
+      <guid>/publication/pot_prev_2019/</guid>
+      <description>Some hospitalizations associated with an intensive care unit stay may be preventable with early and appropriate outpatient care. Expansion of primary and palliative care services in the community should be considered a complementary, if not alternative, to expanding the critical care service delivery infrastructure in the United States.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -27,12 +27,10 @@
   
     
   
-  <meta name="description" content="Recurrent neural networks and their variants are helpful for extracting information from time series. Here&rsquo;s an example using sample data to get up and running.
-I found the following other websites helpful in reading up on code examples:
- https://machinelearningmastery.com/multi-step-time-series-forecasting-long-short-term-memory-networks-python/ https://github.com/rstudio/keras/blob/master/vignettes/examples/lstm_benchmark.py https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction/blob/master/lstm.py  # setup import numpy as np import pandas as pd import math import matplotlib.pyplot as plt from keras.models import Sequential from keras.layers import Dense, Dropout, SimpleRNN from keras.">
+  <meta name="description" content="Academic web site for Gary Weissman, focused on clinical informatics, population health, and critical care.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/">
+  <link rel="alternate" hreflang="en-us" href="/authors/">
 
   
 
@@ -97,12 +95,15 @@ I found the following other websites helpful in reading up on code examples:
   
 
   
+  <link rel="alternate" href="/authors/index.xml" type="application/rss+xml" title="Gary Weissman, MD, MSHP">
+  <link rel="feed" href="/authors/index.xml" type="application/rss+xml" title="Gary Weissman, MD, MSHP">
+  
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/">
+  <link rel="canonical" href="/authors/">
 
   
   
@@ -117,23 +118,19 @@ I found the following other websites helpful in reading up on code examples:
   <meta property="twitter:creator" content="@garyweissman">
   
   <meta property="og:site_name" content="Gary Weissman, MD, MSHP">
-  <meta property="og:url" content="/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/">
-  <meta property="og:title" content="Building a recurrent neural network to predict time-series data with Keras in Python | Gary Weissman, MD, MSHP">
-  <meta property="og:description" content="Recurrent neural networks and their variants are helpful for extracting information from time series. Here&rsquo;s an example using sample data to get up and running.
-I found the following other websites helpful in reading up on code examples:
- https://machinelearningmastery.com/multi-step-time-series-forecasting-long-short-term-memory-networks-python/ https://github.com/rstudio/keras/blob/master/vignettes/examples/lstm_benchmark.py https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction/blob/master/lstm.py  # setup import numpy as np import pandas as pd import math import matplotlib.pyplot as plt from keras.models import Sequential from keras.layers import Dense, Dropout, SimpleRNN from keras."><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:url" content="/authors/">
+  <meta property="og:title" content="Authors | Gary Weissman, MD, MSHP">
+  <meta property="og:description" content="Academic web site for Gary Weissman, focused on clinical informatics, population health, and critical care."><meta property="og:image" content="/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2018-02-15T00:00:00&#43;00:00">
-  
-  <meta property="article:modified_time" content="2019-04-23T21:12:47-04:00">
+  <meta property="og:updated_time" content="2019-04-01T00:00:00-04:00">
   
 
   
 
   
 
-  <title>Building a recurrent neural network to predict time-series data with Keras in Python | Gary Weissman, MD, MSHP</title>
+  <title>Authors | Gary Weissman, MD, MSHP</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
@@ -270,9 +267,7 @@ I found the following other websites helpful in reading up on code examples:
 </nav>
 
 
-<article class="article" itemscope itemtype="http://schema.org/Article">
 
-  
 
 
 
@@ -289,345 +284,80 @@ I found the following other websites helpful in reading up on code examples:
 
   
   
-  
-<div class="article-container pt-3">
-  <h1 itemprop="name">Building a recurrent neural network to predict time-series data with Keras in Python</h1>
-
-  
-
   
     
-
-
-
-<meta content="2018-02-15 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-<meta content="2019-04-23 21:12:47 -0400 EDT" itemprop="dateModified">
-
-<div class="article-metadata">
+  
+<div class="universal-wrapper pt-3">
+  <h1 itemprop="name">Authors</h1>
 
   
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-          Last updated on
-      
-    
-    <time>Apr 23, 2019</time>
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    2 min read
-  </span>
-  
-
-  
-  
-
-  
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder"></i>
-    
-    <a href="/categories/keras/">keras</a>, 
-    
-    <a href="/categories/rnn/">rnn</a>, 
-    
-    <a href="/categories/python/">python</a>
-    
-  </span>
-  
-  
-
-  
-    
-
-  
-
-</div>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   
 </div>
 
 
 
-  <div class="article-container">
+<div class="universal-wrapper">
+  
 
-    <div class="article-style" itemprop="articleBody">
-      <p>Recurrent neural networks and their variants are helpful for extracting information from time series. Here&rsquo;s an example using sample data to get up and running.</p>
-
-<p>I found the following other websites helpful in reading up on code examples:</p>
-
-<ul>
-<li><a href="https://machinelearningmastery.com/multi-step-time-series-forecasting-long-short-term-memory-networks-python/" target="_blank">https://machinelearningmastery.com/multi-step-time-series-forecasting-long-short-term-memory-networks-python/</a></li>
-<li><a href="https://github.com/rstudio/keras/blob/master/vignettes/examples/lstm_benchmark.py" target="_blank">https://github.com/rstudio/keras/blob/master/vignettes/examples/lstm_benchmark.py</a></li>
-<li><a href="https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction/blob/master/lstm.py" target="_blank">https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction/blob/master/lstm.py</a></li>
-</ul>
-
-<pre><code class="language-python"># setup
-import numpy as np
-import pandas as pd
-import math
-import matplotlib.pyplot as plt
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, SimpleRNN
-from keras.callbacks import EarlyStopping
-from sklearn.model_selection import train_test_split
-
-# make a sample multivariable time series - not autoregressive
-# generate a random walk
-def random_walk(steps, scale = 1):
-    w = np.zeros(steps)
-    for x in range(1,steps):
-        w[x] = w[x-1] + scale * np.random.normal()
-    return(w)
-        
-time_steps = 5000
-data = pd.DataFrame({'x' : range(time_steps), 
-    'y' : np.arange(time_steps) ** (1/2) + random_walk(time_steps) })
-data = data.assign(z = np.log(data.x+1) + 0.3 * data.y)
-data_mat = np.array(data)
-</code></pre>
-
-<p>Take a look at the data.</p>
-
-<p><img src="/images/rnn_data_explore.png" alt="" /></p>
-
-<pre><code class="language-python">plt.subplot(2,1,1)
-plt.plot(data_mat[:,0], data_mat[:,2], c = 'goldenrod')
-plt.margins(0.05)
-plt.subplot(2,1,2)
-plt.plot(data_mat[:,1], data_mat[:,2], c = 'firebrick')
-plt.margins(0.05)
-plt.show()
-</code></pre>
-
-<pre><code class="language-python"># split into samples (sliding time windows)
-samples = list()
-target = list()
-length = 50
-
-# step over the 5,000 in jumps of length
-for i in range(time_steps - length - 1):
-  # grab from i to i + length
-    sample = data_mat[i:i+length,:2]
-    outcome = data_mat[i+length+1,2]
-    target.append(outcome)
-    samples.append(sample)
-
-# split out a test set
-test_size = 1000
-x_test_mat = np.dstack(samples[-test_size:])
-x_test_3d_final = np.moveaxis(x_test_mat, [0, 1, 2], [1, 2, 0] )
-
-# The RNN needs data with the format of [samples, time steps, features].
-# Here, we have N samples, 50 time steps per sample, and 2 features
-data_mat_stacked = np.dstack(samples[:-test_size])
-data_mat_3d_final = np.moveaxis(data_mat_stacked, [0, 1, 2], [1, 2, 0] )
-
-# and fix up the target
-target_arr = np.array(target[:-test_size])
-
-# now build the RNN
-model = Sequential()
-model.add(SimpleRNN(128, input_shape = (data_mat_3d_final.shape[1],
-    data_mat_3d_final.shape[2]), activation = 'relu'))
-model.add(Dropout(0.1))
-model.add(Dense(64, activation = 'relu'))
-model.add(Dropout(0.1))
-model.add(Dense(16, activation = 'relu'))
-model.add(Dropout(0.1))
-model.add(Dense(1, activation='linear'))
-
-# monitor validation progress
-early = EarlyStopping(monitor = &quot;val_loss&quot;, mode = &quot;min&quot;, patience = 7)
-callbacks_list = [early]
+  <ul>
     
-model.compile(loss = 'mean_squared_error',
-              optimizer = 'adam',
-              metrics = ['mse'])
-
-# and train the model
-history = model.fit(data_mat_3d_final, target_arr, 
-    epochs=50, batch_size=25, verbose=2, 
-    validation_split = 0.20,
-    callbacks = callbacks_list)
-
-# plot history
-plt.plot(history.history['loss'], label='train')
-plt.plot(history.history['val_loss'], label='val')
-plt.legend()
-plt.show()
-</code></pre>
-
-<p><img src="/images/rnn_train_history.png" alt="" /></p>
-
-<pre><code class="language-python"># get predictions
-train_predictions = model.predict(data_mat_3d_final)
-test_predictions = model.predict(x_test_3d_final)
-
-# plot predictions vs actual
-plt.plot(data['x'], 
-    data['z'], c = 'goldenrod', label = 'data')
-plt.plot(data.iloc[(length+1):-test_size]['x'], 
-    train_predictions, c = 'navy', label = 'train')
-plt.plot(data.iloc[-test_size:]['x'], 
-    test_predictions, c = 'firebrick', label = 'test')
-plt.legend(loc='best')
-plt.show()
-</code></pre>
-
-<p><img src="/images/rnn_times_series_predictions.png" alt="" /></p>
-
-<p>Not bad!</p>
-
-    </div>
-
-    
-
-
-
-
-
     
       
-
-
-
-
-
+      
+      
+      
+        
+      
+    <li><a href="/authors/yihao-yuan/">Yihao Yuan</a></li>
+    
+      
+      
+      
+      
+        
+        
+      
+    <li><a href="/authors/admin/">Gary Weissman</a></li>
+    
+      
+      
+      
+      
+        
+      
+    <li><a href="/authors/blanca-himes/">Blanca Himes</a></li>
+    
+      
+      
+      
+      
+        
+      
+    <li><a href="/authors/casey-greene/">Casey Greene</a></li>
+    
+      
+      
+      
+      
+        
+      
+    <li><a href="/authors/rebecca-hubbard/">Rebecca Hubbard</a></li>
+    
+  </ul>
 
   
+<nav>
+  <ul class="pagination justify-content-center">
+    
+    <li class="page-item"><a class="page-link" href="/authors/">&laquo;</a></li>
+    
+    
+  </ul>
+</nav>
 
 
-
-
-
-
-
-<div class="media author-card" itemscope itemtype="http://schema.org/Person">
-  
-  
-  <img class="portrait mr-3" src="/author/admin/avatar_hu52a603635ecebd45650b162dadabb4e5_12861_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
-  
-
-  <div class="media-body">
-    <h5 class="card-title" itemprop="name"><a href="/authors/admin">Gary Weissman</a></h5>
-    <h6 class="card-subtitle">Assistant Professor of Medicine</h6>
-    <p class="card-text" itemprop="description">I am a pulmonary and critical care physician at the University of Pennsylvania Perelman School of Medicine, based at the Palliative and Advanced Illness Research (PAIR) Center. My research interests include clinical informatics, natural language processing, machine learning, population health, and pragmatic trials.</p>
-    <ul class="network-icon" aria-hidden="true">
-      
-      
-      
-      
-        
-      
-      
-      
-      
-      
-        
-      
-      <li>
-        <a itemprop="sameAs" href="/#contact" >
-          <i class="fas fa-envelope"></i>
-        </a>
-      </li>
-      
-      
-      
-      
-        
-      
-      
-      
-      
-      
-        
-      
-      <li>
-        <a itemprop="sameAs" href="https://twitter.com/garyweissman" target="_blank" rel="noopener">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </li>
-      
-      
-      
-      
-      
-      
-      
-      
-        
-      
-      <li>
-        <a itemprop="sameAs" href="https://scholar.google.com/citations?hl=en&amp;user=Ollx0JMAAAAJ" target="_blank" rel="noopener">
-          <i class="ai ai-google-scholar"></i>
-        </a>
-      </li>
-      
-      
-      
-      
-        
-      
-      
-      
-      
-      
-        
-      
-      <li>
-        <a itemprop="sameAs" href="https://github.com/gweissman" target="_blank" rel="noopener">
-          <i class="fab fa-github"></i>
-        </a>
-      </li>
-      
-    </ul>
-  </div>
 </div>
-
-
-
-      
-      
-    
-
-    
-
-    
-
-
-  </div>
-</article>
-
 <div class="container">
   <footer class="site-footer">
   

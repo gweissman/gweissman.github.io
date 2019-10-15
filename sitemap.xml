@@ -66,6 +66,18 @@
   </url>
   
   <url>
+    <loc>/authors/gary-weissman/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/george-anesi/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/publication/hccs_2019/</loc>
     <lastmod>2019-05-02T15:58:46-04:00</lastmod>
   </url>
@@ -83,14 +95,49 @@
   </url>
   
   <url>
+    <loc>/authors/meeta-kerlin/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/authors/michael-harhay/</loc>
     <lastmod>2019-05-03T14:50:58-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>/authors/peter-groeneveld/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/publication/pot_prev_2019/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/rachel-kohn/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/rachel-werner/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/authors/scott-halpern/</loc>
     <lastmod>2019-05-03T14:50:58-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/authors/yihao-yuan/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
