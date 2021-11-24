@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>meta | Academic</title>
-    <link>https://academic-demo.netlify.app/category/meta/</link>
-      <atom:link href="https://academic-demo.netlify.app/category/meta/index.xml" rel="self" type="application/rss+xml" />
+    <title>meta | Gary Weissman, MD, MSHP</title>
+    <link>https://gweissman.github.io/category/meta/</link>
+      <atom:link href="https://gweissman.github.io/category/meta/index.xml" rel="self" type="application/rss+xml" />
     <description>meta</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 15 Jun 2017 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://academic-demo.netlify.app/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <url>https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
       <title>meta</title>
-      <link>https://academic-demo.netlify.app/category/meta/</link>
+      <link>https://gweissman.github.io/category/meta/</link>
     </image>
     
     <item>
       <title>Welcome to the blog!</title>
-      <link>https://academic-demo.netlify.app/post/welcome-to-the-blog/</link>
+      <link>https://gweissman.github.io/post/welcome-to-the-blog/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/welcome-to-the-blog/</guid>
+      <guid>https://gweissman.github.io/post/welcome-to-the-blog/</guid>
       <description>&lt;p&gt;Welcome to this blog, which is the new home for thoughts and technical things. As &lt;code&gt;babelgraph.org&lt;/code&gt; has been retired, you can still get the code at:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/gweissman/BabelGraph&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BabelGraph Alpha&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Over time I will try to migrate the old blog posts (mostly dealing with network analyses and C++ using R) to here along with the very informative user comments, and updates.&lt;/p&gt;
@@ -39,7 +39,7 @@
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/bg-0-2-linux-directed-tree-small.png&#34; alt=&#34;Directed tree on Linux&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/bg-0-2-linux-directed-tree-small.png&#34; alt=&#34;Directed tree on Linux&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -60,7 +60,7 @@
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/bg0-2-linux-small.png&#34; alt=&#34;Linux desktop version&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/bg0-2-linux-small.png&#34; alt=&#34;Linux desktop version&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -81,7 +81,7 @@
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/bg0-2-mac-small.png&#34; alt=&#34;Mac desktop version&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/bg0-2-mac-small.png&#34; alt=&#34;Mac desktop version&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -102,7 +102,7 @@
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/binary-tree-small.png&#34; alt=&#34;Binary tree&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/binary-tree-small.png&#34; alt=&#34;Binary tree&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -123,7 +123,7 @@
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/heterophily-small.png&#34; alt=&#34;Negative assortativity&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/heterophily-small.png&#34; alt=&#34;Negative assortativity&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -144,7 +144,7 @@
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/mutual-homophily-small.png&#34; alt=&#34;Positive assortativity - homophily&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/mutual-homophily-small.png&#34; alt=&#34;Positive assortativity - homophily&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 </description>

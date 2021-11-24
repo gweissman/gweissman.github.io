@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>maps | Academic</title>
-    <link>https://academic-demo.netlify.app/category/maps/</link>
-      <atom:link href="https://academic-demo.netlify.app/category/maps/index.xml" rel="self" type="application/rss+xml" />
+    <title>maps | Gary Weissman, MD, MSHP</title>
+    <link>https://gweissman.github.io/category/maps/</link>
+      <atom:link href="https://gweissman.github.io/category/maps/index.xml" rel="self" type="application/rss+xml" />
     <description>maps</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 17 Jul 2017 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://academic-demo.netlify.app/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <url>https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
       <title>maps</title>
-      <link>https://academic-demo.netlify.app/category/maps/</link>
+      <link>https://gweissman.github.io/category/maps/</link>
     </image>
     
     <item>
       <title>Making choropleth maps by zip code</title>
-      <link>https://academic-demo.netlify.app/post/making-choropleth-maps-by-zip-code/</link>
+      <link>https://gweissman.github.io/post/making-choropleth-maps-by-zip-code/</link>
       <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/making-choropleth-maps-by-zip-code/</guid>
+      <guid>https://gweissman.github.io/post/making-choropleth-maps-by-zip-code/</guid>
       <description>&lt;p&gt;Every now and then it is useful to make a map. In times of political uncertainty, data can light a path forward. Your local elected officals may be interested in data, too, and how they impact policy (and re-election, of course).&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s say you wanted to know if people are still enrolling the &lt;em&gt;Healthcare.gov&lt;/em&gt; plans in your local State Senatorial district. It&amp;rsquo;s quite difficult to find data broken up at this level but zip codes can approximate such an approach. Here&amp;rsquo;s information from Pennsylvania 26th Senatorial District.&lt;/p&gt;
 &lt;h2 id=&#34;marketplace-enrollment&#34;&gt;Marketplace enrollment&lt;/h2&gt;
@@ -79,7 +79,7 @@ plot(zipmap)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/26th_district.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/26th_district.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 </description>
@@ -87,9 +87,9 @@ plot(zipmap)
     
     <item>
       <title>Transportation data in R: Why yes, yes you can</title>
-      <link>https://academic-demo.netlify.app/post/transportation-data-in-r-why-yes-yes-you-can/</link>
+      <link>https://gweissman.github.io/post/transportation-data-in-r-why-yes-yes-you-can/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/transportation-data-in-r-why-yes-yes-you-can/</guid>
+      <guid>https://gweissman.github.io/post/transportation-data-in-r-why-yes-yes-you-can/</guid>
       <description>&lt;p&gt;Not infrequently I am in a research meeting and someone says, &amp;ldquo;It would be really cool to get data on travel times for people. But I don&amp;rsquo;t know where to find that.&amp;rdquo; Here you will find just that. Please note that Google Maps &lt;a href=&#34;https://developers.google.com/maps/terms&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;terms of service&lt;/a&gt; are relevant for large data requests and potential privacy concerns for protected health information.&lt;/p&gt;
 &lt;h2 id=&#34;case&#34;&gt;Case&lt;/h2&gt;
 &lt;p&gt;Mr. Jones spends all his time at a &lt;a href=&#34;http://www.hobbscoffee.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;coffee shop&lt;/a&gt;. Mr. Jones has hypertension, diabetes, and hyperlipidemia, and it doesn&amp;rsquo;t seem likely he will visit his &lt;a href=&#34;https://www.pennmedicine.org/providers/practice/penn-center-for-primary-care&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;primary care doctor&lt;/a&gt; anytime soon. Can we describe his potential travel time between his favorite coffee shop and his primary care doctor to better understand his transportation barriers? Why yes, yes we can.&lt;/p&gt;
@@ -170,7 +170,7 @@ qmap(destination, zoom = 11) +
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/walk_commute_map.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/walk_commute_map.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;Mr. Jones, inspired by this map, just put down his triple-shot latte and is walking to his doctor&amp;rsquo;s office right now.&lt;/p&gt;

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>r | Academic</title>
-    <link>https://academic-demo.netlify.app/category/r/</link>
-      <atom:link href="https://academic-demo.netlify.app/category/r/index.xml" rel="self" type="application/rss+xml" />
+    <title>r | Gary Weissman, MD, MSHP</title>
+    <link>https://gweissman.github.io/category/r/</link>
+      <atom:link href="https://gweissman.github.io/category/r/index.xml" rel="self" type="application/rss+xml" />
     <description>r</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://academic-demo.netlify.app/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <url>https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
       <title>r</title>
-      <link>https://academic-demo.netlify.app/category/r/</link>
+      <link>https://gweissman.github.io/category/r/</link>
     </image>
     
     <item>
       <title>Comparison of bootstrapping approaches for identifying variance of predictive performance</title>
-      <link>https://academic-demo.netlify.app/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</link>
+      <link>https://gweissman.github.io/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</link>
       <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</guid>
+      <guid>https://gweissman.github.io/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</guid>
       <description>
-&lt;script src=&#34;https://academic-demo.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://gweissman.github.io/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;background&#34; class=&#34;section level2&#34;&gt;
@@ -194,7 +194,7 @@ reps_model_opt &amp;lt;- replicate(N, get_boot_est_mod(df, brier_score))&lt;/cod
 ggplot(res, aes(brier_score, color = approach)) + 
   geom_density() +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://academic-demo.netlify.app/post/2019-04-25-comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gweissman.github.io/post/2019-04-25-comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We can calculate 95% confidence intervals using a simple percentile approach.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;calc_ci_95 &amp;lt;- function(v) {
   q &amp;lt;- format(quantile(v, probs = c(0.025, 0.975)), digits = 5)
@@ -220,9 +220,9 @@ cat(&amp;#39;CI using bootstrapped estimates from predictions only:&amp;#39;,
     
     <item>
       <title>Making choropleth maps by zip code</title>
-      <link>https://academic-demo.netlify.app/post/making-choropleth-maps-by-zip-code/</link>
+      <link>https://gweissman.github.io/post/making-choropleth-maps-by-zip-code/</link>
       <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/making-choropleth-maps-by-zip-code/</guid>
+      <guid>https://gweissman.github.io/post/making-choropleth-maps-by-zip-code/</guid>
       <description>&lt;p&gt;Every now and then it is useful to make a map. In times of political uncertainty, data can light a path forward. Your local elected officals may be interested in data, too, and how they impact policy (and re-election, of course).&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s say you wanted to know if people are still enrolling the &lt;em&gt;Healthcare.gov&lt;/em&gt; plans in your local State Senatorial district. It&amp;rsquo;s quite difficult to find data broken up at this level but zip codes can approximate such an approach. Here&amp;rsquo;s information from Pennsylvania 26th Senatorial District.&lt;/p&gt;
 &lt;h2 id=&#34;marketplace-enrollment&#34;&gt;Marketplace enrollment&lt;/h2&gt;
@@ -285,7 +285,7 @@ plot(zipmap)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/26th_district.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/26th_district.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 </description>
@@ -293,9 +293,9 @@ plot(zipmap)
     
     <item>
       <title>The structure of twitter participant relationships in conversations around #Libya, #Bieber, and #Rstats</title>
-      <link>https://academic-demo.netlify.app/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</link>
+      <link>https://gweissman.github.io/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</guid>
+      <guid>https://gweissman.github.io/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</guid>
       <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on April 4, 2011. I suspect the twitter API and much of the code below are &lt;strong&gt;not&lt;/strong&gt; up to date.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;I am a recent comer to &lt;a href=&#34;twitter.com&#34;&gt;twitter&lt;/a&gt;, and it took me a few weeks to figure out what this was all about. Who are all these people tweeting each other and what do all these trending hashtags mean? Do these people all know each other? How do they get involved in these conversations? Are people really talking/listening to each other, or just spewing 140 character projectiles out into the void?&lt;/p&gt;
 &lt;p&gt;This piqued my interest in the structure of relationships of participants in different twitter conversations. Using &lt;a href=&#34;http://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R&lt;/a&gt;, with the &lt;a href=&#34;http://cran.r-project.org/web/packages/twitteR/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;twitteR&lt;/a&gt; and &lt;a href=&#34;http://igraph.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;igraph&lt;/a&gt; packages, I wondered what I would find&amp;hellip;&lt;/p&gt;
@@ -398,7 +398,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/bieber_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/twitter/bieber_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;#Libya&lt;/p&gt;
@@ -420,7 +420,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/libya_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/twitter/libya_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;#Rstats&lt;/p&gt;
@@ -442,7 +442,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/rstats_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/twitter/rstats_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;The networks obviously look very different. Here is a plot of the degree distribution of each graph:&lt;/p&gt;
@@ -464,7 +464,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/abs_deg_dist_by_search_term.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/twitter/abs_deg_dist_by_search_term.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;Even more interesting is the simple comparison of the number of edges in each graph. Very telling.&lt;/p&gt;
@@ -486,7 +486,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/vertex_edge_counts_by_search_term.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/twitter/vertex_edge_counts_by_search_term.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;I did not look at the clustering coefficient here, but that would be interesting, too.&lt;/p&gt;
@@ -498,9 +498,9 @@ plot(g)
     
     <item>
       <title>Transportation data in R: Why yes, yes you can</title>
-      <link>https://academic-demo.netlify.app/post/transportation-data-in-r-why-yes-yes-you-can/</link>
+      <link>https://gweissman.github.io/post/transportation-data-in-r-why-yes-yes-you-can/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/transportation-data-in-r-why-yes-yes-you-can/</guid>
+      <guid>https://gweissman.github.io/post/transportation-data-in-r-why-yes-yes-you-can/</guid>
       <description>&lt;p&gt;Not infrequently I am in a research meeting and someone says, &amp;ldquo;It would be really cool to get data on travel times for people. But I don&amp;rsquo;t know where to find that.&amp;rdquo; Here you will find just that. Please note that Google Maps &lt;a href=&#34;https://developers.google.com/maps/terms&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;terms of service&lt;/a&gt; are relevant for large data requests and potential privacy concerns for protected health information.&lt;/p&gt;
 &lt;h2 id=&#34;case&#34;&gt;Case&lt;/h2&gt;
 &lt;p&gt;Mr. Jones spends all his time at a &lt;a href=&#34;http://www.hobbscoffee.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;coffee shop&lt;/a&gt;. Mr. Jones has hypertension, diabetes, and hyperlipidemia, and it doesn&amp;rsquo;t seem likely he will visit his &lt;a href=&#34;https://www.pennmedicine.org/providers/practice/penn-center-for-primary-care&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;primary care doctor&lt;/a&gt; anytime soon. Can we describe his potential travel time between his favorite coffee shop and his primary care doctor to better understand his transportation barriers? Why yes, yes we can.&lt;/p&gt;
@@ -581,7 +581,7 @@ qmap(destination, zoom = 11) +
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/walk_commute_map.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/walk_commute_map.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;Mr. Jones, inspired by this map, just put down his triple-shot latte and is walking to his doctor&amp;rsquo;s office right now.&lt;/p&gt;
@@ -590,9 +590,9 @@ qmap(destination, zoom = 11) +
     
     <item>
       <title>R can write R code, too</title>
-      <link>https://academic-demo.netlify.app/post/r-can-write-r-code-too/</link>
+      <link>https://gweissman.github.io/post/r-can-write-r-code-too/</link>
       <pubDate>Wed, 15 Jun 2016 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/r-can-write-r-code-too/</guid>
+      <guid>https://gweissman.github.io/post/r-can-write-r-code-too/</guid>
       <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on April 14, 2012.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In a recent &lt;a href=&#34;http://www.cerebralmastication.com/2012/03/solving-easy-problems-the-hard-way/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blog post&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/#!/CMastication&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CMastication&lt;/a&gt;, a little meme puzzle is presented with the introduction that a preschooler could solve it in 5-10 minutes, a programmer in an hour. I took the bait.&lt;/p&gt;
 &lt;p&gt;The original problem goes like this:&lt;/p&gt;
@@ -645,7 +645,7 @@ qmap(destination, zoom = 11) +
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/4d_teaser_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/4d_teaser_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;But it was fun to code in R with R.&lt;/p&gt;
@@ -654,9 +654,9 @@ qmap(destination, zoom = 11) +
     
     <item>
       <title>Rcpp is smoking fast for agent based models in data frames</title>
-      <link>https://academic-demo.netlify.app/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</link>
+      <link>https://gweissman.github.io/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</link>
       <pubDate>Wed, 15 Jun 2016 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</guid>
+      <guid>https://gweissman.github.io/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</guid>
       <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on July 11, 2012. Thanks to Hadley Wickham for referencing some of content here, and apologies for the broken URL. NB. The original C++ code didn&amp;rsquo;t seem to compile on my computer today. It required a small tweak with &lt;code&gt;NumericVector::create&lt;/code&gt; &amp;ndash; see below.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In particular, R data frames provide a simple framework for representing large cohorts of agents in stochastic epidemiological models, such as those representing disease transmission. This approach is much easier and likely faster than trying to implement cohorts of R objects. In this post we’ll explore a simple agent-based model, and then benchmark a few different approaches to iterating through the cohort. Rcpp outperforms all of them by a few orders of magnitude. Priceless.&lt;/p&gt;
 &lt;h2 id=&#34;case&#34;&gt;Case&lt;/h2&gt;
@@ -802,7 +802,7 @@ barchart(relative ~ strategy, bm_results,
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/looping_speed_compare.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/looping_speed_compare.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;Ree – donc – u – lous.&lt;/p&gt;

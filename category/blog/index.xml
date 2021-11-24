@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>blog | Academic</title>
-    <link>https://academic-demo.netlify.app/category/blog/</link>
-      <atom:link href="https://academic-demo.netlify.app/category/blog/index.xml" rel="self" type="application/rss+xml" />
+    <title>blog | Gary Weissman, MD, MSHP</title>
+    <link>https://gweissman.github.io/category/blog/</link>
+      <atom:link href="https://gweissman.github.io/category/blog/index.xml" rel="self" type="application/rss+xml" />
     <description>blog</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://academic-demo.netlify.app/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <url>https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
       <title>blog</title>
-      <link>https://academic-demo.netlify.app/category/blog/</link>
+      <link>https://gweissman.github.io/category/blog/</link>
     </image>
     
     <item>
       <title>Comparison of bootstrapping approaches for identifying variance of predictive performance</title>
-      <link>https://academic-demo.netlify.app/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</link>
+      <link>https://gweissman.github.io/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</link>
       <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</guid>
+      <guid>https://gweissman.github.io/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</guid>
       <description>
-&lt;script src=&#34;https://academic-demo.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://gweissman.github.io/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;background&#34; class=&#34;section level2&#34;&gt;
@@ -194,7 +194,7 @@ reps_model_opt &amp;lt;- replicate(N, get_boot_est_mod(df, brier_score))&lt;/cod
 ggplot(res, aes(brier_score, color = approach)) + 
   geom_density() +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://academic-demo.netlify.app/post/2019-04-25-comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gweissman.github.io/post/2019-04-25-comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We can calculate 95% confidence intervals using a simple percentile approach.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;calc_ci_95 &amp;lt;- function(v) {
   q &amp;lt;- format(quantile(v, probs = c(0.025, 0.975)), digits = 5)
@@ -220,11 +220,11 @@ cat(&amp;#39;CI using bootstrapped estimates from predictions only:&amp;#39;,
     
     <item>
       <title>Grey’s Anatomy Network of Sexual Relations</title>
-      <link>https://academic-demo.netlify.app/post/grey-s-anatomy-network-of-sexual-relations/</link>
+      <link>https://gweissman.github.io/post/grey-s-anatomy-network-of-sexual-relations/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/grey-s-anatomy-network-of-sexual-relations/</guid>
+      <guid>https://gweissman.github.io/post/grey-s-anatomy-network-of-sexual-relations/</guid>
       <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on March 25, 2011. The relevant hyperlinks and &lt;code&gt;igraph&lt;/code&gt; code have been updated to reflect the current state of things. The edgelist, despite many more intervening seasons, and thus many more romances, has &lt;strong&gt;not&lt;/strong&gt; been updated. Here is a &lt;a href=&#34;http://badhessian.org/2012/09/lessons-on-exponential-random-graph-modeling-from-greys-anatomy-hook-ups/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;nice walkthrough of ERGMs&lt;/a&gt; based on this post &amp;ndash; sorry for the broken link, Ben.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;This all began with an introductory presentation about social network analysis to a group of medical students.  What better way to grab their attention than with attractive, fake doctors having sex on television?  Naturally this led to the dense network of sexual contacts between characters on the &lt;a href=&#34;http://en.wikipedia.org/wiki/Grey%27s_Anatomy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Grey’s Anatomy television show&lt;/a&gt;.  After viewing many hours of previous episodes and exploring fan pages (especially &lt;a href=&#34;http://insanegrey.livejournal.com/72234.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; for an early attempt at a graph representation of sexual contacts), I was able to come up with an extensive but by no means exhaustive list of contacts.  The edge list is available &lt;a href=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/ga_edgelist.csv&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This all began with an introductory presentation about social network analysis to a group of medical students.  What better way to grab their attention than with attractive, fake doctors having sex on television?  Naturally this led to the dense network of sexual contacts between characters on the &lt;a href=&#34;http://en.wikipedia.org/wiki/Grey%27s_Anatomy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Grey’s Anatomy television show&lt;/a&gt;.  After viewing many hours of previous episodes and exploring fan pages (especially &lt;a href=&#34;http://insanegrey.livejournal.com/72234.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; for an early attempt at a graph representation of sexual contacts), I was able to come up with an extensive but by no means exhaustive list of contacts.  The edge list is available &lt;a href=&#34;https://gweissman.github.io/images/babelgraph/greys/ga_edgelist.csv&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This example uses the &lt;a href=&#34;http://igraph.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;igraph&lt;/a&gt; package for &lt;a href=&#34;http://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R&lt;/a&gt;, both free to download. First we create the graph, give it a layout, and plot.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(igraph)
 ga.data &amp;lt;- read.csv(&#39;ga_edgelist.csv&#39;, header = TRUE)
@@ -251,7 +251,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/plot1.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/greys/plot1.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;Without knowing who is represented by each vertex, what can you deduce from the graph? From a public health perspective, if you could test one person for sexually transmitted infections (STIs), who would it be? If you could provide counseling and a free box of condoms to one person, who would it be? If you knew that an epidemic was spreading through this network, who would you want to be to best avoid it?&lt;/p&gt;
@@ -278,7 +278,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/plot2.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/greys/plot2.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;This tells us about the absolute number of partners, but not much about the relative position within the network. Let’s examine two types of centrality: closeness and betweenness. The closeness centrality is the average shortest path from one vertex to every other on the graph. A high number indicates that a vertex is quickly reachable by the majority of vertices in the graph, while a low number indicates that the vertex is far from most other vertices on the graph. We can calculate the centrality and then rescale the values to create a color scheme to visualize the relative differences.&lt;/p&gt;
@@ -308,7 +308,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/plot3.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/greys/plot3.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;It appears there are a few vertices on the red “hot” end of the spectrum, and a few at the “cold” end. Next we do the same for each vertex to calculate the betweenness centrality, which is the number of shortest paths on the network that pass through the vertex. Vertices with high betweenness centrality might be thought of as serving a gatekeeper role in mediating the shortest connections between other vertices.&lt;/p&gt;
@@ -336,7 +336,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/plot4.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/greys/plot4.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;This last graph of betweenness indicates slightly more variation among the likely suspects, while the analysis of closeness centrality demonstrated less variation. Why?&lt;/p&gt;
@@ -365,7 +365,7 @@ plot(g) # those new default igraph colors are so much nicer, too!
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/plot5.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/greys/plot5.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;Once you see the graph with names, it is interesting to note the breaks in connectivity around race and age (I guess you have to know the TV characters to appreciate this ;) ) So before seeing the names, back to the original question. Who would you test? Who would you counsel? Who would you vaccinate? Who would you rather be?&lt;/p&gt;
@@ -393,7 +393,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/plot6.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/greys/plot6.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 </description>
@@ -401,9 +401,9 @@ plot(g)
     
     <item>
       <title>The structure of twitter participant relationships in conversations around #Libya, #Bieber, and #Rstats</title>
-      <link>https://academic-demo.netlify.app/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</link>
+      <link>https://gweissman.github.io/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</guid>
+      <guid>https://gweissman.github.io/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</guid>
       <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on April 4, 2011. I suspect the twitter API and much of the code below are &lt;strong&gt;not&lt;/strong&gt; up to date.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;I am a recent comer to &lt;a href=&#34;twitter.com&#34;&gt;twitter&lt;/a&gt;, and it took me a few weeks to figure out what this was all about. Who are all these people tweeting each other and what do all these trending hashtags mean? Do these people all know each other? How do they get involved in these conversations? Are people really talking/listening to each other, or just spewing 140 character projectiles out into the void?&lt;/p&gt;
 &lt;p&gt;This piqued my interest in the structure of relationships of participants in different twitter conversations. Using &lt;a href=&#34;http://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R&lt;/a&gt;, with the &lt;a href=&#34;http://cran.r-project.org/web/packages/twitteR/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;twitteR&lt;/a&gt; and &lt;a href=&#34;http://igraph.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;igraph&lt;/a&gt; packages, I wondered what I would find&amp;hellip;&lt;/p&gt;
@@ -506,7 +506,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/bieber_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/twitter/bieber_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;#Libya&lt;/p&gt;
@@ -528,7 +528,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/libya_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/twitter/libya_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;#Rstats&lt;/p&gt;
@@ -550,7 +550,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/rstats_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/twitter/rstats_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;The networks obviously look very different. Here is a plot of the degree distribution of each graph:&lt;/p&gt;
@@ -572,7 +572,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/abs_deg_dist_by_search_term.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/twitter/abs_deg_dist_by_search_term.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;Even more interesting is the simple comparison of the number of edges in each graph. Very telling.&lt;/p&gt;
@@ -594,7 +594,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/vertex_edge_counts_by_search_term.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/twitter/vertex_edge_counts_by_search_term.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;I did not look at the clustering coefficient here, but that would be interesting, too.&lt;/p&gt;
@@ -606,9 +606,9 @@ plot(g)
     
     <item>
       <title>Welcome to the blog!</title>
-      <link>https://academic-demo.netlify.app/post/welcome-to-the-blog/</link>
+      <link>https://gweissman.github.io/post/welcome-to-the-blog/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/welcome-to-the-blog/</guid>
+      <guid>https://gweissman.github.io/post/welcome-to-the-blog/</guid>
       <description>&lt;p&gt;Welcome to this blog, which is the new home for thoughts and technical things. As &lt;code&gt;babelgraph.org&lt;/code&gt; has been retired, you can still get the code at:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/gweissman/BabelGraph&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BabelGraph Alpha&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Over time I will try to migrate the old blog posts (mostly dealing with network analyses and C++ using R) to here along with the very informative user comments, and updates.&lt;/p&gt;
@@ -631,7 +631,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/bg-0-2-linux-directed-tree-small.png&#34; alt=&#34;Directed tree on Linux&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/bg-0-2-linux-directed-tree-small.png&#34; alt=&#34;Directed tree on Linux&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -652,7 +652,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/bg0-2-linux-small.png&#34; alt=&#34;Linux desktop version&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/bg0-2-linux-small.png&#34; alt=&#34;Linux desktop version&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -673,7 +673,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/bg0-2-mac-small.png&#34; alt=&#34;Mac desktop version&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/bg0-2-mac-small.png&#34; alt=&#34;Mac desktop version&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -694,7 +694,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/binary-tree-small.png&#34; alt=&#34;Binary tree&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/binary-tree-small.png&#34; alt=&#34;Binary tree&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -715,7 +715,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/heterophily-small.png&#34; alt=&#34;Negative assortativity&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/heterophily-small.png&#34; alt=&#34;Negative assortativity&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -736,7 +736,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/mutual-homophily-small.png&#34; alt=&#34;Positive assortativity - homophily&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/mutual-homophily-small.png&#34; alt=&#34;Positive assortativity - homophily&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 </description>
@@ -744,9 +744,9 @@ plot(g)
     
     <item>
       <title>R can write R code, too</title>
-      <link>https://academic-demo.netlify.app/post/r-can-write-r-code-too/</link>
+      <link>https://gweissman.github.io/post/r-can-write-r-code-too/</link>
       <pubDate>Wed, 15 Jun 2016 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/r-can-write-r-code-too/</guid>
+      <guid>https://gweissman.github.io/post/r-can-write-r-code-too/</guid>
       <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on April 14, 2012.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In a recent &lt;a href=&#34;http://www.cerebralmastication.com/2012/03/solving-easy-problems-the-hard-way/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blog post&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/#!/CMastication&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CMastication&lt;/a&gt;, a little meme puzzle is presented with the introduction that a preschooler could solve it in 5-10 minutes, a programmer in an hour. I took the bait.&lt;/p&gt;
 &lt;p&gt;The original problem goes like this:&lt;/p&gt;
@@ -799,7 +799,7 @@ plot(g)
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/4d_teaser_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/babelgraph/4d_teaser_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;But it was fun to code in R with R.&lt;/p&gt;
@@ -808,9 +808,9 @@ plot(g)
     
     <item>
       <title>Rcpp is smoking fast for agent based models in data frames</title>
-      <link>https://academic-demo.netlify.app/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</link>
+      <link>https://gweissman.github.io/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</link>
       <pubDate>Wed, 15 Jun 2016 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</guid>
+      <guid>https://gweissman.github.io/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</guid>
       <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on July 11, 2012. Thanks to Hadley Wickham for referencing some of content here, and apologies for the broken URL. NB. The original C++ code didn&amp;rsquo;t seem to compile on my computer today. It required a small tweak with &lt;code&gt;NumericVector::create&lt;/code&gt; &amp;ndash; see below.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In particular, R data frames provide a simple framework for representing large cohorts of agents in stochastic epidemiological models, such as those representing disease transmission. This approach is much easier and likely faster than trying to implement cohorts of R objects. In this post we’ll explore a simple agent-based model, and then benchmark a few different approaches to iterating through the cohort. Rcpp outperforms all of them by a few orders of magnitude. Priceless.&lt;/p&gt;
 &lt;h2 id=&#34;case&#34;&gt;Case&lt;/h2&gt;
@@ -956,7 +956,7 @@ barchart(relative ~ strategy, bm_results,
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/looping_speed_compare.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/looping_speed_compare.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;Ree – donc – u – lous.&lt;/p&gt;

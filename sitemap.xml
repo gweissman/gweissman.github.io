@@ -2,159 +2,201 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://academic-demo.netlify.app/</loc>
-    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
+    <loc>https://gweissman.github.io/</loc>
+    <lastmod>2020-06-25T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/talk/example-talk/</loc>
-    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
+    <loc>https://gweissman.github.io/publication/speaking_breathing/</loc>
+    <lastmod>2020-06-25T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/event/</loc>
-    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
+    <loc>https://gweissman.github.io/author/anica-law/</loc>
+    <lastmod>2020-06-25T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/blog/</loc>
+    <loc>https://gweissman.github.io/authors/</loc>
+    <lastmod>2020-06-25T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/gary-weissman/</loc>
+    <lastmod>2020-06-25T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/jack-iwashyna/</loc>
+    <lastmod>2020-06-25T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/publication/</loc>
+    <lastmod>2020-06-25T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/andrew-crane-droesch/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/asaf-hanish/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/bill-hanson/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/corey-chivers/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/george-anesi/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/jason-christie/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/jason-lubken/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/publication/chime/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/mark-mikkelsen/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/michael-becker/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/michael-draugelis/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/michael-levy/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/pj-brennan/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/scott-halpern/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/thaibinh-luong/</loc>
+    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/category/blog/</loc>
     <lastmod>2019-04-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/bootstrapping/</loc>
+    <loc>https://gweissman.github.io/category/bootstrapping/</loc>
     <lastmod>2019-04-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/categories/</loc>
+    <loc>https://gweissman.github.io/categories/</loc>
     <lastmod>2019-04-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</loc>
+    <loc>https://gweissman.github.io/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</loc>
     <lastmod>2019-04-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/post/</loc>
+    <loc>https://gweissman.github.io/post/</loc>
     <lastmod>2019-04-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/predictive-modeling/</loc>
+    <loc>https://gweissman.github.io/category/predictive-modeling/</loc>
     <lastmod>2019-04-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/r/</loc>
+    <loc>https://gweissman.github.io/category/r/</loc>
     <lastmod>2019-04-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/brier-score/</loc>
+    <loc>https://gweissman.github.io/category/brier-score/</loc>
     <lastmod>2019-04-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</loc>
+    <loc>https://gweissman.github.io/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</loc>
     <lastmod>2019-04-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/authors/</loc>
+    <loc>https://gweissman.github.io/publication/sentiment_2019/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/publication/sentiment_2019/</loc>
+    <loc>https://gweissman.github.io/publication/hccs_2019/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/author/gary-weissman/</loc>
+    <loc>https://gweissman.github.io/author/katherine-courtright/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/author/george-anesi/</loc>
+    <loc>https://gweissman.github.io/author/lyle-ungar/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/publication/hccs_2019/</loc>
+    <loc>https://gweissman.github.io/author/meeta-kerlin/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/author/katherine-courtright/</loc>
+    <loc>https://gweissman.github.io/author/michael-harhay/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/author/lyle-ungar/</loc>
+    <loc>https://gweissman.github.io/author/peter-groeneveld/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/author/meeta-kerlin/</loc>
+    <loc>https://gweissman.github.io/publication/pot_prev_2019/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/author/michael-harhay/</loc>
+    <loc>https://gweissman.github.io/author/rachel-kohn/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/author/peter-groeneveld/</loc>
+    <loc>https://gweissman.github.io/author/rachel-werner/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/publication/pot_prev_2019/</loc>
+    <loc>https://gweissman.github.io/author/yihao-yuan/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/publication/</loc>
-    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://academic-demo.netlify.app/author/rachel-kohn/</loc>
-    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://academic-demo.netlify.app/author/rachel-werner/</loc>
-    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://academic-demo.netlify.app/author/scott-halpern/</loc>
-    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://academic-demo.netlify.app/author/yihao-yuan/</loc>
-    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://academic-demo.netlify.app/author/blanca-himes/</loc>
+    <loc>https://gweissman.github.io/author/blanca-himes/</loc>
     <lastmod>2018-07-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/author/casey-greene/</loc>
+    <loc>https://gweissman.github.io/author/casey-greene/</loc>
     <lastmod>2018-07-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/publication/text_preds_2019/</loc>
+    <loc>https://gweissman.github.io/publication/text_preds_2019/</loc>
     <lastmod>2018-07-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/author/rebecca-hubbard/</loc>
+    <loc>https://gweissman.github.io/author/rebecca-hubbard/</loc>
     <lastmod>2018-07-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/</loc>
+    <loc>https://gweissman.github.io/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/</loc>
     <lastmod>2018-02-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/keras/</loc>
+    <loc>https://gweissman.github.io/category/keras/</loc>
     <lastmod>2018-02-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/python/</loc>
+    <loc>https://gweissman.github.io/category/python/</loc>
     <lastmod>2018-02-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/rnn/</loc>
+    <loc>https://gweissman.github.io/category/rnn/</loc>
     <lastmod>2018-02-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/post/making-choropleth-maps-by-zip-code/</loc>
+    <loc>https://gweissman.github.io/post/making-choropleth-maps-by-zip-code/</loc>
     <lastmod>2017-07-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/maps/</loc>
+    <loc>https://gweissman.github.io/category/maps/</loc>
     <lastmod>2017-07-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/babelgraph/</loc>
+    <loc>https://gweissman.github.io/category/babelgraph/</loc>
     <lastmod>2017-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/post/grey-s-anatomy-network-of-sexual-relations/</loc>
+    <loc>https://gweissman.github.io/post/grey-s-anatomy-network-of-sexual-relations/</loc>
     <lastmod>2017-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/meta/</loc>
+    <loc>https://gweissman.github.io/category/meta/</loc>
     <lastmod>2017-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/social-network-analysis/</loc>
+    <loc>https://gweissman.github.io/category/social-network-analysis/</loc>
     <lastmod>2017-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</loc>
+    <loc>https://gweissman.github.io/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</loc>
     <lastmod>2017-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/post/transportation-data-in-r-why-yes-yes-you-can/</loc>
+    <loc>https://gweissman.github.io/post/transportation-data-in-r-why-yes-yes-you-can/</loc>
     <lastmod>2017-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/twitter/</loc>
+    <loc>https://gweissman.github.io/category/twitter/</loc>
     <lastmod>2017-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/post/welcome-to-the-blog/</loc>
+    <loc>https://gweissman.github.io/post/welcome-to-the-blog/</loc>
     <lastmod>2017-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/post/r-can-write-r-code-too/</loc>
+    <loc>https://gweissman.github.io/post/r-can-write-r-code-too/</loc>
     <lastmod>2016-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/category/rcpp/</loc>
+    <loc>https://gweissman.github.io/category/rcpp/</loc>
     <lastmod>2016-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</loc>
+    <loc>https://gweissman.github.io/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</loc>
     <lastmod>2016-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://academic-demo.netlify.app/admin/</loc>
+    <loc>https://gweissman.github.io/admin/</loc>
   </url><url>
-    <loc>https://academic-demo.netlify.app/author/</loc>
+    <loc>https://gweissman.github.io/author/</loc>
   </url><url>
-    <loc>https://academic-demo.netlify.app/publication_types/</loc>
+    <loc>https://gweissman.github.io/publication_types/</loc>
   </url><url>
-    <loc>https://academic-demo.netlify.app/tags/</loc>
+    <loc>https://gweissman.github.io/tags/</loc>
   </url>
 </urlset>

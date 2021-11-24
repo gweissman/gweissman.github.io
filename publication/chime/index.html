@@ -1,0 +1,1171 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="**Background:** The coronavirus disease 2019 (COVID-19) pan- demic challenges hospital leaders to make time-sensitive, critical decisions about clinical operations and resource allocations. **Objective:** To estimate the timing of surges in clinical demand and the best- and worst-case scenarios of local COVID-19– induced strain on hospital capacity, and thus inform clinical op- erations and staffing demands and identify when hospital capac- ity would be saturated. **Design:** Monte Carlo simulation instantiation of a susceptible, infected, removed (SIR) model with a 1-day cycle. **Setting:** 3 hospitals in an academic health system. **Patients:** All people living in the greater Philadelphia region. **Measurements:** The COVID-19 Hospital Impact Model (CHIME) (http://penn-chime.phl.io) SIR model was used to estimate the time from 23 March 2020 until hospital capacity would probably be exceeded, and the intensity of the surge, including for inten- sive care unit (ICU) beds and ventilators. **Results:** Using patients with COVID-19 alone, CHIME estimated that it would be 31 to 53 days before demand exceeds existing hospital capacity. In best- and worst-case scenarios of surges in the number of patients with COVID-19, the needed total capac- ity for hospital beds would reach 3131 to 12 650 across the 3 hospitals, including 338 to 1608 ICU beds and 118 to 599 ventilators. **Limitations:** Model parameters were taken directly or derived from published data across heterogeneous populations and practice environments and from the health system&#39;s historical data. CHIME does not incorporate more transition states to model infection severity, social networks to model transmission dynamics, or geographic information to account for spatial pat- terns of human interaction. **Conclusion:** Publicly available and designed for hospital oper- ations leaders, this modeling tool can inform preparations for capacity strain during the early days of a pandemic." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://gweissman.github.io/publication/chime/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.9f457a613f02e9027025db7311c58ccf.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://gweissman.github.io/publication/chime/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Gary Weissman, MD, MSHP" />
+  <meta property="og:url" content="https://gweissman.github.io/publication/chime/" />
+  <meta property="og:title" content="Locally Informed Simulation to Predict Hospital Capacity Needs During the COVID-19 Pandemic | Gary Weissman, MD, MSHP" />
+  <meta property="og:description" content="**Background:** The coronavirus disease 2019 (COVID-19) pan- demic challenges hospital leaders to make time-sensitive, critical decisions about clinical operations and resource allocations. **Objective:** To estimate the timing of surges in clinical demand and the best- and worst-case scenarios of local COVID-19– induced strain on hospital capacity, and thus inform clinical op- erations and staffing demands and identify when hospital capac- ity would be saturated. **Design:** Monte Carlo simulation instantiation of a susceptible, infected, removed (SIR) model with a 1-day cycle. **Setting:** 3 hospitals in an academic health system. **Patients:** All people living in the greater Philadelphia region. **Measurements:** The COVID-19 Hospital Impact Model (CHIME) (http://penn-chime.phl.io) SIR model was used to estimate the time from 23 March 2020 until hospital capacity would probably be exceeded, and the intensity of the surge, including for inten- sive care unit (ICU) beds and ventilators. **Results:** Using patients with COVID-19 alone, CHIME estimated that it would be 31 to 53 days before demand exceeds existing hospital capacity. In best- and worst-case scenarios of surges in the number of patients with COVID-19, the needed total capac- ity for hospital beds would reach 3131 to 12 650 across the 3 hospitals, including 338 to 1608 ICU beds and 118 to 599 ventilators. **Limitations:** Model parameters were taken directly or derived from published data across heterogeneous populations and practice environments and from the health system&#39;s historical data. CHIME does not incorporate more transition states to model infection severity, social networks to model transmission dynamics, or geographic information to account for spatial pat- terns of human interaction. **Conclusion:** Publicly available and designed for hospital oper- ations leaders, this modeling tool can inform preparations for capacity strain during the early days of a pandemic." /><meta property="og:image" content="https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2020-04-07T00:00:00-04:00"
+      />
+    
+    <meta property="article:modified_time" content="2020-04-07T00:00:00-04:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gweissman.github.io/publication/chime/"
+  },
+  "headline": "Locally Informed Simulation to Predict Hospital Capacity Needs During the COVID-19 Pandemic",
+  
+  "datePublished": "2020-04-07T00:00:00-04:00",
+  "dateModified": "2020-04-07T00:00:00-04:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Gary Weissman"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Gary Weissman, MD, MSHP",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "**Background:** The coronavirus disease 2019 (COVID-19) pan- demic challenges hospital leaders to make time-sensitive, critical decisions about clinical operations and resource allocations. **Objective:** To estimate the timing of surges in clinical demand and the best- and worst-case scenarios of local COVID-19– induced strain on hospital capacity, and thus inform clinical op- erations and staffing demands and identify when hospital capac- ity would be saturated. **Design:** Monte Carlo simulation instantiation of a susceptible, infected, removed (SIR) model with a 1-day cycle. **Setting:** 3 hospitals in an academic health system. **Patients:** All people living in the greater Philadelphia region. **Measurements:** The COVID-19 Hospital Impact Model (CHIME) (http://penn-chime.phl.io) SIR model was used to estimate the time from 23 March 2020 until hospital capacity would probably be exceeded, and the intensity of the surge, including for inten- sive care unit (ICU) beds and ventilators. **Results:** Using patients with COVID-19 alone, CHIME estimated that it would be 31 to 53 days before demand exceeds existing hospital capacity. In best- and worst-case scenarios of surges in the number of patients with COVID-19, the needed total capac- ity for hospital beds would reach 3131 to 12 650 across the 3 hospitals, including 338 to 1608 ICU beds and 118 to 599 ventilators. **Limitations:** Model parameters were taken directly or derived from published data across heterogeneous populations and practice environments and from the health system's historical data. CHIME does not incorporate more transition states to model infection severity, social networks to model transmission dynamics, or geographic information to account for spatial pat- terns of human interaction. **Conclusion:** Publicly available and designed for hospital oper- ations leaders, this modeling tool can inform preparations for capacity strain during the early days of a pandemic."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Locally Informed Simulation to Predict Hospital Capacity Needs During the COVID-19 Pandemic | Gary Weissman, MD, MSHP</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="4a584048d7834b86ebb8db5b67d1ced5" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Gary Weissman, MD, MSHP</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Gary Weissman, MD, MSHP</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    
+
+
+
+
+
+
+
+
+<div class="pub">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Locally Informed Simulation to Predict Hospital Capacity Needs During the COVID-19 Pandemic</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span >
+      <a href="/author/gary-weissman/">Gary Weissman</a></span>, <span >
+      <a href="/author/andrew-crane-droesch/">Andrew Crane-Droesch</a></span>, <span >
+      <a href="/author/corey-chivers/">Corey Chivers</a></span>, <span >
+      <a href="/author/thaibinh-luong/">ThaiBinh Luong</a></span>, <span >
+      <a href="/author/asaf-hanish/">Asaf Hanish</a></span>, <span >
+      <a href="/author/michael-levy/">Michael Levy</a></span>, <span >
+      <a href="/author/jason-lubken/">Jason Lubken</a></span>, <span >
+      <a href="/author/michael-becker/">Michael Becker</a></span>, <span >
+      <a href="/author/michael-draugelis/">Michael Draugelis</a></span>, <span >
+      <a href="/author/george-anesi/">George Anesi</a></span>, <span >
+      <a href="/author/pj-brennan/">PJ Brennan</a></span>, <span >
+      <a href="/author/jason-christie/">Jason Christie</a></span>, <span >
+      <a href="/author/bill-hanson/">Bill Hanson</a></span>, <span >
+      <a href="/author/mark-mikkelsen/">Mark Mikkelsen</a></span>, <span >
+      <a href="/author/scott-halpern/">Scott Halpern</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    April 2020
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+<a class="btn btn-outline-primary btn-page-header" href="/papers/chime.pdf" target="_blank" rel="noopener">
+  PDF
+</a>
+
+
+
+<a href="#" class="btn btn-outline-primary btn-page-header js-cite-modal"
+        data-filename="/publication/chime/cite.bib">
+  Cite
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a class="btn btn-outline-primary btn-page-header" href="https://doi.org/10.7326/M20-1260" target="_blank" rel="noopener">
+  DOI
+</a>
+
+
+
+</div>
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    
+    <h3>Abstract</h3>
+    <p class="pub-abstract"><strong>Background:</strong> The coronavirus disease 2019 (COVID-19) pan- demic challenges hospital leaders to make time-sensitive, critical decisions about clinical operations and resource allocations. <strong>Objective:</strong> To estimate the timing of surges in clinical demand and the best- and worst-case scenarios of local COVID-19– induced strain on hospital capacity, and thus inform clinical op- erations and staffing demands and identify when hospital capac- ity would be saturated. <strong>Design:</strong> Monte Carlo simulation instantiation of a susceptible, infected, removed (SIR) model with a 1-day cycle. <strong>Setting:</strong> 3 hospitals in an academic health system. <strong>Patients:</strong> All people living in the greater Philadelphia region. <strong>Measurements:</strong> The COVID-19 Hospital Impact Model (CHIME) (<a href="http://penn-chime.phl.io">http://penn-chime.phl.io</a>) SIR model was used to estimate the time from 23 March 2020 until hospital capacity would probably be exceeded, and the intensity of the surge, including for inten- sive care unit (ICU) beds and ventilators. <strong>Results:</strong> Using patients with COVID-19 alone, CHIME estimated that it would be 31 to 53 days before demand exceeds existing hospital capacity. In best- and worst-case scenarios of surges in the number of patients with COVID-19, the needed total capac- ity for hospital beds would reach 3131 to 12 650 across the 3 hospitals, including 338 to 1608 ICU beds and 118 to 599 ventilators. <strong>Limitations:</strong> Model parameters were taken directly or derived from published data across heterogeneous populations and practice environments and from the health system&rsquo;s historical data. CHIME does not incorporate more transition states to model infection severity, social networks to model transmission dynamics, or geographic information to account for spatial pat- terns of human interaction. <strong>Conclusion:</strong> Publicly available and designed for hospital oper- ations leaders, this modeling tool can inform preparations for capacity strain during the early days of a pandemic.</p>
+    
+
+    
+    
+
+    
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-12 col-md-3 pub-row-heading">Publication</div>
+          <div class="col-12 col-md-9"><em>Annals of Internal Medicine</em> 2020;173(9):754-755.</div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="d-md-none space-below"></div>
+    
+
+    <div class="space-below"></div>
+
+    <div class="article-style"></div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://gweissman.github.io/publication/chime/&amp;text=Locally%20Informed%20Simulation%20to%20Predict%20Hospital%20Capacity%20Needs%20During%20the%20COVID-19%20Pandemic" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://gweissman.github.io/publication/chime/&amp;t=Locally%20Informed%20Simulation%20to%20Predict%20Hospital%20Capacity%20Needs%20During%20the%20COVID-19%20Pandemic" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Locally%20Informed%20Simulation%20to%20Predict%20Hospital%20Capacity%20Needs%20During%20the%20COVID-19%20Pandemic&amp;body=https://gweissman.github.io/publication/chime/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://gweissman.github.io/publication/chime/&amp;title=Locally%20Informed%20Simulation%20to%20Predict%20Hospital%20Capacity%20Needs%20During%20the%20COVID-19%20Pandemic" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Locally%20Informed%20Simulation%20to%20Predict%20Hospital%20Capacity%20Needs%20During%20the%20COVID-19%20Pandemic%20https://gweissman.github.io/publication/chime/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://gweissman.github.io/publication/chime/&amp;title=Locally%20Informed%20Simulation%20to%20Predict%20Hospital%20Capacity%20Needs%20During%20the%20COVID-19%20Pandemic" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  </div>
+</div>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js"></script>
+
+    
+    
+    
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.d68ecd57c0ec1f1f61d65fd568f1c3a0.js"></script>
+
+    
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</body>
+</html>

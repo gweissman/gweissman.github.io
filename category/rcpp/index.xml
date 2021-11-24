@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>rcpp | Academic</title>
-    <link>https://academic-demo.netlify.app/category/rcpp/</link>
-      <atom:link href="https://academic-demo.netlify.app/category/rcpp/index.xml" rel="self" type="application/rss+xml" />
+    <title>rcpp | Gary Weissman, MD, MSHP</title>
+    <link>https://gweissman.github.io/category/rcpp/</link>
+      <atom:link href="https://gweissman.github.io/category/rcpp/index.xml" rel="self" type="application/rss+xml" />
     <description>rcpp</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 15 Jun 2016 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://academic-demo.netlify.app/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <url>https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
       <title>rcpp</title>
-      <link>https://academic-demo.netlify.app/category/rcpp/</link>
+      <link>https://gweissman.github.io/category/rcpp/</link>
     </image>
     
     <item>
       <title>Rcpp is smoking fast for agent based models in data frames</title>
-      <link>https://academic-demo.netlify.app/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</link>
+      <link>https://gweissman.github.io/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</link>
       <pubDate>Wed, 15 Jun 2016 00:00:00 +0000</pubDate>
-      <guid>https://academic-demo.netlify.app/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</guid>
+      <guid>https://gweissman.github.io/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</guid>
       <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on July 11, 2012. Thanks to Hadley Wickham for referencing some of content here, and apologies for the broken URL. NB. The original C++ code didn&amp;rsquo;t seem to compile on my computer today. It required a small tweak with &lt;code&gt;NumericVector::create&lt;/code&gt; &amp;ndash; see below.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In particular, R data frames provide a simple framework for representing large cohorts of agents in stochastic epidemiological models, such as those representing disease transmission. This approach is much easier and likely faster than trying to implement cohorts of R objects. In this post we’ll explore a simple agent-based model, and then benchmark a few different approaches to iterating through the cohort. Rcpp outperforms all of them by a few orders of magnitude. Priceless.&lt;/p&gt;
 &lt;h2 id=&#34;case&#34;&gt;Case&lt;/h2&gt;
@@ -162,7 +162,7 @@ barchart(relative ~ strategy, bm_results,
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/looping_speed_compare.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://gweissman.github.io/images/looping_speed_compare.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;Ree – donc – u – lous.&lt;/p&gt;
