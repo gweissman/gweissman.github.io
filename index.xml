@@ -1,23 +1,44 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gary Weissman, MD, MSHP</title>
-    <link>/</link>
-    <description>Recent content on Gary Weissman, MD, MSHP</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <title>Academic</title>
+    <link>https://academic-demo.netlify.app/</link>
+      <atom:link href="https://academic-demo.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <description>Academic</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jun 2030 13:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://academic-demo.netlify.app/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <title>Academic</title>
+      <link>https://academic-demo.netlify.app/</link>
+    </image>
     
-	    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
+    <item>
+      <title>Example Talk</title>
+      <link>https://academic-demo.netlify.app/talk/example-talk/</link>
+      <pubDate>Sat, 01 Jun 2030 13:00:00 +0000</pubDate>
+      <guid>https://academic-demo.netlify.app/talk/example-talk/</guid>
+      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Slides can be added in a few ways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Create&lt;/strong&gt; slides using Wowchemy&amp;rsquo;s &lt;a href=&#34;https://wowchemy.com/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;Slides&lt;/em&gt;&lt;/a&gt; feature and link using &lt;code&gt;slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Upload&lt;/strong&gt; an existing slide deck to &lt;code&gt;static/&lt;/code&gt; and link using &lt;code&gt;url_slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Embed&lt;/strong&gt; your slides (e.g. Google Slides) or presentation video on this page using &lt;a href=&#34;https://wowchemy.com/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;shortcodes&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Further event details, including &lt;a href=&#34;https://wowchemy.com/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;page elements&lt;/a&gt; such as image galleries, can be added to the body of this page.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Comparison of bootstrapping approaches for identifying variance of predictive performance</title>
-      <link>/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</link>
+      <link>https://academic-demo.netlify.app/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</link>
       <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</guid>
+      <guid>https://academic-demo.netlify.app/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</guid>
       <description>
+&lt;script src=&#34;https://academic-demo.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;background&#34; class=&#34;section level2&#34;&gt;
@@ -40,6 +61,17 @@ names(df) &amp;lt;- c(&amp;#39;sex&amp;#39;, &amp;#39;length&amp;#39;, &amp;#39;
 # inspect data
 knitr::kable(head(df))&lt;/code&gt;&lt;/pre&gt;
 &lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;4%&#34; /&gt;
+&lt;col width=&#34;7%&#34; /&gt;
+&lt;col width=&#34;10%&#34; /&gt;
+&lt;col width=&#34;7%&#34; /&gt;
+&lt;col width=&#34;14%&#34; /&gt;
+&lt;col width=&#34;16%&#34; /&gt;
+&lt;col width=&#34;16%&#34; /&gt;
+&lt;col width=&#34;14%&#34; /&gt;
+&lt;col width=&#34;6%&#34; /&gt;
+&lt;/colgroup&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
 &lt;th align=&#34;left&#34;&gt;sex&lt;/th&gt;
@@ -156,19 +188,33 @@ reps_pred &amp;lt;- replicate(N, get_boot_est_preds(preds_m, df$rings &amp;gt; 1
 
 reps_model &amp;lt;- replicate(N, get_boot_est_mod(df, brier_score))&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;div id=&#34;optimism-corrected-bootstrapping-to-refit-the-model-on-each-replicate&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Optimism corrected bootstrapping to refit the model on each replicate&lt;/h2&gt;
+&lt;p&gt;As pointed out by Ewout Steyerberg, these estimates should be optimism-corrected for potential overfitting. Let’s look at the difference in estimates if we make predictions on the initial dataset rather than on the bootstrapped sample.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;get_boot_est_mod &amp;lt;- function(df, metric) {
+    idx &amp;lt;- sample(nrow(df), replace = TRUE)
+    m_b &amp;lt;- glm(I(rings &amp;gt; 10) ~ ., data = df[idx,], family = binomial)
+    preds_m_b &amp;lt;- predict(m_b, data = df, type = &amp;#39;response&amp;#39;)
+    metric(preds_m_b, df$rings &amp;gt; 10)
+}
+
+reps_model_opt &amp;lt;- replicate(N, get_boot_est_mod(df, brier_score))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;div id=&#34;evaluate-results&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Evaluate results&lt;/h2&gt;
 &lt;p&gt;Let’s look at the distrbution of the Brier score estimates using both approaches.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;res &amp;lt;- rbind(data.frame(brier_score = reps_pred,
                         approach = &amp;#39;predictions&amp;#39;),
              data.frame(brier_score = reps_model,
-                        approach = &amp;#39;refit_model&amp;#39;))
+                        approach = &amp;#39;refit_model&amp;#39;),
+             data.frame(brier_score = reps_model_opt,
+                        approach = &amp;#39;refit_opt&amp;#39;))
 
 # Plot distribution of bootstrapped Brier scores
 ggplot(res, aes(brier_score, color = approach)) + 
   geom_density() +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-04-25-comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://academic-demo.netlify.app/post/2019-04-25-comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We can calculate 95% confidence intervals using a simple percentile approach.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;calc_ci_95 &amp;lt;- function(v) {
   q &amp;lt;- format(quantile(v, probs = c(0.025, 0.975)), digits = 5)
@@ -177,25 +223,28 @@ ggplot(res, aes(brier_score, color = approach)) +
 
 cat(&amp;#39;CI using bootstrapped estimates from predictions only:&amp;#39;,
     calc_ci_95(reps_pred),&amp;#39;\n&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## CI using bootstrapped estimates from predictions only: (0.14201 to 0.15427)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## CI using bootstrapped estimates from predictions only: (0.14153 to 0.15414)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cat(&amp;#39;CI using bootstrapped estimates from refitting the model:&amp;#39;,
     calc_ci_95(reps_model),&amp;#39;\n&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## CI using bootstrapped estimates from refitting the model: (0.14106 to 0.15401)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## CI using bootstrapped estimates from refitting the model: (0.14128 to 0.15395)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cat(&amp;#39;CI using bootstrapped estimates from refitting the model with an optimism correction:&amp;#39;,
+    calc_ci_95(reps_model_opt),&amp;#39;\n&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## CI using bootstrapped estimates from refitting the model with an optimism correction: (0.29691 to 0.31728)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;summary&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Summary&lt;/h2&gt;
-&lt;p&gt;While not exactly the same, the two approaches yield very similar results. However, this outcome may vary depending on potential bias in the original dataset, and the sensitivity of the model to such bias.&lt;/p&gt;
+&lt;p&gt;While not exactly the same, the first two approaches yield very similar results. However, this outcome may vary depending on potential bias in the original dataset, and the sensitivity of the model to such bias. The third approach demonstrates the likely high degree of overfitting in this model, and the need to properly correct for optimism when reporting predictive performance in the absence of a separate testing sample.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>Evaluating the equivalence of different formulations of the scaled Brier score</title>
-      <link>/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</link>
+      <link>https://academic-demo.netlify.app/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</link>
       <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</guid>
+      <guid>https://academic-demo.netlify.app/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</guid>
       <description>
+&lt;script src=&#34;https://academic-demo.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;background&#34; class=&#34;section level2&#34;&gt;
@@ -204,7 +253,7 @@ cat(&amp;#39;CI using bootstrapped estimates from predictions only:&amp;#39;,
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 BS = \frac{1}{N} \sum (y_i - \hat y_i)^2,
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is the number of observations, &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; is the observed outcome, either 0 or 1, and &lt;span class=&#34;math inline&#34;&gt;\(\hat y_i\)&lt;/span&gt; is the predicted probability for the &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;th observation. Let’s create an R function calculate the Brier Score:&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is the number of observations, &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; is the observed outcome, either 0 or 1, and &lt;span class=&#34;math inline&#34;&gt;\(\hat y_i\)&lt;/span&gt; is the predicted probability for the &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;th observation. Let’s create an R function to calculate the Brier Score:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;brier_score &amp;lt;- function(obs, pred) {
   mean((obs - pred)^2)
 }&lt;/code&gt;&lt;/pre&gt;
@@ -261,6 +310,17 @@ names(df) &amp;lt;- c(&amp;#39;sex&amp;#39;, &amp;#39;length&amp;#39;, &amp;#39;
 # inspect data
 knitr::kable(head(df))&lt;/code&gt;&lt;/pre&gt;
 &lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;4%&#34; /&gt;
+&lt;col width=&#34;7%&#34; /&gt;
+&lt;col width=&#34;10%&#34; /&gt;
+&lt;col width=&#34;7%&#34; /&gt;
+&lt;col width=&#34;14%&#34; /&gt;
+&lt;col width=&#34;16%&#34; /&gt;
+&lt;col width=&#34;16%&#34; /&gt;
+&lt;col width=&#34;14%&#34; /&gt;
+&lt;col width=&#34;6%&#34; /&gt;
+&lt;/colgroup&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
 &lt;th align=&#34;left&#34;&gt;sex&lt;/th&gt;
@@ -382,98 +442,48 @@ scaled_brier_score_1(df$rings &amp;gt; 3, preds_m2)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Construct validity of six sentiment analysis methods in the text of encounter notes of patients with critical illness</title>
-      <link>/publication/sentiment_2019/</link>
+      <link>https://academic-demo.netlify.app/publication/sentiment_2019/</link>
       <pubDate>Mon, 01 Apr 2019 00:00:00 -0400</pubDate>
-      
-      <guid>/publication/sentiment_2019/</guid>
-      <description>&lt;!---
-&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.
-  &lt;/div&gt;
-&lt;/div&gt;
-
---&gt;
-</description>
+      <guid>https://academic-demo.netlify.app/publication/sentiment_2019/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Hierarchical Condition Categories for Pulmonary Diseases: Population Health Management and Policy Opportunities.</title>
-      <link>/publication/hccs_2019/</link>
+      <link>https://academic-demo.netlify.app/publication/hccs_2019/</link>
       <pubDate>Mon, 01 Apr 2019 00:00:00 -0400</pubDate>
-      
-      <guid>/publication/hccs_2019/</guid>
-      <description>&lt;!---
-&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.
-  &lt;/div&gt;
-&lt;/div&gt;
-
---&gt;
-</description>
+      <guid>https://academic-demo.netlify.app/publication/hccs_2019/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Potentially Preventable Intensive Care Unit Admissions in the United States, 2006 - 2015.</title>
-      <link>/publication/pot_prev_2019/</link>
+      <link>https://academic-demo.netlify.app/publication/pot_prev_2019/</link>
       <pubDate>Mon, 01 Apr 2019 00:00:00 -0400</pubDate>
-      
-      <guid>/publication/pot_prev_2019/</guid>
-      <description>&lt;!---
-&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.
-  &lt;/div&gt;
-&lt;/div&gt;
-
---&gt;
-</description>
+      <guid>https://academic-demo.netlify.app/publication/pot_prev_2019/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Inclusion of unstructured clinical text improves early prediction of death or prolonged ICU stay</title>
-      <link>/publication/text_preds_2019/</link>
+      <link>https://academic-demo.netlify.app/publication/text_preds_2019/</link>
       <pubDate>Sun, 01 Jul 2018 00:00:00 -0400</pubDate>
-      
-      <guid>/publication/text_preds_2019/</guid>
-      <description>&lt;!---
-&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.
-  &lt;/div&gt;
-&lt;/div&gt;
-
---&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Privacy Policy</title>
-      <link>/privacy/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 -0400</pubDate>
-      
-      <guid>/privacy/</guid>
-      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
-</description>
+      <guid>https://academic-demo.netlify.app/publication/text_preds_2019/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Building a recurrent neural network to predict time-series data with Keras in Python</title>
-      <link>/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/</link>
+      <link>https://academic-demo.netlify.app/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/</link>
       <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/</guid>
+      <guid>https://academic-demo.netlify.app/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/</guid>
       <description>&lt;p&gt;Recurrent neural networks and their variants are helpful for extracting information from time series. Here&amp;rsquo;s an example using sample data to get up and running.&lt;/p&gt;
-
 &lt;p&gt;I found the following other websites helpful in reading up on code examples:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://machinelearningmastery.com/multi-step-time-series-forecasting-long-short-term-memory-networks-python/&#34; target=&#34;_blank&#34;&gt;https://machinelearningmastery.com/multi-step-time-series-forecasting-long-short-term-memory-networks-python/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/rstudio/keras/blob/master/vignettes/examples/lstm_benchmark.py&#34; target=&#34;_blank&#34;&gt;https://github.com/rstudio/keras/blob/master/vignettes/examples/lstm_benchmark.py&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction/blob/master/lstm.py&#34; target=&#34;_blank&#34;&gt;https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction/blob/master/lstm.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://machinelearningmastery.com/multi-step-time-series-forecasting-long-short-term-memory-networks-python/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://machinelearningmastery.com/multi-step-time-series-forecasting-long-short-term-memory-networks-python/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/rstudio/keras/blob/master/vignettes/examples/lstm_benchmark.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/rstudio/keras/blob/master/vignettes/examples/lstm_benchmark.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction/blob/master/lstm.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction/blob/master/lstm.py&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# setup
 import numpy as np
 import pandas as pd
@@ -498,11 +508,28 @@ data = pd.DataFrame({&#39;x&#39; : range(time_steps),
 data = data.assign(z = np.log(data.x+1) + 0.3 * data.y)
 data_mat = np.array(data)
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Take a look at the data.&lt;/p&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/rnn_data_explore.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/rnn_data_explore.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;plt.subplot(2,1,1)
 plt.plot(data_mat[:,0], data_mat[:,2], c = &#39;goldenrod&#39;)
 plt.margins(0.05)
@@ -511,7 +538,6 @@ plt.plot(data_mat[:,1], data_mat[:,2], c = &#39;firebrick&#39;)
 plt.margins(0.05)
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# split into samples (sliding time windows)
 samples = list()
 target = list()
@@ -569,9 +595,27 @@ plt.plot(history.history[&#39;val_loss&#39;], label=&#39;val&#39;)
 plt.legend()
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/rnn_train_history.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/rnn_train_history.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# get predictions
 train_predictions = model.predict(data_mat_3d_final)
 test_predictions = model.predict(x_test_3d_final)
@@ -586,31 +630,41 @@ plt.plot(data.iloc[-test_size:][&#39;x&#39;],
 plt.legend(loc=&#39;best&#39;)
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/rnn_times_series_predictions.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/rnn_times_series_predictions.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;Not bad!&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Making choropleth maps by zip code</title>
-      <link>/post/making-choropleth-maps-by-zip-code/</link>
+      <link>https://academic-demo.netlify.app/post/making-choropleth-maps-by-zip-code/</link>
       <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/making-choropleth-maps-by-zip-code/</guid>
-      <description>
-
-&lt;p&gt;Every now and then it is useful to make a map. In times of political uncertainty, data can light a path forward. Your local elected officals may be interested in data, too, and how they impact policy (and re-election, of course).&lt;/p&gt;
-
+      <guid>https://academic-demo.netlify.app/post/making-choropleth-maps-by-zip-code/</guid>
+      <description>&lt;p&gt;Every now and then it is useful to make a map. In times of political uncertainty, data can light a path forward. Your local elected officals may be interested in data, too, and how they impact policy (and re-election, of course).&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s say you wanted to know if people are still enrolling the &lt;em&gt;Healthcare.gov&lt;/em&gt; plans in your local State Senatorial district. It&amp;rsquo;s quite difficult to find data broken up at this level but zip codes can approximate such an approach. Here&amp;rsquo;s information from Pennsylvania 26th Senatorial District.&lt;/p&gt;
-
 &lt;h2 id=&#34;marketplace-enrollment&#34;&gt;Marketplace enrollment&lt;/h2&gt;
-
-&lt;p&gt;Using publicly available data from the Centers for Medicare &amp;amp; Medicaid Services, this file includes data by zip code on enrollment through &lt;a href=&#34;https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Marketplace-Products/Plan_Selection_ZIP.html&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;HealthCare.gov&lt;/em&gt;&lt;/a&gt; The data description reads:&lt;/p&gt;
-
+&lt;p&gt;Using publicly available data from the Centers for Medicare &amp;amp; Medicaid Services, this file includes data by zip code on enrollment through &lt;a href=&#34;https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Marketplace-Products/Plan_Selection_ZIP.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;HealthCare.gov&lt;/em&gt;&lt;/a&gt; The data description reads:&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;2017 OEP ZIP Code-Level Public Use File: This ZIP code and APTC PUF includes total health plan selections, the count of consumers with APTC, and average APTC among consumers with APTC between November 1, 2016 and January 31, 2017. This PUF only includes data for the 39 states that used the HealthCare.gov platform in 2017.&amp;rdquo;&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# setup
 require(zipcode)
 library(readxl)
@@ -635,17 +689,13 @@ dt %&amp;lt;&amp;gt;% select(ZipCode = &#39;ZIP Code&#39;,
   filter(ZipCode %in% zips_26thsenate) %&amp;gt;%
   left_join(zipcode, by = c(&#39;ZipCode&#39; = &#39;zip&#39;))
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Summarize the results by zip:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;dt %&amp;gt;% 
   select(ZipCode, City = city, Enrollees) %&amp;gt;%
     arrange(desc(Enrollees)) %&amp;gt;% 
     knitr::kable()
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;And plot the output:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;
 zipmap &amp;lt;- dt %&amp;gt;%
   select(value = Enrollees, region = ZipCode) %&amp;gt;%
@@ -654,23 +704,38 @@ zipmap &amp;lt;- dt %&amp;gt;%
 
 plot(zipmap)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/26th_district.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/26th_district.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Grey’s Anatomy Network of Sexual Relations</title>
-      <link>/post/grey-s-anatomy-network-of-sexual-relations/</link>
+      <link>https://academic-demo.netlify.app/post/grey-s-anatomy-network-of-sexual-relations/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/grey-s-anatomy-network-of-sexual-relations/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on March 25, 2011. The relevant hyperlinks and &lt;code&gt;igraph&lt;/code&gt; code have been updated to reflect the current state of things. The edgelist, despite many more intervening seasons, and thus many more romances, has &lt;strong&gt;not&lt;/strong&gt; been updated. Here is a &lt;a href=&#34;http://badhessian.org/2012/09/lessons-on-exponential-random-graph-modeling-from-greys-anatomy-hook-ups/&#34; target=&#34;_blank&#34;&gt;nice walkthrough of ERGMs&lt;/a&gt; based on this post &amp;ndash; sorry for the broken link, Ben.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;This all began with an introductory presentation about social network analysis to a group of medical students.  What better way to grab their attention than with attractive, fake doctors having sex on television?  Naturally this led to the dense network of sexual contacts between characters on the &lt;a href=&#34;http://en.wikipedia.org/wiki/Grey%27s_Anatomy&#34; target=&#34;_blank&#34;&gt;Grey’s Anatomy television show&lt;/a&gt;.  After viewing many hours of previous episodes and exploring fan pages (especially &lt;a href=&#34;http://insanegrey.livejournal.com/72234.html&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt; for an early attempt at a graph representation of sexual contacts), I was able to come up with an extensive but by no means exhaustive list of contacts.  The edge list is available &lt;a href=&#34;/images/babelgraph/greys/ga_edgelist.csv&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;This example uses the &lt;a href=&#34;http://igraph.org/&#34; target=&#34;_blank&#34;&gt;igraph&lt;/a&gt; package for &lt;a href=&#34;http://www.r-project.org/&#34; target=&#34;_blank&#34;&gt;R&lt;/a&gt;, both free to download. First we create the graph, give it a layout, and plot.&lt;/p&gt;
-
+      <guid>https://academic-demo.netlify.app/post/grey-s-anatomy-network-of-sexual-relations/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on March 25, 2011. The relevant hyperlinks and &lt;code&gt;igraph&lt;/code&gt; code have been updated to reflect the current state of things. The edgelist, despite many more intervening seasons, and thus many more romances, has &lt;strong&gt;not&lt;/strong&gt; been updated. Here is a &lt;a href=&#34;http://badhessian.org/2012/09/lessons-on-exponential-random-graph-modeling-from-greys-anatomy-hook-ups/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;nice walkthrough of ERGMs&lt;/a&gt; based on this post &amp;ndash; sorry for the broken link, Ben.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This all began with an introductory presentation about social network analysis to a group of medical students.  What better way to grab their attention than with attractive, fake doctors having sex on television?  Naturally this led to the dense network of sexual contacts between characters on the &lt;a href=&#34;http://en.wikipedia.org/wiki/Grey%27s_Anatomy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Grey’s Anatomy television show&lt;/a&gt;.  After viewing many hours of previous episodes and exploring fan pages (especially &lt;a href=&#34;http://insanegrey.livejournal.com/72234.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; for an early attempt at a graph representation of sexual contacts), I was able to come up with an extensive but by no means exhaustive list of contacts.  The edge list is available &lt;a href=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/ga_edgelist.csv&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This example uses the &lt;a href=&#34;http://igraph.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;igraph&lt;/a&gt; package for &lt;a href=&#34;http://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R&lt;/a&gt;, both free to download. First we create the graph, give it a layout, and plot.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(igraph)
 ga.data &amp;lt;- read.csv(&#39;ga_edgelist.csv&#39;, header = TRUE)
 g &amp;lt;- graph.data.frame(ga.data, directed=FALSE)
@@ -678,22 +743,55 @@ summary(g)
 g$layout &amp;lt;- layout.fruchterman.reingold(g)
 plot(g)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/greys/plot1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/plot1.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;Without knowing who is represented by each vertex, what can you deduce from the graph? From a public health perspective, if you could test one person for sexually transmitted infections (STIs), who would it be? If you could provide counseling and a free box of condoms to one person, who would it be? If you knew that an epidemic was spreading through this network, who would you want to be to best avoid it?&lt;/p&gt;
-
 &lt;p&gt;Now let’s make the visualization a little more interesting. First we can remove the labels for now, and then change the size of the vertex to represent the degree, or degree centrality, corresponding to the number of partners of each vertex. In the context of transmissible infections, this would indicate the number of people a person could infect or be infected by through sexual contact.&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;V(g)$label &amp;lt;- NA # remove labels for now
 V(g)$size &amp;lt;- degree(g) * 2 # multiply by 2 for scale
 plot(g)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/greys/plot2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/plot2.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;This tells us about the absolute number of partners, but not much about the relative position within the network. Let’s examine two types of centrality: closeness and betweenness. The closeness centrality is the average shortest path from one vertex to every other on the graph. A high number indicates that a vertex is quickly reachable by the majority of vertices in the graph, while a low number indicates that the vertex is far from most other vertices on the graph. We can calculate the centrality and then rescale the values to create a color scheme to visualize the relative differences.&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;clo &amp;lt;- closeness(g)
 # rescale values to match the elements of a color vector
 clo.score &amp;lt;- round( (clo - min(clo)) * length(clo) / max(clo) ) + 1
@@ -702,65 +800,126 @@ clo.colors &amp;lt;- rev(heat.colors(max(clo.score)))
 V(g)$color &amp;lt;- clo.colors[ clo.score ]
 plot(g)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/greys/plot3.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/plot3.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;It appears there are a few vertices on the red “hot” end of the spectrum, and a few at the “cold” end. Next we do the same for each vertex to calculate the betweenness centrality, which is the number of shortest paths on the network that pass through the vertex. Vertices with high betweenness centrality might be thought of as serving a gatekeeper role in mediating the shortest connections between other vertices.&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;btw &amp;lt;- betweenness(g)
 btw.score &amp;lt;- round(btw) + 1
 btw.colors &amp;lt;- rev(heat.colors(max(btw.score)))
 V(g)$color &amp;lt;- btw.colors[ btw.score ]
 plot(g)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/greys/plot4.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/plot4.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;This last graph of betweenness indicates slightly more variation among the likely suspects, while the analysis of closeness centrality demonstrated less variation. Why?&lt;/p&gt;
-
-&lt;p&gt;A useful technique in social network analysis is the use of community finding algorithms. Here we use the implementation of the &lt;a href=&#34;http://en.wikipedia.org/wiki/Girvan%E2%80%93Newman_algorithm&#34; target=&#34;_blank&#34;&gt;Girvan-Newman algorithm&lt;/a&gt; (&lt;a href=&#34;http://www.pnas.org/content/99/12/7821&#34; target=&#34;_blank&#34;&gt;paper here&lt;/a&gt;) to detect the underlying community structure of the graph. We will iterate through each merge to determine which cut produces the maximum modularity, and then use that number to calculate the groups.&lt;/p&gt;
-
+&lt;p&gt;A useful technique in social network analysis is the use of community finding algorithms. Here we use the implementation of the &lt;a href=&#34;http://en.wikipedia.org/wiki/Girvan%E2%80%93Newman_algorithm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Girvan-Newman algorithm&lt;/a&gt; (&lt;a href=&#34;http://www.pnas.org/content/99/12/7821&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;paper here&lt;/a&gt;) to detect the underlying community structure of the graph. We will iterate through each merge to determine which cut produces the maximum modularity, and then use that number to calculate the groups.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# this section has been substantially revised to reflect the
 # newer version of igraph which does GN membership easily
 V(g)$color &amp;lt;- membership(cluster_edge_betweenness(g))
 V(g)$size &amp;lt;- 15 # reset to default size
 plot(g) # those new default igraph colors are so much nicer, too!
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/greys/plot5.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/plot5.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;Once you see the graph with names, it is interesting to note the breaks in connectivity around race and age (I guess you have to know the TV characters to appreciate this ;) ) So before seeing the names, back to the original question. Who would you test? Who would you counsel? Who would you vaccinate? Who would you rather be?&lt;/p&gt;
-
 &lt;p&gt;And the winners are…&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;V(g)$color &amp;lt;- &#39;grey&#39;
 V(g)$label &amp;lt;- V(g)$name
 V(g)$label.cex &amp;lt;- 0.7 # rescale the text size of the label
 plot(g)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/greys/plot6.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/greys/plot6.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>The structure of twitter participant relationships in conversations around #Libya, #Bieber, and #Rstats</title>
-      <link>/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</link>
+      <link>https://academic-demo.netlify.app/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</guid>
+      <guid>https://academic-demo.netlify.app/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</guid>
       <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on April 4, 2011. I suspect the twitter API and much of the code below are &lt;strong&gt;not&lt;/strong&gt; up to date.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I am a recent comer to &lt;a href=&#34;twitter.com&#34; target=&#34;_blank&#34;&gt;twitter&lt;/a&gt;, and it took me a few weeks to figure out what this was all about. Who are all these people tweeting each other and what do all these trending hashtags mean? Do these people all know each other? How do they get involved in these conversations? Are people really talking/listening to each other, or just spewing 140 character projectiles out into the void?&lt;/p&gt;
-
-&lt;p&gt;This piqued my interest in the structure of relationships of participants in different twitter conversations. Using &lt;a href=&#34;http://www.r-project.org/&#34; target=&#34;_blank&#34;&gt;R&lt;/a&gt;, with the &lt;a href=&#34;http://cran.r-project.org/web/packages/twitteR/index.html&#34; target=&#34;_blank&#34;&gt;twitteR&lt;/a&gt; and &lt;a href=&#34;http://igraph.org/&#34; target=&#34;_blank&#34;&gt;igraph&lt;/a&gt; packages, I wondered what I would find&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;In terms of mapping twitter networks with R, I found &lt;a href=&#34;http://blog.ynada.com/247&#34; target=&#34;_blank&#34;&gt;this post&lt;/a&gt; for mapping one’s own personal network of connections. For other visualizations, I found a &lt;a href=&#34;http://flowingdata.com/2008/03/12/17-ways-to-visualize-the-twitter-universe/&#34; target=&#34;_blank&#34;&gt;collection&lt;/a&gt; of various visualizations for the twitterverse, and an &lt;a href=&#34;http://www.orgnet.com/twitter.html&#34; target=&#34;_blank&#34;&gt;interactive map&lt;/a&gt; of connected users.&lt;/p&gt;
-
+&lt;p&gt;I am a recent comer to &lt;a href=&#34;twitter.com&#34;&gt;twitter&lt;/a&gt;, and it took me a few weeks to figure out what this was all about. Who are all these people tweeting each other and what do all these trending hashtags mean? Do these people all know each other? How do they get involved in these conversations? Are people really talking/listening to each other, or just spewing 140 character projectiles out into the void?&lt;/p&gt;
+&lt;p&gt;This piqued my interest in the structure of relationships of participants in different twitter conversations. Using &lt;a href=&#34;http://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R&lt;/a&gt;, with the &lt;a href=&#34;http://cran.r-project.org/web/packages/twitteR/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;twitteR&lt;/a&gt; and &lt;a href=&#34;http://igraph.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;igraph&lt;/a&gt; packages, I wondered what I would find&amp;hellip;&lt;/p&gt;
+&lt;p&gt;In terms of mapping twitter networks with R, I found &lt;a href=&#34;http://blog.ynada.com/247&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this post&lt;/a&gt; for mapping one’s own personal network of connections. For other visualizations, I found a &lt;a href=&#34;http://flowingdata.com/2008/03/12/17-ways-to-visualize-the-twitter-universe/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;collection&lt;/a&gt; of various visualizations for the twitterverse, and an &lt;a href=&#34;http://www.orgnet.com/twitter.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;interactive map&lt;/a&gt; of connected users.&lt;/p&gt;
 &lt;p&gt;Here I am really interested in the network of participants in a particular conversation. I started off with “#Rstats,” expecting to see a tightly knit community of users who all seem to know each other (at least virtually), sending each other personal updates or tech support tweets. Next I looked at “#Libya,” where I imagined there would be a lot of twitterers with massive followings, but who were unlikely following each other, and producing hordes of news-type updates. Finally I looked at “#Bieber,” (I swear didn’t even know who he was up until a few weeks ago), where I expected to see platoons of small-time twitterers, who likely don’t follow each other, pouring out disconnected digital adulations into the twitterverse.&lt;/p&gt;
-
 &lt;p&gt;The following script was used to construct the networks for each search item.&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# an R script to generate the social network of contributors
 # to a particular search term
 # author: Gary Weissman
@@ -836,57 +995,134 @@ E(g)$color &amp;lt;- &#39;blue&#39;
 # now plot...
 plot(g)
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Technical notes: It wasn’t always clear to me what counted as a “request” in the twitter API, because even a small handful of requests with long results would sometimes seem to count as more toward the hourly quota. Putting a ten minute delay between requests with Sys.sleep(600) was enough to solve the problem. I also tweaked the layouts a bit using tkplot.getcoords(). NB. tkplot() does not permit certain graph attributes such as label.vertex.cex, so you have to remove it before opening the graph in tkplot. You can then just add it back later. More details on this tkplot issue &lt;a href=&#34;https://bugs.launchpad.net/igraph/+bug/572559&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
+&lt;p&gt;Technical notes: It wasn’t always clear to me what counted as a “request” in the twitter API, because even a small handful of requests with long results would sometimes seem to count as more toward the hourly quota. Putting a ten minute delay between requests with Sys.sleep(600) was enough to solve the problem. I also tweaked the layouts a bit using tkplot.getcoords(). NB. tkplot() does not permit certain graph attributes such as label.vertex.cex, so you have to remove it before opening the graph in tkplot. You can then just add it back later. More details on this tkplot issue &lt;a href=&#34;https://bugs.launchpad.net/igraph/&amp;#43;bug/572559&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The size of the vertex is proportional to the log of the number of followers in the wider twitterverse, and the color of vertex represents the number of tweets found in the search results by that user. See code above for specifics.&lt;/p&gt;
-
 &lt;p&gt;#Bieber&lt;/p&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/twitter/bieber_plot.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/bieber_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;#Libya&lt;/p&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/twitter/libya_plot.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/libya_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;#Rstats&lt;/p&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/twitter/rstats_plot.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/rstats_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;The networks obviously look very different. Here is a plot of the degree distribution of each graph:&lt;/p&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/twitter/abs_deg_dist_by_search_term.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/abs_deg_dist_by_search_term.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;Even more interesting is the simple comparison of the number of edges in each graph. Very telling.&lt;/p&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/twitter/vertex_edge_counts_by_search_term.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/vertex_edge_counts_by_search_term.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;I did not look at the clustering coefficient here, but that would be interesting, too.&lt;/p&gt;
-
 &lt;p&gt;Does this mean that R users are part of a twitter &lt;em&gt;community&lt;/em&gt;?&lt;/p&gt;
-
 &lt;p&gt;Limitations on this approach include the size of the user sample (limited by the twitter API to 150 requests per hour), as well as limits on the size of lists retrieved by the &lt;code&gt;userFriends()&lt;/code&gt; method (I believe the limit is 1200 items). These former limits the sample size significantly, and provides only a brief snapshot in time of the participants in any one conversation. The latter favors the construction of edges between twitterers with fewer followers, thus understestimating the total edges that may exist in the network. Is there a workaround for these limitations on the API? I believe requesting whitelist status from twitter, or perhaps authenticating with ROAuth would increase the number of permitted requests, but I haven’t tried them yet.&lt;/p&gt;
-
 &lt;p&gt;Do you know to whom you tweet?&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Transportation data in R: Why yes, yes you can</title>
-      <link>/post/transportation-data-in-r-why-yes-yes-you-can/</link>
+      <link>https://academic-demo.netlify.app/post/transportation-data-in-r-why-yes-yes-you-can/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/transportation-data-in-r-why-yes-yes-you-can/</guid>
-      <description>
-
-&lt;p&gt;Not infrequently I am in a research meeting and someone says, &amp;ldquo;It would be really cool to get data on travel times for people. But I don&amp;rsquo;t know where to find that.&amp;rdquo; Here you will find just that. Please note that Google Maps &lt;a href=&#34;https://developers.google.com/maps/terms&#34; target=&#34;_blank&#34;&gt;terms of service&lt;/a&gt; are relevant for large data requests and potential privacy concerns for protected health information.&lt;/p&gt;
-
+      <guid>https://academic-demo.netlify.app/post/transportation-data-in-r-why-yes-yes-you-can/</guid>
+      <description>&lt;p&gt;Not infrequently I am in a research meeting and someone says, &amp;ldquo;It would be really cool to get data on travel times for people. But I don&amp;rsquo;t know where to find that.&amp;rdquo; Here you will find just that. Please note that Google Maps &lt;a href=&#34;https://developers.google.com/maps/terms&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;terms of service&lt;/a&gt; are relevant for large data requests and potential privacy concerns for protected health information.&lt;/p&gt;
 &lt;h2 id=&#34;case&#34;&gt;Case&lt;/h2&gt;
-
-&lt;p&gt;Mr. Jones spends all his time at a &lt;a href=&#34;http://www.hobbscoffee.com&#34; target=&#34;_blank&#34;&gt;coffee shop&lt;/a&gt;. Mr. Jones has hypertension, diabetes, and hyperlipidemia, and it doesn&amp;rsquo;t seem likely he will visit his &lt;a href=&#34;https://www.pennmedicine.org/providers/practice/penn-center-for-primary-care&#34; target=&#34;_blank&#34;&gt;primary care doctor&lt;/a&gt; anytime soon. Can we describe his potential travel time between his favorite coffee shop and his primary care doctor to better understand his transportation barriers? Why yes, yes we can.&lt;/p&gt;
-
+&lt;p&gt;Mr. Jones spends all his time at a &lt;a href=&#34;http://www.hobbscoffee.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;coffee shop&lt;/a&gt;. Mr. Jones has hypertension, diabetes, and hyperlipidemia, and it doesn&amp;rsquo;t seem likely he will visit his &lt;a href=&#34;https://www.pennmedicine.org/providers/practice/penn-center-for-primary-care&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;primary care doctor&lt;/a&gt; anytime soon. Can we describe his potential travel time between his favorite coffee shop and his primary care doctor to better understand his transportation barriers? Why yes, yes we can.&lt;/p&gt;
 &lt;h2 id=&#34;transport&#34;&gt;Transport&lt;/h2&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggmap)
 # quick start to ggmap: https://github.com/dkahle/ggmap
 
@@ -900,7 +1136,6 @@ my_commute_drive &amp;lt;- route(origin, destination,
     structure = &#39;route&#39;, mode = &#39;driving&#39;)
 print(my_commute_drive)
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;pre&gt;&lt;code&gt;      m    km     miles seconds   minutes       hours leg       lon      lat
 1    30 0.030 0.0186420       8 0.1333333 0.002222222   1 -75.35005 39.90210
 2   162 0.162 0.1006668      56 0.9333333 0.015555556   2 -75.35033 39.90226
@@ -920,15 +1155,12 @@ print(my_commute_drive)
 16  105 0.105 0.0652470      41 0.6833333 0.011388889  16 -75.19893 39.95809
 17   NA    NA        NA      NA        NA          NA  NA -75.19930 39.95843
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Or try public transit.&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# route -- transit
 my_commute_transit &amp;lt;- route(origin, destination, 
     structure = &#39;route&#39;, mode = &#39;transit&#39;)
 print(my_commute_transit)
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;pre&gt;&lt;code&gt;      m     km      miles seconds   minutes      hours leg       lon      lat
 1    49  0.049  0.0304486      39  0.650000 0.01083333   1 -75.35005 39.90210
 2 16750 16.750 10.4084500    1560 26.000000 0.43333333   2 -75.35083 39.90222
@@ -937,9 +1169,7 @@ print(my_commute_transit)
 5   424  0.424  0.2634736     313  5.216667 0.08694444   5 -75.20197 39.95719
 6    NA     NA         NA      NA        NA         NA  NA -75.19930 39.95843
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Let&amp;rsquo;s see what a walk would look like.&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# route -- walking
 my_commute_walk &amp;lt;- route(origin, destination, 
     structure = &#39;route&#39;, mode = &#39;walking&#39;)
@@ -951,55 +1181,177 @@ qmap(destination, zoom = 11) +
         size = 1.5, data = my_commute_walk, 
         lineend = &#39;round&#39;)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/walk_commute_map.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/walk_commute_map.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;Mr. Jones, inspired by this map, just put down his triple-shot latte and is walking to his doctor&amp;rsquo;s office right now.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Welcome to the blog!</title>
-      <link>/post/welcome-to-the-blog/</link>
+      <link>https://academic-demo.netlify.app/post/welcome-to-the-blog/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/welcome-to-the-blog/</guid>
+      <guid>https://academic-demo.netlify.app/post/welcome-to-the-blog/</guid>
       <description>&lt;p&gt;Welcome to this blog, which is the new home for thoughts and technical things. As &lt;code&gt;babelgraph.org&lt;/code&gt; has been retired, you can still get the code at:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/gweissman/BabelGraph&#34; target=&#34;_blank&#34;&gt;BabelGraph Alpha&lt;/a&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;a href=&#34;https://github.com/gweissman/BabelGraph&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BabelGraph Alpha&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Over time I will try to migrate the old blog posts (mostly dealing with network analyses and C++ using R) to here along with the very informative user comments, and updates.&lt;/p&gt;
-
 &lt;p&gt;For old time&amp;rsquo;s sake, here is the old thumbnail gallery from the BabelGraph Alpha release (mixed Linux and Mac screenshots). A beautiful sight!&lt;/p&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/bg-0-2-linux-directed-tree-small.png&#34; alt=&#34;Directed tree on Linux&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/bg0-2-linux-small.png&#34; alt=&#34;Linux desktop version&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/bg0-2-mac-small.png&#34; alt=&#34;Mac desktop version&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/binary-tree-small.png&#34; alt=&#34;Binary tree&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/heterophily-small.png&#34; alt=&#34;Negative assortativity&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/mutual-homophily-small.png&#34; alt=&#34;Positive assortativity - homophily&#34; /&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/bg-0-2-linux-directed-tree-small.png&#34; alt=&#34;Directed tree on Linux&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/bg0-2-linux-small.png&#34; alt=&#34;Linux desktop version&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/bg0-2-mac-small.png&#34; alt=&#34;Mac desktop version&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/binary-tree-small.png&#34; alt=&#34;Binary tree&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/heterophily-small.png&#34; alt=&#34;Negative assortativity&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/mutual-homophily-small.png&#34; alt=&#34;Positive assortativity - homophily&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>R can write R code, too</title>
-      <link>/post/r-can-write-r-code-too/</link>
+      <link>https://academic-demo.netlify.app/post/r-can-write-r-code-too/</link>
       <pubDate>Wed, 15 Jun 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/post/r-can-write-r-code-too/</guid>
-      <description>
-
-&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on April 14, 2012.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;In a recent &lt;a href=&#34;http://www.cerebralmastication.com/2012/03/solving-easy-problems-the-hard-way/&#34; target=&#34;_blank&#34;&gt;blog post&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/#!/CMastication&#34; target=&#34;_blank&#34;&gt;CMastication&lt;/a&gt;, a little meme puzzle is presented with the introduction that a preschooler could solve it in 5-10 minutes, a programmer in an hour. I took the bait.&lt;/p&gt;
-
+      <guid>https://academic-demo.netlify.app/post/r-can-write-r-code-too/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on April 14, 2012.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In a recent &lt;a href=&#34;http://www.cerebralmastication.com/2012/03/solving-easy-problems-the-hard-way/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blog post&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/#!/CMastication&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CMastication&lt;/a&gt;, a little meme puzzle is presented with the introduction that a preschooler could solve it in 5-10 minutes, a programmer in an hour. I took the bait.&lt;/p&gt;
 &lt;p&gt;The original problem goes like this:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;8809=6
 7111=0
 2172=0
@@ -1022,47 +1374,49 @@ qmap(destination, zoom = 11) +
 5531=0
 2581=? 
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;&lt;strong&gt;N.B.&lt;/strong&gt; It turns out my strategy is completey wrong, but read on for an experiment with using eval and parse to generate code on the fly. An explanation and computational solution are available at the original site mentioned above.&lt;/p&gt;
-
 &lt;h2 id=&#34;strategy&#34;&gt;Strategy&lt;/h2&gt;
-
 &lt;p&gt;That being said, my first guess was to look for some set of operators &lt;code&gt;+,-,*,/&lt;/code&gt; between each of the digits that would produce the correct response. For example, &lt;code&gt;9313=1&lt;/code&gt; could be calculated as &lt;code&gt;9 / 3 + 1 – 3 = 1&lt;/code&gt;, giving a solution of &lt;code&gt;/+-&lt;/code&gt;. In order to try every combination of the four basic arithmetic operators in three different positions, I had to generate some R code on the fly.&lt;/p&gt;
-
 &lt;h2 id=&#34;r-writes-r&#34;&gt;R writes R&lt;/h2&gt;
-
 &lt;p&gt;One of the things I like about R is that not only can I write R code, but R can write R code, too. We can create a line of code and store it as a variable. Then R will evaluate it whenever we like.&lt;/p&gt;
-
 &lt;p&gt;{% gist gweissman/2377829 %}&lt;/p&gt;
-
 &lt;p&gt;I can create the code dynamically by making a string representation of the code, then parsing it into an expression that can be evaluated as above.&lt;/p&gt;
-
 &lt;p&gt;{% gist /gweissman/2385949 %}&lt;/p&gt;
-
 &lt;p&gt;Clearly it doesn’t give us the right answer.&lt;/p&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/babelgraph/4d_teaser_plot.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/4d_teaser_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;But it was fun to code in R with R.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Rcpp is smoking fast for agent based models in data frames</title>
-      <link>/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</link>
+      <link>https://academic-demo.netlify.app/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</link>
       <pubDate>Wed, 15 Jun 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</guid>
-      <description>
-
-&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on July 11, 2012. Thanks to Hadley Wickham for referencing some of content here, and apologies for the broken URL. NB. The original C++ code didn&amp;rsquo;t seem to compile on my computer today. It required a small tweak with &lt;code&gt;NumericVector::create&lt;/code&gt; &amp;ndash; see below.&lt;/em&gt;&lt;/p&gt;
-
+      <guid>https://academic-demo.netlify.app/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on July 11, 2012. Thanks to Hadley Wickham for referencing some of content here, and apologies for the broken URL. NB. The original C++ code didn&amp;rsquo;t seem to compile on my computer today. It required a small tweak with &lt;code&gt;NumericVector::create&lt;/code&gt; &amp;ndash; see below.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In particular, R data frames provide a simple framework for representing large cohorts of agents in stochastic epidemiological models, such as those representing disease transmission. This approach is much easier and likely faster than trying to implement cohorts of R objects. In this post we’ll explore a simple agent-based model, and then benchmark a few different approaches to iterating through the cohort. Rcpp outperforms all of them by a few orders of magnitude. Priceless.&lt;/p&gt;
-
 &lt;h2 id=&#34;case&#34;&gt;Case&lt;/h2&gt;
-
 &lt;p&gt;Let’s say we are trying to predict the probability of someone choosing to receive a vaccination in a given year. The decision will be based on their age (&lt;code&gt;age&lt;/code&gt;), gender (&lt;code&gt;female&lt;/code&gt;), and whether or not they were infected with the virus last year (&lt;code&gt;ily&lt;/code&gt;). Let’s make up some data:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# construct a cohort
 N &amp;lt;- 1000 # cohort size
  
@@ -1071,9 +1425,7 @@ cohort &amp;lt;- data.frame(age=rnorm(N,mean=50,sd=10),
                 ily=sample(c(0,1),size=N,prob=c(0.8,0.2),
                          replace=TRUE))
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;The probability of choosing to be vaccinated will be given by the following function:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;vaccinate &amp;lt;- function( age, female, ily) {
         # this is based on some pretend regression equation
         p &amp;lt;- 0.25 + 0.3 * 1/(1-exp(0.04 * age)) +  0.1 *ily
@@ -1084,11 +1436,8 @@ cohort &amp;lt;- data.frame(age=rnorm(N,mean=50,sd=10),
         p
 }
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;h2 id=&#34;try-some-iterators-for-loop-apply-ddply&#34;&gt;Try some iterators: for loop, apply, ddply&lt;/h2&gt;
-
 &lt;p&gt;Let’s create a testable function for each strategy. The objective is to take a cohort data frame as input, calculate the vaccination probability for each member of the cohort, then return a data frame with the cohort data plus a new column for the vaccination probability (&lt;code&gt;p&lt;/code&gt;).&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# The traditional for loop
 # Some would say is always a no-no in R...
 do_forloop &amp;lt;- function(df) {
@@ -1116,11 +1465,8 @@ do_plyr &amp;lt;- function (df) {
      data.frame(cbind(df,p=v_prob$V1))
 }
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;h2 id=&#34;enter-rcpp&#34;&gt;Enter Rcpp&lt;/h2&gt;
-
 &lt;p&gt;Now rewrite the test using a traditional for-loop in C++ including a helper function to calculate the vaccination probability. I use the inline library so I can embed the C++ directly in the R script, thus obviating additional &lt;code&gt;.cpp&lt;/code&gt; or &lt;code&gt;.h&lt;/code&gt; files. Self-contained code is nice.&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# create an R function built on C++ code
 library(Rcpp)
 # required for inline Rcpp calls
@@ -1176,9 +1522,7 @@ do_rcpp &amp;lt;- cxxfunction(signature(the_cohort=&amp;quot;data.frame&amp;quot
                        includes=c(&#39;#include &amp;lt;cmath&amp;gt;&#39;,
                                    vaccinate_cxx_src))
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;h2 id=&#34;may-the-best-function-win&#34;&gt;May the best function win&lt;/h2&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# benchmarking
 library(rbenchmark)
  
@@ -1196,11 +1540,37 @@ barchart(relative ~ strategy, bm_results,
         main=&#39;Performance of iteration strategies over data frames in R&#39;, 
         col=&#39;firebrick&#39;,scales=list(x=list(cex=1.2)))
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/looping_speed_compare.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/looping_speed_compare.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
 &lt;p&gt;Ree – donc – u – lous.&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://academic-demo.netlify.app/admin/config.yml</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://academic-demo.netlify.app/admin/config.yml</guid>
+      <description></description>
     </item>
     
   </channel>

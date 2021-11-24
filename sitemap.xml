@@ -1,302 +1,160 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
-    <loc>/categories/</loc>
-    <lastmod>2019-04-25T11:23:18-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</loc>
-    <lastmod>2019-04-25T10:34:31-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/blog/</loc>
-    <lastmod>2019-04-25T10:34:31-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/bootstrapping/</loc>
-    <lastmod>2019-04-25T10:34:31-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/predictive-modeling/</loc>
-    <lastmod>2019-04-25T11:23:18-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2019-04-25T10:34:31-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</loc>
-    <lastmod>2019-04-25T11:23:18-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/brier-score/</loc>
-    <lastmod>2019-04-25T11:23:18-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/authors/</loc>
-    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/publication/sentiment_2019/</loc>
-    <lastmod>2019-05-02T15:58:46-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/gary-weissman/</loc>
+    <loc>https://academic-demo.netlify.app/</loc>
+    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/talk/example-talk/</loc>
+    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/event/</loc>
+    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/blog/</loc>
+    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/bootstrapping/</loc>
+    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/categories/</loc>
+    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</loc>
+    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/post/</loc>
+    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/predictive-modeling/</loc>
+    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/r/</loc>
+    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/brier-score/</loc>
+    <lastmod>2019-04-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</loc>
+    <lastmod>2019-04-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/authors/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/authors/george-anesi/</loc>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/publication/sentiment_2019/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/publication/hccs_2019/</loc>
-    <lastmod>2019-05-02T15:58:46-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/katherine-courtright/</loc>
-    <lastmod>2019-05-02T15:58:46-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/authors/lyle-ungar/</loc>
-    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/authors/meeta-kerlin/</loc>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/gary-weissman/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/authors/michael-harhay/</loc>
-    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/authors/peter-groeneveld/</loc>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/george-anesi/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/publication/pot_prev_2019/</loc>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/publication/hccs_2019/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/rachel-kohn/</loc>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/katherine-courtright/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/authors/rachel-werner/</loc>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/lyle-ungar/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/authors/scott-halpern/</loc>
-    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/authors/yihao-yuan/</loc>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/meeta-kerlin/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-    <priority>0</priority>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/michael-harhay/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/peter-groeneveld/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/publication/pot_prev_2019/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/publication/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/rachel-kohn/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/rachel-werner/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/scott-halpern/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/yihao-yuan/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/blanca-himes/</loc>
+    <lastmod>2018-07-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/casey-greene/</loc>
+    <lastmod>2018-07-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/publication/text_preds_2019/</loc>
+    <lastmod>2018-07-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/rebecca-hubbard/</loc>
+    <lastmod>2018-07-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/keras/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/python/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/rnn/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/post/making-choropleth-maps-by-zip-code/</loc>
+    <lastmod>2017-07-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/maps/</loc>
+    <lastmod>2017-07-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/babelgraph/</loc>
+    <lastmod>2017-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/post/grey-s-anatomy-network-of-sexual-relations/</loc>
+    <lastmod>2017-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/meta/</loc>
+    <lastmod>2017-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/social-network-analysis/</loc>
+    <lastmod>2017-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</loc>
+    <lastmod>2017-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/post/transportation-data-in-r-why-yes-yes-you-can/</loc>
+    <lastmod>2017-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/twitter/</loc>
+    <lastmod>2017-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/post/welcome-to-the-blog/</loc>
+    <lastmod>2017-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/post/r-can-write-r-code-too/</loc>
+    <lastmod>2016-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/category/rcpp/</loc>
+    <lastmod>2016-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</loc>
+    <lastmod>2016-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/admin/</loc>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/author/</loc>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/publication_types/</loc>
+  </url><url>
+    <loc>https://academic-demo.netlify.app/tags/</loc>
   </url>
-  
-  <url>
-    <loc>/authors/admin/</loc>
-    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/authors/blanca-himes/</loc>
-    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/authors/casey-greene/</loc>
-    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/publication/text_preds_2019/</loc>
-    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/rebecca-hubbard/</loc>
-    <lastmod>2019-05-03T14:50:58-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/privacy/</loc>
-    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/</loc>
-    <lastmod>2019-04-23T21:12:47-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/keras/</loc>
-    <lastmod>2019-04-23T21:12:47-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/python/</loc>
-    <lastmod>2019-04-23T21:12:47-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/rnn/</loc>
-    <lastmod>2019-04-23T21:12:47-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/making-choropleth-maps-by-zip-code/</loc>
-    <lastmod>2019-04-23T21:15:21-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/maps/</loc>
-    <lastmod>2019-04-24T12:22:35-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/grey-s-anatomy-network-of-sexual-relations/</loc>
-    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</loc>
-    <lastmod>2019-04-24T12:25:49-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/transportation-data-in-r-why-yes-yes-you-can/</loc>
-    <lastmod>2019-04-24T12:22:35-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/welcome-to-the-blog/</loc>
-    <lastmod>2019-04-24T12:20:09-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/babelgraph/</loc>
-    <lastmod>2019-04-24T12:32:15-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/meta/</loc>
-    <lastmod>2019-04-24T12:20:09-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/social-network-analysis/</loc>
-    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/twitter/</loc>
-    <lastmod>2019-04-24T12:25:49-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/r-can-write-r-code-too/</loc>
-    <lastmod>2019-04-24T12:32:15-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</loc>
-    <lastmod>2019-04-24T12:30:51-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/rcpp/</loc>
-    <lastmod>2019-04-24T12:30:51-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/author/admin/</loc>
-    <lastmod>2019-04-24T12:20:09-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/author/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication_types/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/publication/</loc>
-    <lastmod>2019-04-23T21:06:34-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
 </urlset>

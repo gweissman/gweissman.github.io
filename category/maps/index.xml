@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>maps | Academic</title>
+    <link>https://academic-demo.netlify.app/category/maps/</link>
+      <atom:link href="https://academic-demo.netlify.app/category/maps/index.xml" rel="self" type="application/rss+xml" />
+    <description>maps</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 17 Jul 2017 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://academic-demo.netlify.app/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <title>maps</title>
+      <link>https://academic-demo.netlify.app/category/maps/</link>
+    </image>
+    
+    <item>
+      <title>Making choropleth maps by zip code</title>
+      <link>https://academic-demo.netlify.app/post/making-choropleth-maps-by-zip-code/</link>
+      <pubDate>Mon, 17 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>https://academic-demo.netlify.app/post/making-choropleth-maps-by-zip-code/</guid>
+      <description>&lt;p&gt;Every now and then it is useful to make a map. In times of political uncertainty, data can light a path forward. Your local elected officals may be interested in data, too, and how they impact policy (and re-election, of course).&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s say you wanted to know if people are still enrolling the &lt;em&gt;Healthcare.gov&lt;/em&gt; plans in your local State Senatorial district. It&amp;rsquo;s quite difficult to find data broken up at this level but zip codes can approximate such an approach. Here&amp;rsquo;s information from Pennsylvania 26th Senatorial District.&lt;/p&gt;
+&lt;h2 id=&#34;marketplace-enrollment&#34;&gt;Marketplace enrollment&lt;/h2&gt;
+&lt;p&gt;Using publicly available data from the Centers for Medicare &amp;amp; Medicaid Services, this file includes data by zip code on enrollment through &lt;a href=&#34;https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Marketplace-Products/Plan_Selection_ZIP.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;HealthCare.gov&lt;/em&gt;&lt;/a&gt; The data description reads:&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;2017 OEP ZIP Code-Level Public Use File: This ZIP code and APTC PUF includes total health plan selections, the count of consumers with APTC, and average APTC among consumers with APTC between November 1, 2016 and January 31, 2017. This PUF only includes data for the 39 states that used the HealthCare.gov platform in 2017.&amp;rdquo;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# setup
+require(zipcode)
+library(readxl)
+require(dplyr)
+require(choroplethrZip)
+require(magrittr)
+
+
+data(zipcode)
+# download and extract this file: https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Marketplace-Products/Plan_Selection_ZIP.html
+
+dt &amp;lt;- read_excel(&#39;2017_OEP_ZIP_Code-Level_Public_Use_File.xlsx&#39;, sheet = 4)
+
+# approximating the 26th district
+zips_26thsenate &amp;lt;- c(&#39;19029&#39;, &#39;19081&#39;, &#39;19082&#39;, &#39;19078&#39;, &#39;19036&#39;, &#39;19033&#39;, 
+                     &#39;19070&#39;, &#39;19018&#39;, &#39;19026&#39;, &#39;19064&#39;, &#39;19063&#39;, &#39;19008&#39;,
+                     &#39;19073&#39;, &#39;19355&#39;, &#39;19301&#39;, &#39;19050&#39;)
+
+dt %&amp;lt;&amp;gt;% select(ZipCode = &#39;ZIP Code&#39;,
+               Enrollees = &#39;Total Number of Consumers Who Have Selected a Marketplace Plan&#39;) %&amp;gt;% 
+  mutate(Enrollees = as.integer(Enrollees)) %&amp;gt;%
+  filter(ZipCode %in% zips_26thsenate) %&amp;gt;%
+  left_join(zipcode, by = c(&#39;ZipCode&#39; = &#39;zip&#39;))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Summarize the results by zip:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;dt %&amp;gt;% 
+  select(ZipCode, City = city, Enrollees) %&amp;gt;%
+    arrange(desc(Enrollees)) %&amp;gt;% 
+    knitr::kable()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And plot the output:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;
+zipmap &amp;lt;- dt %&amp;gt;%
+  select(value = Enrollees, region = ZipCode) %&amp;gt;%
+  zip_choropleth(zip_zoom = zips_26thsenate, reference_map = TRUE,
+                 title = &#39;Healthcare.gov enrollees November 1, 2016 - January 21, 2017&#39;)
+
+plot(zipmap)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/26th_district.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Transportation data in R: Why yes, yes you can</title>
+      <link>https://academic-demo.netlify.app/post/transportation-data-in-r-why-yes-yes-you-can/</link>
+      <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
+      <guid>https://academic-demo.netlify.app/post/transportation-data-in-r-why-yes-yes-you-can/</guid>
+      <description>&lt;p&gt;Not infrequently I am in a research meeting and someone says, &amp;ldquo;It would be really cool to get data on travel times for people. But I don&amp;rsquo;t know where to find that.&amp;rdquo; Here you will find just that. Please note that Google Maps &lt;a href=&#34;https://developers.google.com/maps/terms&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;terms of service&lt;/a&gt; are relevant for large data requests and potential privacy concerns for protected health information.&lt;/p&gt;
+&lt;h2 id=&#34;case&#34;&gt;Case&lt;/h2&gt;
+&lt;p&gt;Mr. Jones spends all his time at a &lt;a href=&#34;http://www.hobbscoffee.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;coffee shop&lt;/a&gt;. Mr. Jones has hypertension, diabetes, and hyperlipidemia, and it doesn&amp;rsquo;t seem likely he will visit his &lt;a href=&#34;https://www.pennmedicine.org/providers/practice/penn-center-for-primary-care&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;primary care doctor&lt;/a&gt; anytime soon. Can we describe his potential travel time between his favorite coffee shop and his primary care doctor to better understand his transportation barriers? Why yes, yes we can.&lt;/p&gt;
+&lt;h2 id=&#34;transport&#34;&gt;Transport&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggmap)
+# quick start to ggmap: https://github.com/dkahle/ggmap
+
+# Specify where Mr. Jones is and where he&#39;s going
+# you can also use specific addresses if you already have them
+origin &amp;lt;- &#39;Hobbs Coffee Shop, Swarthmore&#39;
+destination &amp;lt;- &#39;Penn Center for Primary Care, Philadelphia&#39;
+
+# get some routes -- driving
+my_commute_drive &amp;lt;- route(origin, destination, 
+    structure = &#39;route&#39;, mode = &#39;driving&#39;)
+print(my_commute_drive)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;      m    km     miles seconds   minutes       hours leg       lon      lat
+1    30 0.030 0.0186420       8 0.1333333 0.002222222   1 -75.35005 39.90210
+2   162 0.162 0.1006668      56 0.9333333 0.015555556   2 -75.35033 39.90226
+3  1047 1.047 0.6506058     123 2.0500000 0.034166667   3 -75.35089 39.90116
+4  1829 1.829 1.1365406     214 3.5666667 0.059444444   4 -75.35296 39.89203
+5   747 0.747 0.4641858      63 1.0500000 0.017500000   5 -75.34469 39.87802
+6  4516 4.516 2.8062424     190 3.1666667 0.052777778   6 -75.35102 39.87342
+7  5664 5.664 3.5196096     189 3.1500000 0.052500000   7 -75.30839 39.86862
+8  5534 5.534 3.4388276     247 4.1166667 0.068611111   8 -75.24609 39.88126
+9  2236 2.236 1.3894504     126 2.1000000 0.035000000   9 -75.19435 39.90546
+10 1111 1.111 0.6903754      49 0.8166667 0.013611111  10 -75.19280 39.92460
+11  347 0.347 0.2156258      20 0.3333333 0.005555556  11 -75.20004 39.93279
+12  907 0.907 0.5636098     145 2.4166667 0.040277778  12 -75.19939 39.93587
+13 1556 1.556 0.9668984     344 5.7333333 0.095555556  13 -75.19639 39.94367
+14  141 0.141 0.0876174      31 0.5166667 0.008611111  14 -75.19798 39.95667
+15  114 0.114 0.0708396      30 0.5000000 0.008333333  15 -75.19761 39.95791
+16  105 0.105 0.0652470      41 0.6833333 0.011388889  16 -75.19893 39.95809
+17   NA    NA        NA      NA        NA          NA  NA -75.19930 39.95843
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or try public transit.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# route -- transit
+my_commute_transit &amp;lt;- route(origin, destination, 
+    structure = &#39;route&#39;, mode = &#39;transit&#39;)
+print(my_commute_transit)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;      m     km      miles seconds   minutes      hours leg       lon      lat
+1    49  0.049  0.0304486      39  0.650000 0.01083333   1 -75.35005 39.90210
+2 16750 16.750 10.4084500    1560 26.000000 0.43333333   2 -75.35083 39.90222
+3   239  0.239  0.1485146     239  3.983333 0.06638889   3 -75.18166 39.95667
+4  1624  1.624  1.0091536     180  3.000000 0.05000000   4 -75.18325 39.95489
+5   424  0.424  0.2634736     313  5.216667 0.08694444   5 -75.20197 39.95719
+6    NA     NA         NA      NA        NA         NA  NA -75.19930 39.95843
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let&amp;rsquo;s see what a walk would look like.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# route -- walking
+my_commute_walk &amp;lt;- route(origin, destination, 
+    structure = &#39;route&#39;, mode = &#39;walking&#39;)
+print(my_commute_walk)
+
+# now plot the commute path
+qmap(destination, zoom = 11) + 
+    geom_path(aes(x=lon, y = lat), color = &#39;red&#39;, 
+        size = 1.5, data = my_commute_walk, 
+        lineend = &#39;round&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/walk_commute_map.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Mr. Jones, inspired by this map, just put down his triple-shot latte and is walking to his doctor&amp;rsquo;s office right now.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

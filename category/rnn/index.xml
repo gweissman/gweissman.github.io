@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rnn | Academic</title>
+    <link>https://academic-demo.netlify.app/category/rnn/</link>
+      <atom:link href="https://academic-demo.netlify.app/category/rnn/index.xml" rel="self" type="application/rss+xml" />
+    <description>rnn</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 15 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://academic-demo.netlify.app/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <title>rnn</title>
+      <link>https://academic-demo.netlify.app/category/rnn/</link>
+    </image>
+    
+    <item>
+      <title>Building a recurrent neural network to predict time-series data with Keras in Python</title>
+      <link>https://academic-demo.netlify.app/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/</link>
+      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
+      <guid>https://academic-demo.netlify.app/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/</guid>
+      <description>&lt;p&gt;Recurrent neural networks and their variants are helpful for extracting information from time series. Here&amp;rsquo;s an example using sample data to get up and running.&lt;/p&gt;
+&lt;p&gt;I found the following other websites helpful in reading up on code examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://machinelearningmastery.com/multi-step-time-series-forecasting-long-short-term-memory-networks-python/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://machinelearningmastery.com/multi-step-time-series-forecasting-long-short-term-memory-networks-python/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/rstudio/keras/blob/master/vignettes/examples/lstm_benchmark.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/rstudio/keras/blob/master/vignettes/examples/lstm_benchmark.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction/blob/master/lstm.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction/blob/master/lstm.py&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# setup
+import numpy as np
+import pandas as pd
+import math
+import matplotlib.pyplot as plt
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, SimpleRNN
+from keras.callbacks import EarlyStopping
+from sklearn.model_selection import train_test_split
+
+# make a sample multivariable time series - not autoregressive
+# generate a random walk
+def random_walk(steps, scale = 1):
+    w = np.zeros(steps)
+    for x in range(1,steps):
+        w[x] = w[x-1] + scale * np.random.normal()
+    return(w)
+        
+time_steps = 5000
+data = pd.DataFrame({&#39;x&#39; : range(time_steps), 
+    &#39;y&#39; : np.arange(time_steps) ** (1/2) + random_walk(time_steps) })
+data = data.assign(z = np.log(data.x+1) + 0.3 * data.y)
+data_mat = np.array(data)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Take a look at the data.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/rnn_data_explore.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;plt.subplot(2,1,1)
+plt.plot(data_mat[:,0], data_mat[:,2], c = &#39;goldenrod&#39;)
+plt.margins(0.05)
+plt.subplot(2,1,2)
+plt.plot(data_mat[:,1], data_mat[:,2], c = &#39;firebrick&#39;)
+plt.margins(0.05)
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# split into samples (sliding time windows)
+samples = list()
+target = list()
+length = 50
+
+# step over the 5,000 in jumps of length
+for i in range(time_steps - length - 1):
+  # grab from i to i + length
+    sample = data_mat[i:i+length,:2]
+    outcome = data_mat[i+length+1,2]
+    target.append(outcome)
+    samples.append(sample)
+
+# split out a test set
+test_size = 1000
+x_test_mat = np.dstack(samples[-test_size:])
+x_test_3d_final = np.moveaxis(x_test_mat, [0, 1, 2], [1, 2, 0] )
+
+# The RNN needs data with the format of [samples, time steps, features].
+# Here, we have N samples, 50 time steps per sample, and 2 features
+data_mat_stacked = np.dstack(samples[:-test_size])
+data_mat_3d_final = np.moveaxis(data_mat_stacked, [0, 1, 2], [1, 2, 0] )
+
+# and fix up the target
+target_arr = np.array(target[:-test_size])
+
+# now build the RNN
+model = Sequential()
+model.add(SimpleRNN(128, input_shape = (data_mat_3d_final.shape[1],
+    data_mat_3d_final.shape[2]), activation = &#39;relu&#39;))
+model.add(Dropout(0.1))
+model.add(Dense(64, activation = &#39;relu&#39;))
+model.add(Dropout(0.1))
+model.add(Dense(16, activation = &#39;relu&#39;))
+model.add(Dropout(0.1))
+model.add(Dense(1, activation=&#39;linear&#39;))
+
+# monitor validation progress
+early = EarlyStopping(monitor = &amp;quot;val_loss&amp;quot;, mode = &amp;quot;min&amp;quot;, patience = 7)
+callbacks_list = [early]
+    
+model.compile(loss = &#39;mean_squared_error&#39;,
+              optimizer = &#39;adam&#39;,
+              metrics = [&#39;mse&#39;])
+
+# and train the model
+history = model.fit(data_mat_3d_final, target_arr, 
+    epochs=50, batch_size=25, verbose=2, 
+    validation_split = 0.20,
+    callbacks = callbacks_list)
+
+# plot history
+plt.plot(history.history[&#39;loss&#39;], label=&#39;train&#39;)
+plt.plot(history.history[&#39;val_loss&#39;], label=&#39;val&#39;)
+plt.legend()
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/rnn_train_history.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# get predictions
+train_predictions = model.predict(data_mat_3d_final)
+test_predictions = model.predict(x_test_3d_final)
+
+# plot predictions vs actual
+plt.plot(data[&#39;x&#39;], 
+    data[&#39;z&#39;], c = &#39;goldenrod&#39;, label = &#39;data&#39;)
+plt.plot(data.iloc[(length+1):-test_size][&#39;x&#39;], 
+    train_predictions, c = &#39;navy&#39;, label = &#39;train&#39;)
+plt.plot(data.iloc[-test_size:][&#39;x&#39;], 
+    test_predictions, c = &#39;firebrick&#39;, label = &#39;test&#39;)
+plt.legend(loc=&#39;best&#39;)
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/rnn_times_series_predictions.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Not bad!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

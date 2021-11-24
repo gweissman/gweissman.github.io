@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>predictive modeling | Academic</title>
+    <link>https://academic-demo.netlify.app/category/predictive-modeling/</link>
+      <atom:link href="https://academic-demo.netlify.app/category/predictive-modeling/index.xml" rel="self" type="application/rss+xml" />
+    <description>predictive modeling</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://academic-demo.netlify.app/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <title>predictive modeling</title>
+      <link>https://academic-demo.netlify.app/category/predictive-modeling/</link>
+    </image>
+    
+    <item>
+      <title>Comparison of bootstrapping approaches for identifying variance of predictive performance</title>
+      <link>https://academic-demo.netlify.app/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</link>
+      <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>https://academic-demo.netlify.app/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</guid>
+      <description>
+&lt;script src=&#34;https://academic-demo.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;background&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Background&lt;/h2&gt;
+&lt;p&gt;Bootstrapping is a helpful technique for identifying the variance of an estimate in a given sample when no other data are available. In the case of the evaluation of clinical prediction models, bootstrapping can be used to estimate confidence intervals around performance metrics such as the Brier score, the c-statistic, and others. When the original model and its tuning parameters, and the original dataset are available, the data can be resampled and the model refit on each replicate to make predictions. These predictions can then be used to calculate a performance metric. However, sometimes only the predicted probabilities of the original model on the original dataset are available. In this case, the predicted probabilities can be resampled and the performance metric can be calculated on each of these replicates. How do these approaches compare?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;build-a-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Build a model&lt;/h2&gt;
+&lt;p&gt;Similar to the model built in &lt;a href=&#34;https://gweissman.github.io/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/&#34;&gt;another blog post about the Brier Score&lt;/a&gt;, let’s build a model with the abalone dataset.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# set seed
+set.seed(24601)
+
+# load libraries for plotting
+library(ggplot2)
+
+# get data
+df &amp;lt;- read.csv(&amp;#39;https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data&amp;#39;)
+names(df) &amp;lt;- c(&amp;#39;sex&amp;#39;, &amp;#39;length&amp;#39;, &amp;#39;diameter&amp;#39;, &amp;#39;height&amp;#39;, &amp;#39;weight_whole&amp;#39;, 
+               &amp;#39;weight_shucked&amp;#39;, &amp;#39;weight_viscera&amp;#39;, &amp;#39;weight_shell&amp;#39;, &amp;#39;rings&amp;#39;)
+# inspect data
+knitr::kable(head(df))&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;4%&#34; /&gt;
+&lt;col width=&#34;7%&#34; /&gt;
+&lt;col width=&#34;10%&#34; /&gt;
+&lt;col width=&#34;7%&#34; /&gt;
+&lt;col width=&#34;14%&#34; /&gt;
+&lt;col width=&#34;16%&#34; /&gt;
+&lt;col width=&#34;16%&#34; /&gt;
+&lt;col width=&#34;14%&#34; /&gt;
+&lt;col width=&#34;6%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;sex&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;length&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;diameter&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;height&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;weight_whole&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;weight_shucked&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;weight_viscera&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;weight_shell&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;rings&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;M&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.350&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.265&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.090&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2255&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0995&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0485&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.070&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;F&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.530&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.420&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.135&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.6770&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2565&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.1415&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.210&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;M&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.440&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.365&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.125&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.5160&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2155&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.1140&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.155&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;I&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.330&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.255&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.080&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2050&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0895&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0395&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.055&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;I&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.425&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.300&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.095&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.3515&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.1410&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0775&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.120&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;F&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.530&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.415&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.150&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.7775&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2370&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.1415&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.330&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Let&amp;#39;s predict whether or not an abalone will have &amp;gt; 10 rings
+m &amp;lt;- glm(I(rings &amp;gt; 10) ~ ., data = df, family = binomial)
+preds_m &amp;lt;- predict(m, type = &amp;#39;response&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;performance-metric&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Performance metric&lt;/h2&gt;
+&lt;p&gt;Let’s calculate the Brier score as a measure of model performance.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;brier_score &amp;lt;- function(preds, obs) {
+  mean((obs - preds)^2)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;boostrapping-the-predicted-probabilities-only&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Boostrapping the predicted probabilities only&lt;/h2&gt;
+&lt;p&gt;Now let’s estimate the 95% confidence interval of the Brier score using only the predicted probabilities.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;N &amp;lt;- 1000
+
+get_boot_est_preds &amp;lt;- function(preds, obs, metric) {
+  idx &amp;lt;- sample(length(preds), replace = TRUE)
+  metric(preds[idx], obs[idx])
+}
+
+reps_pred &amp;lt;- replicate(N, get_boot_est_preds(preds_m, df$rings &amp;gt; 10, brier_score))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;bootstrapping-to-refit-the-model-on-each-replicate&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Bootstrapping to refit the model on each replicate&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;get_boot_est_mod &amp;lt;- function(df, metric) {
+    idx &amp;lt;- sample(nrow(df), replace = TRUE)
+    m_b &amp;lt;- glm(I(rings &amp;gt; 10) ~ ., data = df[idx,], family = binomial)
+    preds_m_b &amp;lt;- predict(m_b, type = &amp;#39;response&amp;#39;)
+    metric(preds_m_b, df[idx,]$rings &amp;gt; 10)
+}
+
+reps_model &amp;lt;- replicate(N, get_boot_est_mod(df, brier_score))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;optimism-corrected-bootstrapping-to-refit-the-model-on-each-replicate&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Optimism corrected bootstrapping to refit the model on each replicate&lt;/h2&gt;
+&lt;p&gt;As pointed out by Ewout Steyerberg, these estimates should be optimism-corrected for potential overfitting. Let’s look at the difference in estimates if we make predictions on the initial dataset rather than on the bootstrapped sample.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;get_boot_est_mod &amp;lt;- function(df, metric) {
+    idx &amp;lt;- sample(nrow(df), replace = TRUE)
+    m_b &amp;lt;- glm(I(rings &amp;gt; 10) ~ ., data = df[idx,], family = binomial)
+    preds_m_b &amp;lt;- predict(m_b, data = df, type = &amp;#39;response&amp;#39;)
+    metric(preds_m_b, df$rings &amp;gt; 10)
+}
+
+reps_model_opt &amp;lt;- replicate(N, get_boot_est_mod(df, brier_score))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;evaluate-results&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Evaluate results&lt;/h2&gt;
+&lt;p&gt;Let’s look at the distrbution of the Brier score estimates using both approaches.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;res &amp;lt;- rbind(data.frame(brier_score = reps_pred,
+                        approach = &amp;#39;predictions&amp;#39;),
+             data.frame(brier_score = reps_model,
+                        approach = &amp;#39;refit_model&amp;#39;),
+             data.frame(brier_score = reps_model_opt,
+                        approach = &amp;#39;refit_opt&amp;#39;))
+
+# Plot distribution of bootstrapped Brier scores
+ggplot(res, aes(brier_score, color = approach)) + 
+  geom_density() +
+  theme_bw()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://academic-demo.netlify.app/post/2019-04-25-comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We can calculate 95% confidence intervals using a simple percentile approach.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;calc_ci_95 &amp;lt;- function(v) {
+  q &amp;lt;- format(quantile(v, probs = c(0.025, 0.975)), digits = 5)
+  paste0(&amp;#39;(&amp;#39;,q[1],&amp;#39; to &amp;#39;,q[2],&amp;#39;)&amp;#39;)
+  }
+
+cat(&amp;#39;CI using bootstrapped estimates from predictions only:&amp;#39;,
+    calc_ci_95(reps_pred),&amp;#39;\n&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## CI using bootstrapped estimates from predictions only: (0.14153 to 0.15414)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cat(&amp;#39;CI using bootstrapped estimates from refitting the model:&amp;#39;,
+    calc_ci_95(reps_model),&amp;#39;\n&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## CI using bootstrapped estimates from refitting the model: (0.14128 to 0.15395)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cat(&amp;#39;CI using bootstrapped estimates from refitting the model with an optimism correction:&amp;#39;,
+    calc_ci_95(reps_model_opt),&amp;#39;\n&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## CI using bootstrapped estimates from refitting the model with an optimism correction: (0.29691 to 0.31728)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summary&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;While not exactly the same, the first two approaches yield very similar results. However, this outcome may vary depending on potential bias in the original dataset, and the sensitivity of the model to such bias. The third approach demonstrates the likely high degree of overfitting in this model, and the need to properly correct for optimism when reporting predictive performance in the absence of a separate testing sample.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Evaluating the equivalence of different formulations of the scaled Brier score</title>
+      <link>https://academic-demo.netlify.app/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>https://academic-demo.netlify.app/post/evaluating-the-equivalence-of-different-formulations-of-the-scaled-brier-score/</guid>
+      <description>
+&lt;script src=&#34;https://academic-demo.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;background&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Background&lt;/h2&gt;
+&lt;p&gt;The Brier Score is a composite measure of discrimination and calibration for a prediction model. The Brier Score is defined as&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+BS = \frac{1}{N} \sum (y_i - \hat y_i)^2,
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is the number of observations, &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; is the observed outcome, either 0 or 1, and &lt;span class=&#34;math inline&#34;&gt;\(\hat y_i\)&lt;/span&gt; is the predicted probability for the &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;th observation. Let’s create an R function to calculate the Brier Score:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;brier_score &amp;lt;- function(obs, pred) {
+  mean((obs - pred)^2)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The scaled Brier Score accounts for the event rate and provides an immediate comparison to an uninformative model that is equivalent to “just guess the event rate.” An intuitive way to define the scaled Brier Score (also called the “Brier skill score”) is&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+BS_{scaled} = 1 - \frac{BS}{BS_{max}},
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(BS_{max} = \frac{1}{N} \sum (y_i - \bar y_i)^2\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\bar y_i\)&lt;/span&gt; is the event rate among the observed outcome.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;my-confusion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;My confusion&lt;/h2&gt;
+&lt;p&gt;This formulation of the scaled Brier Score makes intuitive sense to me and is how I go about calculating it in practice. However, two other distinct formulations have been proposed for calculating &lt;span class=&#34;math inline&#34;&gt;\(BS_{max}\)&lt;/span&gt; that — at least to the limits of my algebraic skills – differ. Thus, here I proposed a numeric investigation of these different definitions to see if they are indeed equivalent.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;definition-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Definition 1&lt;/h2&gt;
+&lt;p&gt;This is the intuitive definition to which I am accustomed, and is made explicit here: &lt;a href=&#34;https://www.ncbi.nlm.nih.gov/pubmed/29713202&#34; class=&#34;uri&#34;&gt;https://www.ncbi.nlm.nih.gov/pubmed/29713202&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+BS_{scaled} = 1 - \frac{\frac{1}{N} \sum (y_i - \hat y_i)^2}{\frac{1}{N} \sum (y_i - \bar y_i)^2}.
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Let’s create an R function to calculate this value.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scaled_brier_score_1 &amp;lt;- function(obs, pred) {
+  1 - (brier_score(obs, pred) / brier_score(obs, mean(obs)))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;definition-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Definition 2&lt;/h2&gt;
+&lt;p&gt;A second formulation of the scaled Brier Score is defined with a slightly different definition of &lt;span class=&#34;math inline&#34;&gt;\(BS_{max}\)&lt;/span&gt;, which is in this case described in &lt;a href=&#34;https://www.ncbi.nlm.nih.gov/pubmed/20010215&#34; class=&#34;uri&#34;&gt;https://www.ncbi.nlm.nih.gov/pubmed/20010215&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+BS_{max} = \bar p \times (1 - \bar p).
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Let’s create an R function to calculate this measure.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scaled_brier_score_2 &amp;lt;- function(obs, pred) {
+  1 - (brier_score(obs, pred) / (mean(obs) * (1 - mean(obs))))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;definition-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Definition 3&lt;/h2&gt;
+&lt;p&gt;A third formulation of the scaled Brier Score is defined with a slightly different definition of &lt;span class=&#34;math inline&#34;&gt;\(BS_{max}\)&lt;/span&gt;, which is in this case described in &lt;a href=&#34;https://www.ncbi.nlm.nih.gov/pubmed/22961910&#34; class=&#34;uri&#34;&gt;https://www.ncbi.nlm.nih.gov/pubmed/22961910&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+BS_{max} = \bar p \times (1 - \bar p)^2 + (1 - \bar p) \times \bar p^2.
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Let’s create an R function to calculate this measure.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scaled_brier_score_3 &amp;lt;- function(obs, pred) {
+  1 - (brier_score(obs, pred) / (mean(obs) * (1 - mean(obs))^2 + (1 - mean(obs)) * mean(obs)^2))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;build-a-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Build a model&lt;/h2&gt;
+&lt;p&gt;Let’s build a sample model based on the UCI abalone data (&lt;a href=&#34;https://archive.ics.uci.edu/ml/datasets/Abalone&#34; class=&#34;uri&#34;&gt;https://archive.ics.uci.edu/ml/datasets/Abalone&lt;/a&gt;).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# get data
+df &amp;lt;- read.csv(&amp;#39;https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data&amp;#39;)
+names(df) &amp;lt;- c(&amp;#39;sex&amp;#39;, &amp;#39;length&amp;#39;, &amp;#39;diameter&amp;#39;, &amp;#39;height&amp;#39;, &amp;#39;weight_whole&amp;#39;, 
+               &amp;#39;weight_shucked&amp;#39;, &amp;#39;weight_viscera&amp;#39;, &amp;#39;weight_shell&amp;#39;, &amp;#39;rings&amp;#39;)
+# inspect data
+knitr::kable(head(df))&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;4%&#34; /&gt;
+&lt;col width=&#34;7%&#34; /&gt;
+&lt;col width=&#34;10%&#34; /&gt;
+&lt;col width=&#34;7%&#34; /&gt;
+&lt;col width=&#34;14%&#34; /&gt;
+&lt;col width=&#34;16%&#34; /&gt;
+&lt;col width=&#34;16%&#34; /&gt;
+&lt;col width=&#34;14%&#34; /&gt;
+&lt;col width=&#34;6%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;sex&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;length&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;diameter&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;height&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;weight_whole&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;weight_shucked&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;weight_viscera&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;weight_shell&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;rings&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;M&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.350&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.265&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.090&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2255&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0995&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0485&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.070&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;F&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.530&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.420&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.135&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.6770&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2565&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.1415&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.210&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;M&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.440&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.365&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.125&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.5160&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2155&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.1140&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.155&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;I&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.330&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.255&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.080&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2050&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0895&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0395&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.055&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;I&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.425&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.300&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.095&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.3515&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.1410&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0775&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.120&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;F&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.530&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.415&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.150&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.7775&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2370&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.1415&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.330&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Let&amp;#39;s predict whether or not an abalone will have &amp;gt; 10 rings
+m1 &amp;lt;- glm(I(rings &amp;gt; 10) ~ ., data = df, family = binomial)
+preds_m1 &amp;lt;- predict(m1, type = &amp;#39;response&amp;#39;)
+
+# And another model with severe class imablance
+m2 &amp;lt;- glm(I(rings &amp;gt; 3) ~ ., data = df, family = binomial)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;preds_m2 &amp;lt;- predict(m2, type = &amp;#39;response&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;score-the-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Score the model&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# ---------- Model 1
+# Calculate the Brier Score
+brier_score(df$rings &amp;gt; 10, preds_m1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.1479862&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Calculate each type of scaled Brier Score
+scaled_brier_score_1(df$rings &amp;gt; 10, preds_m1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.3462507&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scaled_brier_score_2(df$rings &amp;gt; 10, preds_m1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.3462507&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scaled_brier_score_3(df$rings &amp;gt; 10, preds_m1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.3462507&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# ---------- Model 2
+# Calculate the Brier Score
+brier_score(df$rings &amp;gt; 3, preds_m2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.002690905&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Calculate each type of scaled Brier Score
+scaled_brier_score_1(df$rings &amp;gt; 3, preds_m2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.3362851&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scaled_brier_score_2(df$rings &amp;gt; 3, preds_m2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.3362851&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scaled_brier_score_3(df$rings &amp;gt; 3, preds_m2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.3362851&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

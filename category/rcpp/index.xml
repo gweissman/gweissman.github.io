@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rcpp | Academic</title>
+    <link>https://academic-demo.netlify.app/category/rcpp/</link>
+      <atom:link href="https://academic-demo.netlify.app/category/rcpp/index.xml" rel="self" type="application/rss+xml" />
+    <description>rcpp</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 15 Jun 2016 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://academic-demo.netlify.app/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <title>rcpp</title>
+      <link>https://academic-demo.netlify.app/category/rcpp/</link>
+    </image>
+    
+    <item>
+      <title>Rcpp is smoking fast for agent based models in data frames</title>
+      <link>https://academic-demo.netlify.app/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</link>
+      <pubDate>Wed, 15 Jun 2016 00:00:00 +0000</pubDate>
+      <guid>https://academic-demo.netlify.app/post/rcpp-is-smoking-fast-for-agent-based-models-in-data-frames/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on July 11, 2012. Thanks to Hadley Wickham for referencing some of content here, and apologies for the broken URL. NB. The original C++ code didn&amp;rsquo;t seem to compile on my computer today. It required a small tweak with &lt;code&gt;NumericVector::create&lt;/code&gt; &amp;ndash; see below.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In particular, R data frames provide a simple framework for representing large cohorts of agents in stochastic epidemiological models, such as those representing disease transmission. This approach is much easier and likely faster than trying to implement cohorts of R objects. In this post we’ll explore a simple agent-based model, and then benchmark a few different approaches to iterating through the cohort. Rcpp outperforms all of them by a few orders of magnitude. Priceless.&lt;/p&gt;
+&lt;h2 id=&#34;case&#34;&gt;Case&lt;/h2&gt;
+&lt;p&gt;Let’s say we are trying to predict the probability of someone choosing to receive a vaccination in a given year. The decision will be based on their age (&lt;code&gt;age&lt;/code&gt;), gender (&lt;code&gt;female&lt;/code&gt;), and whether or not they were infected with the virus last year (&lt;code&gt;ily&lt;/code&gt;). Let’s make up some data:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# construct a cohort
+N &amp;lt;- 1000 # cohort size
+ 
+cohort &amp;lt;- data.frame(age=rnorm(N,mean=50,sd=10),
+                female=sample(c(0,1),size=N,replace=TRUE),
+                ily=sample(c(0,1),size=N,prob=c(0.8,0.2),
+                         replace=TRUE))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The probability of choosing to be vaccinated will be given by the following function:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;vaccinate &amp;lt;- function( age, female, ily) {
+        # this is based on some pretend regression equation
+        p &amp;lt;- 0.25 + 0.3 * 1/(1-exp(0.04 * age)) +  0.1 *ily
+        # use some logic
+        p &amp;lt;- p * ifelse(female, 1.25 , 0.75)
+        # boundary checking
+        p &amp;lt;- max(0,p); p &amp;lt;- min(1,p)
+        p
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;try-some-iterators-for-loop-apply-ddply&#34;&gt;Try some iterators: for loop, apply, ddply&lt;/h2&gt;
+&lt;p&gt;Let’s create a testable function for each strategy. The objective is to take a cohort data frame as input, calculate the vaccination probability for each member of the cohort, then return a data frame with the cohort data plus a new column for the vaccination probability (&lt;code&gt;p&lt;/code&gt;).&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# The traditional for loop
+# Some would say is always a no-no in R...
+do_forloop &amp;lt;- function(df) {
+     v_prob &amp;lt;- vector(length=nrow(df),mode=&amp;quot;numeric&amp;quot;)
+ 
+     for (x in 1:nrow(df)) {
+          v_prob[x] &amp;lt;- vaccinate(df$age[x],
+                          df$female[x],df$ily[x])
+     }
+     data.frame(cbind(df,p=v_prob))
+}
+
+# The apply approach
+do_apply &amp;lt;- function(df) {
+   v_prob &amp;lt;- apply(df, 1, function(x) vaccinate(x[1],x[2],x[3]))
+   data.frame(cbind(df,p=v_prob))
+}
+
+# ddply approach
+library(plyr)
+ 
+do_plyr &amp;lt;- function (df) {
+     v_prob &amp;lt;- ddply (df, names(df), function(x)
+                vaccinate(x$age,x$female,x$ily))
+     data.frame(cbind(df,p=v_prob$V1))
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;enter-rcpp&#34;&gt;Enter Rcpp&lt;/h2&gt;
+&lt;p&gt;Now rewrite the test using a traditional for-loop in C++ including a helper function to calculate the vaccination probability. I use the inline library so I can embed the C++ directly in the R script, thus obviating additional &lt;code&gt;.cpp&lt;/code&gt; or &lt;code&gt;.h&lt;/code&gt; files. Self-contained code is nice.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# create an R function built on C++ code
+library(Rcpp)
+# required for inline Rcpp calls
+library(inline) 
+ 
+# write the C++ code
+do_rcpp_src &amp;lt;- &#39;
+     // get data from the input data frame
+     Rcpp::DataFrame cohort(the_cohort);
+     // now extract columns by name from 
+     // the data fame into C++ vectors
+     std::vector&amp;lt;double&amp;gt; age_v = 
+               Rcpp::as&amp;lt; std::vector&amp;lt;double&amp;gt; &amp;gt;(cohort[&amp;quot;age&amp;quot;]);
+     std::vector&amp;lt;int&amp;gt; female_v = 
+               Rcpp::as&amp;lt; std::vector&amp;lt;int&amp;gt; &amp;gt;(cohort[&amp;quot;female&amp;quot;]);
+     std::vector&amp;lt;int&amp;gt; ily_v = 
+               Rcpp::as&amp;lt; std::vector&amp;lt;int&amp;gt; &amp;gt;(cohort[&amp;quot;ily&amp;quot;]);
+ 
+     // create a new variable v_prob for export
+     std::vector&amp;lt;double&amp;gt; v_prob (ily_v.size());
+ 
+     // iterate over data frame to calculate v_prob
+     for (int i = 0; i &amp;lt; v_prob.size() ; i++) {
+          v_prob[i] = 
+               vaccinate_cxx(age_v[i],female_v[i],ily_v[i]);
+     }
+ 
+     // export the old with the new in a combined data frame
+     return Rcpp::DataFrame::create( Named(&amp;quot;age&amp;quot;)= age_v, 
+                                     Named(&amp;quot;female&amp;quot;) = female_v,
+                                     Named(&amp;quot;ily&amp;quot;) = ily_v,
+                                     Named(&amp;quot;p&amp;quot;) = v_prob);
+&#39;
+ 
+# write the helper function also in C++
+# Note small change here from original to include Rcpp:NumericVector::create
+# for use with min and max
+vaccinate_cxx_src &amp;lt;- &#39;
+double vaccinate_cxx (double age, int female, int ily){
+        // this is based on some pretend regression equation
+        double p = 0.25 + 0.3 * 1/(1-exp(0.004*age)) +  0.1 *ily;
+        // use some logic
+        p = p * (female ? 1.25 : 0.75);
+        // boundary checking
+        p = max(Rcpp::NumericVector::create(0,p)); 
+        p = min(Rcpp::NumericVector::create(1,p));
+        return(p);
+}
+&#39;
+# create an R function to call the C++ code
+do_rcpp &amp;lt;- cxxfunction(signature(the_cohort=&amp;quot;data.frame&amp;quot;),
+                       do_rcpp_src, plugin=&amp;quot;Rcpp&amp;quot;, 
+                       includes=c(&#39;#include &amp;lt;cmath&amp;gt;&#39;,
+                                   vaccinate_cxx_src))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;may-the-best-function-win&#34;&gt;May the best function win&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# benchmarking
+library(rbenchmark)
+ 
+bm_results &amp;lt;- benchmark(do_forloop(cohort),
+           do_apply(cohort),
+           do_plyr(cohort),
+           do_rcpp(cohort),
+           replications=1000)
+ 
+library(lattice)
+strategy &amp;lt;- with(bm_results, reorder(test,relative))
+barchart(relative ~ strategy, bm_results, 
+        ylab=&#39;Relative performance&#39;, 
+        xlab=&#39;Strategy&#39;,
+        main=&#39;Performance of iteration strategies over data frames in R&#39;, 
+        col=&#39;firebrick&#39;,scales=list(x=list(cex=1.2)))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/looping_speed_compare.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Ree – donc – u – lous.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

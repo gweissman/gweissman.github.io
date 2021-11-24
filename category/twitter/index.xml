@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>twitter | Academic</title>
+    <link>https://academic-demo.netlify.app/category/twitter/</link>
+      <atom:link href="https://academic-demo.netlify.app/category/twitter/index.xml" rel="self" type="application/rss+xml" />
+    <description>twitter</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 15 Jun 2017 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://academic-demo.netlify.app/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <title>twitter</title>
+      <link>https://academic-demo.netlify.app/category/twitter/</link>
+    </image>
+    
+    <item>
+      <title>The structure of twitter participant relationships in conversations around #Libya, #Bieber, and #Rstats</title>
+      <link>https://academic-demo.netlify.app/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</link>
+      <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
+      <guid>https://academic-demo.netlify.app/post/the-structure-of-twitter-participant-relationships-in-conversations-around-libya-bieber-and-rstats/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Here&amp;rsquo;s the blog post originally posted on &lt;code&gt;babelgraph.org&lt;/code&gt; on April 4, 2011. I suspect the twitter API and much of the code below are &lt;strong&gt;not&lt;/strong&gt; up to date.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I am a recent comer to &lt;a href=&#34;twitter.com&#34;&gt;twitter&lt;/a&gt;, and it took me a few weeks to figure out what this was all about. Who are all these people tweeting each other and what do all these trending hashtags mean? Do these people all know each other? How do they get involved in these conversations? Are people really talking/listening to each other, or just spewing 140 character projectiles out into the void?&lt;/p&gt;
+&lt;p&gt;This piqued my interest in the structure of relationships of participants in different twitter conversations. Using &lt;a href=&#34;http://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R&lt;/a&gt;, with the &lt;a href=&#34;http://cran.r-project.org/web/packages/twitteR/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;twitteR&lt;/a&gt; and &lt;a href=&#34;http://igraph.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;igraph&lt;/a&gt; packages, I wondered what I would find&amp;hellip;&lt;/p&gt;
+&lt;p&gt;In terms of mapping twitter networks with R, I found &lt;a href=&#34;http://blog.ynada.com/247&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this post&lt;/a&gt; for mapping one’s own personal network of connections. For other visualizations, I found a &lt;a href=&#34;http://flowingdata.com/2008/03/12/17-ways-to-visualize-the-twitter-universe/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;collection&lt;/a&gt; of various visualizations for the twitterverse, and an &lt;a href=&#34;http://www.orgnet.com/twitter.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;interactive map&lt;/a&gt; of connected users.&lt;/p&gt;
+&lt;p&gt;Here I am really interested in the network of participants in a particular conversation. I started off with “#Rstats,” expecting to see a tightly knit community of users who all seem to know each other (at least virtually), sending each other personal updates or tech support tweets. Next I looked at “#Libya,” where I imagined there would be a lot of twitterers with massive followings, but who were unlikely following each other, and producing hordes of news-type updates. Finally I looked at “#Bieber,” (I swear didn’t even know who he was up until a few weeks ago), where I expected to see platoons of small-time twitterers, who likely don’t follow each other, pouring out disconnected digital adulations into the twitterverse.&lt;/p&gt;
+&lt;p&gt;The following script was used to construct the networks for each search item.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# an R script to generate the social network of contributors
+# to a particular search term
+# author: Gary Weissman
+# twitter: @garyweissman
+ 
+# choose a conversation and size of search
+search.term &amp;lt;- &#39;#Rstats&#39;
+search.size &amp;lt;- 50
+ 
+# load required libraries
+library(igraph)
+library(twitteR)
+ 
+# get recent results from search
+search.results &amp;lt;- searchTwitter(search.term,n=search.size)
+ 
+# build the vertex list
+vl &amp;lt;- vector()
+for (twt in search.results)
+  vl &amp;lt;- c(vl,screenName(twt))
+ 
+# calculate contribution of each user in the conversation
+vl &amp;lt;- as.data.frame(table(vl))
+ 
+# provide nice names for data
+colnames(vl) &amp;lt;- c(&#39;user&#39;,&#39;tweets&#39;)
+ 
+# build the network of relations between contributors
+g &amp;lt;- graph.empty(directed=TRUE)
+g &amp;lt;- add.vertices(g,nrow(vl),name=as.character(vl$user),
+      tweets=vl$tweets)
+ 
+V(g)$followers &amp;lt;- 0 # default to zero
+ 
+# count total number of followers in the larger twitterverse and
+# add relationships based on who follows whom within the conversation
+for (usr in V(g)) {
+ 
+  # get the user info by name
+  tuser &amp;lt;- getUser(V(g)$name[usr+1])
+  print(paste(&amp;quot;Getting info on&amp;quot;,screenName(tuser)))
+ 
+  # count total followers in larger twitterverse
+  V(g)$followers[usr+1] &amp;lt;- followersCount(tuser)
+ 
+  # access as many followers as we can to see if any
+  # appeared in the search results
+  followers.list &amp;lt;- userFollowers(tuser,n=1200)
+  for (tflwr in followers.list) {
+   if (screenName(tflwr) %in% V(g)$name)
+    g &amp;lt;- add.edges(g,c(as.vector(V(g)[ name == screenName(tflwr) ]),usr))
+  }
+  print(&#39;Sleeping 10 min...&#39;)
+  Sys.sleep(600); # don&#39;t exceed request limit
+}
+ 
+# layout the graph
+g$layout &amp;lt;- layout.fruchterman.reingold(g)
+# adjust size based on number of total followers
+# scale accordingly to keep readable
+V(g)$size = log( V(g)$followers ) * 1.8
+# set label name and size
+V(g)$label=V(g)$name
+V(g)$label.cex = 0.6
+# do something with color...
+tcolors &amp;lt;- rev(heat.colors(max(V(g)$tweets)))
+V(g)$color &amp;lt;- tcolors[ V(g)$tweets ]
+# make edge arrows less intrusive
+E(g)$arrow.size &amp;lt;- 0.3
+# make symmetric connections a little easier to read
+E(g)$curved &amp;lt;- FALSE # fun to play with
+E(g)$color &amp;lt;- &#39;blue&#39;
+# now plot...
+plot(g)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Technical notes: It wasn’t always clear to me what counted as a “request” in the twitter API, because even a small handful of requests with long results would sometimes seem to count as more toward the hourly quota. Putting a ten minute delay between requests with Sys.sleep(600) was enough to solve the problem. I also tweaked the layouts a bit using tkplot.getcoords(). NB. tkplot() does not permit certain graph attributes such as label.vertex.cex, so you have to remove it before opening the graph in tkplot. You can then just add it back later. More details on this tkplot issue &lt;a href=&#34;https://bugs.launchpad.net/igraph/&amp;#43;bug/572559&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The size of the vertex is proportional to the log of the number of followers in the wider twitterverse, and the color of vertex represents the number of tweets found in the search results by that user. See code above for specifics.&lt;/p&gt;
+&lt;p&gt;#Bieber&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/bieber_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;#Libya&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/libya_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;#Rstats&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/rstats_plot.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;The networks obviously look very different. Here is a plot of the degree distribution of each graph:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/abs_deg_dist_by_search_term.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Even more interesting is the simple comparison of the number of edges in each graph. Very telling.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://academic-demo.netlify.app/images/babelgraph/twitter/vertex_edge_counts_by_search_term.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;I did not look at the clustering coefficient here, but that would be interesting, too.&lt;/p&gt;
+&lt;p&gt;Does this mean that R users are part of a twitter &lt;em&gt;community&lt;/em&gt;?&lt;/p&gt;
+&lt;p&gt;Limitations on this approach include the size of the user sample (limited by the twitter API to 150 requests per hour), as well as limits on the size of lists retrieved by the &lt;code&gt;userFriends()&lt;/code&gt; method (I believe the limit is 1200 items). These former limits the sample size significantly, and provides only a brief snapshot in time of the participants in any one conversation. The latter favors the construction of edges between twitterers with fewer followers, thus understestimating the total edges that may exist in the network. Is there a workaround for these limitations on the API? I believe requesting whitelist status from twitter, or perhaps authenticating with ROAuth would increase the number of permitted requests, but I haven’t tried them yet.&lt;/p&gt;
+&lt;p&gt;Do you know to whom you tweet?&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

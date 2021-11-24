@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blanca Himes | Academic</title>
+    <link>https://academic-demo.netlify.app/author/blanca-himes/</link>
+      <atom:link href="https://academic-demo.netlify.app/author/blanca-himes/index.xml" rel="self" type="application/rss+xml" />
+    <description>Blanca Himes</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Jul 2018 00:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://academic-demo.netlify.app/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <title>Blanca Himes</title>
+      <link>https://academic-demo.netlify.app/author/blanca-himes/</link>
+    </image>
+    
+    <item>
+      <title>Inclusion of unstructured clinical text improves early prediction of death or prolonged ICU stay</title>
+      <link>https://academic-demo.netlify.app/publication/text_preds_2019/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 -0400</pubDate>
+      <guid>https://academic-demo.netlify.app/publication/text_preds_2019/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
