@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gweissman.github.io/</loc>
-    <lastmod>2020-06-25T00:00:00-04:00</lastmod>
+    <lastmod>2022-02-25T08:43:12-05:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/categories/</loc>
+    <lastmod>2022-02-25T08:43:12-05:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/category/nlp/</loc>
+    <lastmod>2022-02-25T08:43:12-05:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/post/</loc>
+    <lastmod>2022-02-25T08:43:12-05:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/category/python/</loc>
+    <lastmod>2022-02-25T08:43:12-05:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/</loc>
+    <lastmod>2022-02-25T08:43:12-05:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/publication/speaking_breathing/</loc>
     <lastmod>2020-06-25T00:00:00-04:00</lastmod>
@@ -74,13 +89,7 @@
     <loc>https://gweissman.github.io/category/bootstrapping/</loc>
     <lastmod>2019-04-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://gweissman.github.io/categories/</loc>
-    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://gweissman.github.io/post/comparison-of-bootstrapping-approaches-for-identifying-variance-of-predictive-performance/</loc>
-    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gweissman.github.io/post/</loc>
     <lastmod>2019-04-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/category/predictive-modeling/</loc>
@@ -144,9 +153,6 @@
     <lastmod>2018-02-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/category/keras/</loc>
-    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gweissman.github.io/category/python/</loc>
     <lastmod>2018-02-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/category/rnn/</loc>

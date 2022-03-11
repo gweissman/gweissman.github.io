@@ -1,0 +1,1168 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="The National Library of Medicine (NLM) created a tremendous resource called the Unified Medical Language Systems (UMLS). The UMLS is a suite of data and software resources that offers several tools for processing, representing, and analyzing biomedical text data." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.9f457a613f02e9027025db7311c58ccf.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Gary Weissman, MD, MSHP" />
+  <meta property="og:url" content="https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/" />
+  <meta property="og:title" content="Using MetaMap with Python to access the UMLS MetaThesaurus - A Quick Start Guide | Gary Weissman, MD, MSHP" />
+  <meta property="og:description" content="The National Library of Medicine (NLM) created a tremendous resource called the Unified Medical Language Systems (UMLS). The UMLS is a suite of data and software resources that offers several tools for processing, representing, and analyzing biomedical text data." /><meta property="og:image" content="https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2022-02-25T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2022-02-25T08:43:12-05:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/"
+  },
+  "headline": "Using MetaMap with Python to access the UMLS MetaThesaurus - A Quick Start Guide",
+  
+  "datePublished": "2022-02-25T00:00:00Z",
+  "dateModified": "2022-02-25T08:43:12-05:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Gary Weissman, MD, MSHP",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "The National Library of Medicine (NLM) created a tremendous resource called the Unified Medical Language Systems (UMLS). The UMLS is a suite of data and software resources that offers several tools for processing, representing, and analyzing biomedical text data."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Using MetaMap with Python to access the UMLS MetaThesaurus - A Quick Start Guide | Gary Weissman, MD, MSHP</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="1e290ef6dd1452ea1e062fc638808658" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Gary Weissman, MD, MSHP</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Gary Weissman, MD, MSHP</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Using MetaMap with Python to access the UMLS MetaThesaurus - A Quick Start Guide</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Feb 25, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/python/">python</a>, <a href="/category/nlp/">nlp</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>The National Library of Medicine (NLM) created a tremendous resource called the <a href="https://www.nlm.nih.gov/research/umls/index.html" target="_blank" rel="noopener">Unified Medical Language Systems (UMLS)</a>. The UMLS is a suite of data and software resources that offers several tools for processing, representing, and analyzing biomedical text data. One exciting use case that we&rsquo;ll explore here is using UMLS to identify signs and symptoms that are documented in the text of clinical encounter notes.</p>
+<p><a href="https://lhncbc.nlm.nih.gov/ii/tools/MetaMap.html" target="_blank" rel="noopener">MetaMap</a> is a software tool that identifies concepts in the text of clinical notes that are found in UMLS ontologies. MetaMap is written in Java and there is a convenient wrapper in Python:  <a href="https://github.com/AnthonyMRios/pymetamap" target="_blank" rel="noopener">PyMetaMap</a> written by Anthony Rios. There are other Python wrappers around MetaMap but PyMetaMap was the most straightforward to get running on my machine so that&rsquo;s what we&rsquo;ll use here.</p>
+<h2 id="step-1-installation">Step 1: Installation</h2>
+<p>Make sure you have have MetaMap installed. Instructions are here: <a href="https://metamap.nlm.nih.gov/Installation.shtml" target="_blank" rel="noopener">https://metamap.nlm.nih.gov/Installation.shtml</a></p>
+<p>I used the default settings for the installation and it has worked out fine.</p>
+<p><strong>NB</strong> To use most UMLS resources you will have to <a href="https://uts.nlm.nih.gov/uts/" target="_blank" rel="noopener">register for an account</a> and sign a data use agreement. This is free!</p>
+<h2 id="step-2-get-some-text-data">Step 2: Get some text data</h2>
+<p>Because working with clinical notes is often challening due to issues of de-identification, here are a few sample text notes we&rsquo;ll use here. These are completely made up and not based on any real people.</p>
+<pre><code class="language-{python}">note1 = &quot;Mrs. Jones came in today complaining of a lot of chest pain. She denies shortness of breath and fevers.&quot;
+
+note2 = &quot;Mr. Smith has been having pain in his knee for many weeks. It hurts when he walks. There is no swelling, erythema, or micromotion tenderness.&quot;
+
+note3 = &quot;Sandy Lemon has been having headaches for two months that are associated with blurry vision and numbness in her right arm.&quot;
+
+# Put them all together in a list
+note_list = [note1, note2, note3]
+</code></pre>
+<h2 id="step-3-install-pymetamap">Step 3: Install PyMetaMap</h2>
+<p>The last time I tried this, the version available via <code>pip</code> was old. So installed the latest version (0.2) directly from the GitHub site here: <a href="https://github.com/AnthonyMRios/pymetamap" target="_blank" rel="noopener">https://github.com/AnthonyMRios/pymetamap</a></p>
+<p>I accomplished this using:</p>
+<pre><code class="language-{python}">pip install git+https://github.com/AnthonyMRios/pymetamap.git
+</code></pre>
+<p>Now load the necessary modules and set up the relevant servers in the background:</p>
+<pre><code class="language-{python}"># Load MetaMap
+from pymetamap import MetaMap
+
+# Import os to make system calls
+import os
+
+# For pausing
+from time import sleep
+
+# Setup UMLS Server
+metamap_base_dir = '/gwshare/umls_2021/metamap/public_mm/'
+metamap_bin_dir = 'bin/metamap20'
+metamap_pos_server_dir = 'bin/skrmedpostctl'
+metamap_wsd_server_dir = 'bin/wsdserverctl'
+
+# Start servers
+os.system(metamap_base_dir + metamap_pos_server_dir + ' start') # Part of speech tagger
+os.system(metamap_base_dir + metamap_wsd_server_dir + ' start') # Word sense disambiguation 
+
+# Sleep a bit to give time for these servers to start up
+sleep(60)
+</code></pre>
+<p>Set up a MetaMap object to do the work. If you are running into memory issues with this approach, see some tips here: <a href="https://lhncbc.nlm.nih.gov/ii/tools/MetaMap/Docs/OutOfMemory.pdf" target="_blank" rel="noopener">https://lhncbc.nlm.nih.gov/ii/tools/MetaMap/Docs/OutOfMemory.pdf</a></p>
+<pre><code class="language-{python}">metam = MetaMap.get_instance(metamap_base_dir + metamap_bin_dir)
+</code></pre>
+<p>Now let&rsquo;s process some text.</p>
+<pre><code class="language-{python}">cons, errs = metam.extract_concepts(note_list,
+                                word_sense_disambiguation = True,
+                                restrict_to_sts = ['sosy'], # signs and symptoms
+                                composite_phrase = 1, # for memory issues
+                                prune = 30)
+                                
+# Look at the output:
+print(cons)
+
+## [ConceptMMI(index='USER', mm='MMI', score='5.18', preferred_name='Dyspnea', cui='C0013404', semtypes='[sosy]', trigger='[&quot;SHORTNESS OF BREATH&quot;-tx-1-&quot;shortness of breath&quot;-noun-1]', location='TX', pos_info='73/19', tree_codes=''), ConceptMMI(index='USER', mm='MMI', score='5.18', preferred_name='Fever', cui='C0015967', semtypes='[sosy]', trigger='[&quot;Fevers&quot;-tx-1-&quot;fevers&quot;-noun-1]', location='TX', pos_info='97/6', tree_codes=''), ConceptMMI(index='USER', mm='MMI', score='3.45', preferred_name='Mastodynia', cui='C0024902', semtypes='[sosy]', trigger='[&quot;of breast pain&quot;-tx-1-&quot;of chest pain&quot;-noun-0]', location='TX', pos_info='38/2,50/10', tree_codes=''), ConceptMMI(index='USER', mm='MMI', score='3.71', preferred_name='Knee pain', cui='C0231749', semtypes='[sosy]', trigger='[&quot;Pain in knee&quot;-tx-1-&quot;pain in knee&quot;-noun-0]', location='TX', pos_info='27/7,39/4', tree_codes=''), ConceptMMI(index='USER', mm='MMI', score='3.68', preferred_name='Sore to touch', cui='C0234233', semtypes='[sosy]', trigger='[&quot;TENDERNESS (NOS)&quot;-tx-1-&quot;tenderness&quot;-noun-1]', location='TX', pos_info='131/10', tree_codes=''), ConceptMMI(index='USER', mm='MMI', score='3.57', preferred_name='Headache', cui='C0018681', semtypes='[sosy]', trigger='[&quot;Headaches&quot;-tx-1-&quot;headaches&quot;-noun-0]', location='TX', pos_info='29/9', tree_codes=''), ConceptMMI(index='USER', mm='MMI', score='3.56', preferred_name='Numbness', cui='C0028643', semtypes='[sosy]', trigger='[&quot;NUMBNESS&quot;-tx-1-&quot;numbness&quot;-noun-0]', location='TX', pos_info='97/8', tree_codes='')]
+</code></pre>
+<p>And try to put it into a more usable format:</p>
+<pre><code class="language-{python}">import pandas as pd
+
+def get_keys_from_mm(concept, klist):
+    conc_dict = concept._asdict()
+    conc_list = [conc_dict.get(kk) for kk in klist]
+    return(tuple(conc_list))
+        
+        
+keys_of_interest = ['preferred_name', 'cui', 'semtypes', 'pos_info']
+cols = [get_keys_from_mm(cc, keys_of_interest) for cc in cons]
+results_df = pd.DataFrame(cols, columns = keys_of_interest)
+
+# See results
+print(results_df)
+
+## preferred_name       cui semtypes    pos_info
+## 0        Dyspnea  C0013404   [sosy]       73/19
+## 1          Fever  C0015967   [sosy]        97/6
+## 2     Mastodynia  C0024902   [sosy]  38/2,50/10
+## 3      Knee pain  C0231749   [sosy]   27/7,39/4
+## 4  Sore to touch  C0234233   [sosy]      131/10
+## 5       Headache  C0018681   [sosy]        29/9
+## 6       Numbness  C0028643   [sosy]        97/8
+
+</code></pre>
+<p>And there you found the signs and symptoms with their associated plain language name, cui, and position. For processing many notes in parallel, I&rsquo;ve found it works to load the UMLS servers once but create a new <code>MetaMap</code> object inside each process.</p>
+<p>Good luck, and happy processing!</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/&amp;text=Using%20MetaMap%20with%20Python%20to%20access%20the%20UMLS%20MetaThesaurus%20-%20A%20Quick%20Start%20Guide" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/&amp;t=Using%20MetaMap%20with%20Python%20to%20access%20the%20UMLS%20MetaThesaurus%20-%20A%20Quick%20Start%20Guide" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Using%20MetaMap%20with%20Python%20to%20access%20the%20UMLS%20MetaThesaurus%20-%20A%20Quick%20Start%20Guide&amp;body=https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/&amp;title=Using%20MetaMap%20with%20Python%20to%20access%20the%20UMLS%20MetaThesaurus%20-%20A%20Quick%20Start%20Guide" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Using%20MetaMap%20with%20Python%20to%20access%20the%20UMLS%20MetaThesaurus%20-%20A%20Quick%20Start%20Guide%20https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/&amp;title=Using%20MetaMap%20with%20Python%20to%20access%20the%20UMLS%20MetaThesaurus%20-%20A%20Quick%20Start%20Guide" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://gweissman.github.io"><img class="avatar mr-3 avatar-circle" src="/author/avatar_hu4330caceae784bb3a623b2f8128dd214_1004934_270x270_fill_q75_lanczos_center.jpeg" alt=""></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://gweissman.github.io"></a></h5>
+      <h6 class="card-subtitle">Assistant Professor of Medicine</h6>
+      <p class="card-text">I am a pulmonary and critical care physician at the University of Pennsylvania Perelman School of Medicine, and core faculty member at the Palliative and Advanced Illness Research (PAIR) Center. My work seeks to translate innovations in artificial intelligence methods into bedside clinical decision support systems that alleviate uncertainty in critical clinical decisions. My research interests include clinical informatics, natural language processing, machine learning, population health, and pragmatic trials.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/garyweissman" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?hl=en&amp;user=Ollx0JMAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/gweissman" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js"></script>
+
+    
+    
+    
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.d68ecd57c0ec1f1f61d65fd568f1c3a0.js"></script>
+
+    
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</body>
+</html>

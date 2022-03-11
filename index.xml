@@ -5,12 +5,108 @@
     <link>https://gweissman.github.io/</link>
       <atom:link href="https://gweissman.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Gary Weissman, MD, MSHP</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 25 Jun 2020 00:00:00 -0400</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 25 Feb 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
       <title>Gary Weissman, MD, MSHP</title>
       <link>https://gweissman.github.io/</link>
     </image>
+    
+    <item>
+      <title>Using MetaMap with Python to access the UMLS MetaThesaurus - A Quick Start Guide</title>
+      <link>https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/</link>
+      <pubDate>Fri, 25 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/</guid>
+      <description>&lt;p&gt;The National Library of Medicine (NLM) created a tremendous resource called the &lt;a href=&#34;https://www.nlm.nih.gov/research/umls/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Unified Medical Language Systems (UMLS)&lt;/a&gt;. The UMLS is a suite of data and software resources that offers several tools for processing, representing, and analyzing biomedical text data. One exciting use case that we&amp;rsquo;ll explore here is using UMLS to identify signs and symptoms that are documented in the text of clinical encounter notes.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://lhncbc.nlm.nih.gov/ii/tools/MetaMap.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MetaMap&lt;/a&gt; is a software tool that identifies concepts in the text of clinical notes that are found in UMLS ontologies. MetaMap is written in Java and there is a convenient wrapper in Python:  &lt;a href=&#34;https://github.com/AnthonyMRios/pymetamap&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PyMetaMap&lt;/a&gt; written by Anthony Rios. There are other Python wrappers around MetaMap but PyMetaMap was the most straightforward to get running on my machine so that&amp;rsquo;s what we&amp;rsquo;ll use here.&lt;/p&gt;
+&lt;h2 id=&#34;step-1-installation&#34;&gt;Step 1: Installation&lt;/h2&gt;
+&lt;p&gt;Make sure you have have MetaMap installed. Instructions are here: &lt;a href=&#34;https://metamap.nlm.nih.gov/Installation.shtml&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://metamap.nlm.nih.gov/Installation.shtml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I used the default settings for the installation and it has worked out fine.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NB&lt;/strong&gt; To use most UMLS resources you will have to &lt;a href=&#34;https://uts.nlm.nih.gov/uts/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;register for an account&lt;/a&gt; and sign a data use agreement. This is free!&lt;/p&gt;
+&lt;h2 id=&#34;step-2-get-some-text-data&#34;&gt;Step 2: Get some text data&lt;/h2&gt;
+&lt;p&gt;Because working with clinical notes is often challening due to issues of de-identification, here are a few sample text notes we&amp;rsquo;ll use here. These are completely made up and not based on any real people.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{python}&#34;&gt;note1 = &amp;quot;Mrs. Jones came in today complaining of a lot of chest pain. She denies shortness of breath and fevers.&amp;quot;
+
+note2 = &amp;quot;Mr. Smith has been having pain in his knee for many weeks. It hurts when he walks. There is no swelling, erythema, or micromotion tenderness.&amp;quot;
+
+note3 = &amp;quot;Sandy Lemon has been having headaches for two months that are associated with blurry vision and numbness in her right arm.&amp;quot;
+
+# Put them all together in a list
+note_list = [note1, note2, note3]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;step-3-install-pymetamap&#34;&gt;Step 3: Install PyMetaMap&lt;/h2&gt;
+&lt;p&gt;The last time I tried this, the version available via &lt;code&gt;pip&lt;/code&gt; was old. So installed the latest version (0.2) directly from the GitHub site here: &lt;a href=&#34;https://github.com/AnthonyMRios/pymetamap&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/AnthonyMRios/pymetamap&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I accomplished this using:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{python}&#34;&gt;pip install git+https://github.com/AnthonyMRios/pymetamap.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now load the necessary modules and set up the relevant servers in the background:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{python}&#34;&gt;# Load MetaMap
+from pymetamap import MetaMap
+
+# Import os to make system calls
+import os
+
+# For pausing
+from time import sleep
+
+# Setup UMLS Server
+metamap_base_dir = &#39;/gwshare/umls_2021/metamap/public_mm/&#39;
+metamap_bin_dir = &#39;bin/metamap20&#39;
+metamap_pos_server_dir = &#39;bin/skrmedpostctl&#39;
+metamap_wsd_server_dir = &#39;bin/wsdserverctl&#39;
+
+# Start servers
+os.system(metamap_base_dir + metamap_pos_server_dir + &#39; start&#39;) # Part of speech tagger
+os.system(metamap_base_dir + metamap_wsd_server_dir + &#39; start&#39;) # Word sense disambiguation 
+
+# Sleep a bit to give time for these servers to start up
+sleep(60)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Set up a MetaMap object to do the work. If you are running into memory issues with this approach, see some tips here: &lt;a href=&#34;https://lhncbc.nlm.nih.gov/ii/tools/MetaMap/Docs/OutOfMemory.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://lhncbc.nlm.nih.gov/ii/tools/MetaMap/Docs/OutOfMemory.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{python}&#34;&gt;metam = MetaMap.get_instance(metamap_base_dir + metamap_bin_dir)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now let&amp;rsquo;s process some text.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{python}&#34;&gt;cons, errs = metam.extract_concepts(note_list,
+                                word_sense_disambiguation = True,
+                                restrict_to_sts = [&#39;sosy&#39;], # signs and symptoms
+                                composite_phrase = 1, # for memory issues
+                                prune = 30)
+                                
+# Look at the output:
+print(cons)
+
+## [ConceptMMI(index=&#39;USER&#39;, mm=&#39;MMI&#39;, score=&#39;5.18&#39;, preferred_name=&#39;Dyspnea&#39;, cui=&#39;C0013404&#39;, semtypes=&#39;[sosy]&#39;, trigger=&#39;[&amp;quot;SHORTNESS OF BREATH&amp;quot;-tx-1-&amp;quot;shortness of breath&amp;quot;-noun-1]&#39;, location=&#39;TX&#39;, pos_info=&#39;73/19&#39;, tree_codes=&#39;&#39;), ConceptMMI(index=&#39;USER&#39;, mm=&#39;MMI&#39;, score=&#39;5.18&#39;, preferred_name=&#39;Fever&#39;, cui=&#39;C0015967&#39;, semtypes=&#39;[sosy]&#39;, trigger=&#39;[&amp;quot;Fevers&amp;quot;-tx-1-&amp;quot;fevers&amp;quot;-noun-1]&#39;, location=&#39;TX&#39;, pos_info=&#39;97/6&#39;, tree_codes=&#39;&#39;), ConceptMMI(index=&#39;USER&#39;, mm=&#39;MMI&#39;, score=&#39;3.45&#39;, preferred_name=&#39;Mastodynia&#39;, cui=&#39;C0024902&#39;, semtypes=&#39;[sosy]&#39;, trigger=&#39;[&amp;quot;of breast pain&amp;quot;-tx-1-&amp;quot;of chest pain&amp;quot;-noun-0]&#39;, location=&#39;TX&#39;, pos_info=&#39;38/2,50/10&#39;, tree_codes=&#39;&#39;), ConceptMMI(index=&#39;USER&#39;, mm=&#39;MMI&#39;, score=&#39;3.71&#39;, preferred_name=&#39;Knee pain&#39;, cui=&#39;C0231749&#39;, semtypes=&#39;[sosy]&#39;, trigger=&#39;[&amp;quot;Pain in knee&amp;quot;-tx-1-&amp;quot;pain in knee&amp;quot;-noun-0]&#39;, location=&#39;TX&#39;, pos_info=&#39;27/7,39/4&#39;, tree_codes=&#39;&#39;), ConceptMMI(index=&#39;USER&#39;, mm=&#39;MMI&#39;, score=&#39;3.68&#39;, preferred_name=&#39;Sore to touch&#39;, cui=&#39;C0234233&#39;, semtypes=&#39;[sosy]&#39;, trigger=&#39;[&amp;quot;TENDERNESS (NOS)&amp;quot;-tx-1-&amp;quot;tenderness&amp;quot;-noun-1]&#39;, location=&#39;TX&#39;, pos_info=&#39;131/10&#39;, tree_codes=&#39;&#39;), ConceptMMI(index=&#39;USER&#39;, mm=&#39;MMI&#39;, score=&#39;3.57&#39;, preferred_name=&#39;Headache&#39;, cui=&#39;C0018681&#39;, semtypes=&#39;[sosy]&#39;, trigger=&#39;[&amp;quot;Headaches&amp;quot;-tx-1-&amp;quot;headaches&amp;quot;-noun-0]&#39;, location=&#39;TX&#39;, pos_info=&#39;29/9&#39;, tree_codes=&#39;&#39;), ConceptMMI(index=&#39;USER&#39;, mm=&#39;MMI&#39;, score=&#39;3.56&#39;, preferred_name=&#39;Numbness&#39;, cui=&#39;C0028643&#39;, semtypes=&#39;[sosy]&#39;, trigger=&#39;[&amp;quot;NUMBNESS&amp;quot;-tx-1-&amp;quot;numbness&amp;quot;-noun-0]&#39;, location=&#39;TX&#39;, pos_info=&#39;97/8&#39;, tree_codes=&#39;&#39;)]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And try to put it into a more usable format:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{python}&#34;&gt;import pandas as pd
+
+def get_keys_from_mm(concept, klist):
+    conc_dict = concept._asdict()
+    conc_list = [conc_dict.get(kk) for kk in klist]
+    return(tuple(conc_list))
+        
+        
+keys_of_interest = [&#39;preferred_name&#39;, &#39;cui&#39;, &#39;semtypes&#39;, &#39;pos_info&#39;]
+cols = [get_keys_from_mm(cc, keys_of_interest) for cc in cons]
+results_df = pd.DataFrame(cols, columns = keys_of_interest)
+
+# See results
+print(results_df)
+
+## preferred_name       cui semtypes    pos_info
+## 0        Dyspnea  C0013404   [sosy]       73/19
+## 1          Fever  C0015967   [sosy]        97/6
+## 2     Mastodynia  C0024902   [sosy]  38/2,50/10
+## 3      Knee pain  C0231749   [sosy]   27/7,39/4
+## 4  Sore to touch  C0234233   [sosy]      131/10
+## 5       Headache  C0018681   [sosy]        29/9
+## 6       Numbness  C0028643   [sosy]        97/8
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And there you found the signs and symptoms with their associated plain language name, cui, and position. For processing many notes in parallel, I&amp;rsquo;ve found it works to load the UMLS servers once but create a new &lt;code&gt;MetaMap&lt;/code&gt; object inside each process.&lt;/p&gt;
+&lt;p&gt;Good luck, and happy processing!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>A Dangerous Myth: Does Speaking Imply Breathing?</title>
