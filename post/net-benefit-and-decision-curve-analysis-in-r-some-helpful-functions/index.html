@@ -815,11 +815,11 @@ summary(model1)</code></pre>
 # How well does it perform?
 make_perf_df(preds_model1, pp$island == &#39;Biscoe&#39;)</code></pre>
 <pre><code>##   metric   estimate      ci_lo     ci_hi
-## 1  brier 0.11931004 0.09559314 0.1423991
-## 2 sbrier 0.52254884 0.43157444 0.6161522
-## 3    ici 0.08269116 0.04982116 0.1106997
-## 4  lloss 0.38170012 0.32234935 0.4408413
-## 5  cstat 0.88448214 0.84782578 0.9237471</code></pre>
+## 1  brier 0.11931004 0.09630512 0.1422963
+## 2 sbrier 0.52254884 0.43425480 0.6160464
+## 3    ici 0.08269116 0.04709555 0.1086278
+## 4  lloss 0.38170012 0.32020568 0.4414849
+## 5  cstat 0.88448214 0.84635185 0.9251065</code></pre>
 <pre class="r"><code># Build a second model
 model2 &lt;- ranger(island == &#39;Biscoe&#39; ~ bill_length_mm + flipper_length_mm + body_mass_g + sex, 
                data = pp, probability = TRUE)
@@ -837,15 +837,15 @@ print(model2)</code></pre>
 ## Target node size:                 10 
 ## Variable importance mode:         none 
 ## Splitrule:                        gini 
-## OOB prediction error (Brier s.):  0.1105532</code></pre>
+## OOB prediction error (Brier s.):  0.1122386</code></pre>
 <pre class="r"><code>preds_model2 &lt;- predict(model2, data = pp)$predictions[,2]
 make_perf_df(preds_model2, pp$island == &#39;Biscoe&#39;)</code></pre>
-<pre><code>##   metric   estimate      ci_lo      ci_hi
-## 1  brier 0.04295960 0.03434823 0.05170119
-## 2 sbrier 0.82808562 0.79736642 0.86060999
-## 3    ici 0.09267194 0.07202128 0.10925943
-## 4  lloss 0.16264332 0.13852103 0.18542181
-## 5  cstat 0.99906171 0.99815957 1.00074915</code></pre>
+<pre><code>##   metric   estimate      ci_lo     ci_hi
+## 1  brier 0.04286756 0.03390784 0.0502498
+## 2 sbrier 0.82845395 0.80047009 0.8662713
+## 3    ici 0.08972289 0.06855921 0.1077833
+## 4  lloss 0.16173035 0.13794986 0.1845998
+## 5  cstat 0.99866474 0.99750985 1.0005113</code></pre>
 <pre class="r"><code># Summary predictions
 results_dt &lt;- data.table(sick_island = pp$island == &#39;Biscoe&#39;,
                          glm = preds_model1,
@@ -865,8 +865,6 @@ calib_plot(sick_island ~ glm + rf, data = results_dt, cuts = 5, rug = TRUE)</cod
 <pre class="r"><code># For simplicity, just plot the net benefit of the two models trained above
 nb_plot(sick_island ~ glm + rf, data = results_dt, 
         treat_all = FALSE, treat_none = FALSE, omniscient = FALSE)</code></pre>
-<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-## ℹ Please use `linewidth` instead.</code></pre>
 <p><img src="https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/calcdca-1.png" width="672" /></p>
 <p>Clearly in the 30% threshold range, the random forest model provides more benefit to those treated. Now let’s compare these models against treat all, treat none, and treat omnisciently strategies.</p>
 <pre class="r"><code>nb_plot(sick_island ~ glm + rf, data = results_dt, 
@@ -875,11 +873,14 @@ nb_plot(sick_island ~ glm + rf, data = results_dt,
 <p><img src="https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/calcdca2-1.png" width="672" /></p>
 <p>The treat none strategy, by definition, provides zero net benefit, so represents a lower bound of what the other models should provide if they are useful. The treat omnisciently strategy represents the upper bound on what any model could provide. In this case, the treat all strategy does a little better than the glm model in the 10 to 20% threshold range, but otherwise provides less net benefit than both the glm and rf across the rest of the range.</p>
 <p>Let’s again highlight the range of interest that we determined ahead of time based on our choice of threshold which here determines the relative weighting of true and false positives. However, if you asked the penguins, they might choose a different threshold!</p>
-<p>Since we chose 30% as our decision threshold, let’s examine the neighborhood of around 30% looking at 5% in either direction.</p>
+<p>Since we chose 30% as our decision threshold, let’s examine the neighborhood around 30% looking at 5% in either direction.</p>
 <pre class="r"><code>nb_plot(sick_island ~ glm + rf, data = results_dt, 
-        treat_all = TRUE, treat_none = TRUE, omniscient = TRUE)</code></pre>
+        treat_all = TRUE, treat_none = TRUE, omniscient = TRUE) &amp;
+  geom_rect(xmin = 0.25, xmax = 0.35, ymin = 0, ymax = 0.5, color = &#39;gray&#39;, 
+            fill = &#39;gray&#39;, alpha = 0.01,  inherit.aes = FALSE)</code></pre>
 <pre><code>## Warning: Removed 48 rows containing missing values (`geom_line()`).</code></pre>
 <p><img src="https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/calcdca3-1.png" width="672" /></p>
+<p>In this range of interest, the random forest model provides the highest net benefit. Let’s go save some penguins!</p>
 </div>
 
     </div>
