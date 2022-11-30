@@ -1,0 +1,1288 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Background One of the challenges of developing clinical prediction models is deciding which one is best. Sometimes traditional performance measures such as the Brier score or C-statistic might be used to quantify to what extent one model performs better than another." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.9f457a613f02e9027025db7311c58ccf.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Gary Weissman, MD, MSHP" />
+  <meta property="og:url" content="https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/" />
+  <meta property="og:title" content="Net Benefit and Decision Curve Analysis in R - Some helpful functions | Gary Weissman, MD, MSHP" />
+  <meta property="og:description" content="Background One of the challenges of developing clinical prediction models is deciding which one is best. Sometimes traditional performance measures such as the Brier score or C-statistic might be used to quantify to what extent one model performs better than another." /><meta property="og:image" content="https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2022-11-30T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2022-11-30T11:42:35-05:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/"
+  },
+  "headline": "Net Benefit and Decision Curve Analysis in R - Some helpful functions",
+  
+  "datePublished": "2022-11-30T00:00:00Z",
+  "dateModified": "2022-11-30T11:42:35-05:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Gary Weissman, MD, MSHP",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Background One of the challenges of developing clinical prediction models is deciding which one is best. Sometimes traditional performance measures such as the Brier score or C-statistic might be used to quantify to what extent one model performs better than another."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Net Benefit and Decision Curve Analysis in R - Some helpful functions | Gary Weissman, MD, MSHP</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="dabc2833bc7d5073e81df4845b550a54" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Gary Weissman, MD, MSHP</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Gary Weissman, MD, MSHP</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Net Benefit and Decision Curve Analysis in R - Some helpful functions</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Nov 30, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    9 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/r/">r</a>, <a href="/category/gmish/">gmish</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<div id="background" class="section level2">
+<h2>Background</h2>
+<p>One of the challenges of developing clinical prediction models is deciding which one is best. Sometimes traditional performance measures such as the Brier score or C-statistic might be used to quantify to what extent one model performs better than another. But in the realm of clinical medicine, a model’s predictive performance, whether measured by discrimination, calibration, or something else, doesn’t guarantee clinical benefit. When it comes to patients, that is usually the most important thing.</p>
+<p>The clinical benefit of a prediction model, however, is not straightforward to measure. How well does the model perform for an individual patient? How might delivery of the predictive information to different stakeholders influence (or not) their decision making? Does the model perform better for some groups of patients compared to others? How do individual stakeholders value different aspects of the prediction model, including different errors? How are the costs and benefits accounted for?</p>
+<p>If one wanted to answer these questions, undertaking a discrete choice experiment, an ethnographic study with qualitative interviews of all stakeholders, a human factors development and design process, and a randomized clinical trial, could help. But these studies are complex, time consuming, and costly. Is there a faster way to compare the clinical benefit of a group of prediction models?</p>
+</div>
+<div id="decision-curve-analysis-and-net-benefit" class="section level2">
+<h2>Decision curve analysis and net benefit</h2>
+<p>In 2006, <a href="https://journals.sagepub.com/doi/10.1177/0272989X06295361">Vickers and Elkin</a> introduced the idea of Decision Curve Analysis, an approach to estimate the net benefit of a prediction model using only the data available from the model itself. That is, using only the predicted probabilities of a model along with the observed outcomes, and relying on the assumption that a decision threshold is chosen to represent the relative importance of sensitivity and specificity (or false positive and false negative predictions), the authors describe how to calculate the <strong>net benefit</strong> of a model.</p>
+<p>In plain language, <em>the net benefit is the proportion of people rightly treated less the proportion wrongly treated, weighted by the decision threshold to choose treatment or not.</em></p>
+<p>For a helpful discussion on interpreting decision curves see <a href="https://diagnprognres.biomedcentral.com/articles/10.1186/s41512-019-0064-7">Vickers, van Calster, and Steyerberg (2019)</a>.</p>
+<p>In the original paper, the net benefit is calculated as:</p>
+<p><span class="math display">\[
+\frac{TP_c}{N} - \frac{FP_c}{N} \left(\frac{p_t}{1 - p_t}\right)
+\]</span></p>
+<p>where <span class="math inline">\(TP_c\)</span> and <span class="math inline">\(FP_c\)</span> are the true- and false-positive counts, respectively, <span class="math inline">\(N\)</span> is the number of observations, and <span class="math inline">\(p_t\)</span> is the probability threshold.</p>
+</div>
+<div id="an-implementation-in-r" class="section level2">
+<h2>An implementation in R</h2>
+<p>Here is an implementation of the net benefit calculation that is implemented in the <a href="https://github.com/gweissman/gmish">gmish</a> package:</p>
+<pre class="r"><code>nb &lt;- function(preds, obs, p_t, weight = 1) {
+  weight * tpc(preds, obs, thresh = p_t) / length(preds) - fpc(preds, obs, thresh = p_t) / length(preds) * p_t / (1 - p_t)
+}</code></pre>
+<p>The <code>tpc</code> and <code>fpc</code> functions provide the true- and false-positive counts at the threshold <code>p_t</code>. This function also allows further weighting but we’ll save that for a later discussion. The default <code>weight = 1</code> reduces to the original equation described above. To calculate the net benefit over the full range of thresholds and plot a decision curve, here is another function also implemented in the same packae:</p>
+<pre class="r"><code>nb_plot &lt;- function(form, data, treat_all = TRUE, treat_none = TRUE, omniscient = TRUE, weight = 1, max_neg = 0.1) {
+
+  data &lt;- as.data.table(data)
+  # Identify vars
+  .y &lt;- all.vars(form)[1]
+  .mods &lt;- all.vars(form)[-1]
+
+  dt_list &lt;- lapply(.mods, function(m) {
+    data.table(p_t = seq(0,0.99,.01))[,
+                                                               .(Model = m,
+                                                                 net_benefit = nb(data[,get(m)],
+                                                                                       data[,get(.y)],
+                                                                                       p_t = p_t,
+                                                                                       weight = weight)),
+                                                               by = p_t]
+  })
+
+  if (treat_all) {
+    treat_all_dt &lt;- data.table(p_t = seq(0,0.99,.01))[,
+                                      .(Model = &#39;Treat all&#39;,
+                                        net_benefit = nb(rep(1, nrow(data)), # guess 1 for everyone
+                                                         data[,get(.y)],
+                                                         p_t = p_t,
+                                                         weight = weight)),
+                                      by = p_t]
+    dt_list &lt;- append(dt_list, list(treat_all_dt))
+  }
+
+  if (treat_none) {
+    treat_none_dt &lt;- data.table(Model = &#39;Treat none&#39;, p_t = seq(0,0.99,.01), net_benefit = 0)
+    dt_list &lt;- append(dt_list, list(treat_none_dt))
+  }
+
+  if (omniscient) {
+    omniscient_dt &lt;- data.table(p_t = seq(0,0.99,.01))[,
+                                                      .(Model = &#39;Treat omnisciently&#39;,
+                                                        net_benefit = nb(data[,get(.y)],
+                                                                         data[,get(.y)],
+                                                                         p_t = p_t,
+                                                                         weight = weight)),
+                                                      by = p_t]
+    dt_list &lt;- append(dt_list, list(omniscient_dt))
+  }
+
+  dt_all &lt;- rbindlist(dt_list, use.names = TRUE)
+
+  ymax &lt;- max(dt_all$net_benefit, na.rm = TRUE)
+
+  p &lt;- ggplot(dt_all, aes(p_t, net_benefit, color = Model)) +
+    geom_line(size = 0.3) +
+    xlim(0, 1) + ylim(-1 * max_neg * ymax, ymax * 1.05) +
+    xlab(&#39;Threshold probability&#39;) + ylab(&#39;Net benefit&#39;) +
+    theme_bw() +
+    coord_fixed()
+
+  return(p)
+}</code></pre>
+<p>This function accepts a formula <code>form</code> to indicate the outcome variable and then several models to compare simultaneously. Additional decision curves can be added to the plot for <code>treat_all</code>, <code>treat_none</code>, and <code>omniscient</code> treatment strategies. This calculation is really the benefit accrued to those treated and so the benefit of treating none is by definition zero (and so does not account for the potential costs of a false negative error, i.e. failing to treat someone who could have benefited from treatment).</p>
+</div>
+<div id="example-a-completely-invented-case-study" class="section level2">
+<h2>Example (A completely invented case study)</h2>
+<p>Let’s say we have a bunch of penguins from the <code>palmerpenguins</code> dataset all hanging out together. Sadly, the water has been contaminated on the island of Biscoe and all of penguins from that island need an urgent antidote to prevent them from falling ill. However, the local ecologist doesn’t know which island the penguins came from and instead can only measure their bills, flippers, body mass, and sex. Let’s build some classification models to help the ecologist find penguins who need treatment.</p>
+<pre class="r"><code># Load libraries and data
+library(gmish) # remotes::install_github(&#39;gweissman/gmish&#39;) if not installed already
+library(data.table)
+library(ggplot2)
+library(palmerpenguins)
+library(ranger)
+library(ggsci)
+
+# Use complete cases for the example
+pp &lt;- penguins[complete.cases(penguins),]
+
+# Take a look at the data
+
+ggplot(pp, aes(bill_length_mm, flipper_length_mm, size = body_mass_g, color = sex)) +
+  geom_point() +
+  facet_grid(~island) +
+  theme_bw() +
+  scale_color_aaas()</code></pre>
+<p><img src="https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/example-1.png" width="672" /></p>
+<pre class="r"><code># Build a model
+model1 &lt;- glm(island == &#39;Biscoe&#39; ~ bill_length_mm + flipper_length_mm + body_mass_g + sex, 
+              family = binomial, data = pp)
+summary(model1)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = island == &quot;Biscoe&quot; ~ bill_length_mm + flipper_length_mm + 
+##     body_mass_g + sex, family = binomial, data = pp)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.7141  -0.6526  -0.1626   0.3955   2.4611  
+## 
+## Coefficients:
+##                     Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)       -1.417e+01  3.380e+00  -4.192 2.77e-05 ***
+## bill_length_mm    -1.620e-01  4.267e-02  -3.796 0.000147 ***
+## flipper_length_mm  5.012e-02  2.562e-02   1.956 0.050416 .  
+## body_mass_g        2.897e-03  5.061e-04   5.725 1.04e-08 ***
+## sexmale           -1.692e+00  4.020e-01  -4.208 2.57e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 461.49  on 332  degrees of freedom
+## Residual deviance: 254.21  on 328  degrees of freedom
+## AIC: 264.21
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<pre class="r"><code>preds_model1 &lt;- predict(model1, type = &#39;response&#39;)
+# How well does it perform?
+make_perf_df(preds_model1, pp$island == &#39;Biscoe&#39;)</code></pre>
+<pre><code>##   metric   estimate      ci_lo     ci_hi
+## 1  brier 0.11931004 0.09559314 0.1423991
+## 2 sbrier 0.52254884 0.43157444 0.6161522
+## 3    ici 0.08269116 0.04982116 0.1106997
+## 4  lloss 0.38170012 0.32234935 0.4408413
+## 5  cstat 0.88448214 0.84782578 0.9237471</code></pre>
+<pre class="r"><code># Build a second model
+model2 &lt;- ranger(island == &#39;Biscoe&#39; ~ bill_length_mm + flipper_length_mm + body_mass_g + sex, 
+               data = pp, probability = TRUE)
+print(model2)</code></pre>
+<pre><code>## Ranger result
+## 
+## Call:
+##  ranger(island == &quot;Biscoe&quot; ~ bill_length_mm + flipper_length_mm +      body_mass_g + sex, data = pp, probability = TRUE) 
+## 
+## Type:                             Probability estimation 
+## Number of trees:                  500 
+## Sample size:                      333 
+## Number of independent variables:  4 
+## Mtry:                             2 
+## Target node size:                 10 
+## Variable importance mode:         none 
+## Splitrule:                        gini 
+## OOB prediction error (Brier s.):  0.1105532</code></pre>
+<pre class="r"><code>preds_model2 &lt;- predict(model2, data = pp)$predictions[,2]
+make_perf_df(preds_model2, pp$island == &#39;Biscoe&#39;)</code></pre>
+<pre><code>##   metric   estimate      ci_lo      ci_hi
+## 1  brier 0.04295960 0.03434823 0.05170119
+## 2 sbrier 0.82808562 0.79736642 0.86060999
+## 3    ici 0.09267194 0.07202128 0.10925943
+## 4  lloss 0.16264332 0.13852103 0.18542181
+## 5  cstat 0.99906171 0.99815957 1.00074915</code></pre>
+<pre class="r"><code># Summary predictions
+results_dt &lt;- data.table(sick_island = pp$island == &#39;Biscoe&#39;,
+                         glm = preds_model1,
+                         rf = preds_model2)
+
+# Look at model precision and recall
+pr_plot(sick_island ~ glm + rf, data = results_dt)</code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
+<p><img src="https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/example-2.png" width="672" /></p>
+<pre class="r"><code># Look at model calibration
+calib_plot(sick_island ~ glm + rf, data = results_dt, cuts = 5, rug = TRUE)</code></pre>
+<pre><code>## Warning: Removed 4 rows containing missing values (`geom_bar()`).</code></pre>
+<p><img src="https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/example-3.png" width="672" /></p>
+<p>So we have a general sense of the models’ performance, which seems pretty good overall. The fact that they are all likely very overfit in this example is important to mention but we’ll deal with that in a later conversation. Now, we’re stuck with the question, which model should we use to pick out the penguins for treatment? The regression model or the random forest model?</p>
+<p>The intended use case for decision curves is to identify the optimal model <em>given</em> a choice of threshold. In this case, let’s say that the medication does have some but not terrible side effects, so we prefer a decision threshold around 30%. Which model provides the most benefit in this range?</p>
+<pre class="r"><code># For simplicity, just plot the net benefit of the two models trained above
+nb_plot(sick_island ~ glm + rf, data = results_dt, 
+        treat_all = FALSE, treat_none = FALSE, omniscient = FALSE)</code></pre>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.</code></pre>
+<p><img src="https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/calcdca-1.png" width="672" /></p>
+<p>Clearly in the 30% threshold range, the random forest model provides more benefit to those treated. Now let’s compare these models against treat all, treat none, and treat omnisciently strategies.</p>
+<pre class="r"><code>nb_plot(sick_island ~ glm + rf, data = results_dt, 
+        treat_all = TRUE, treat_none = TRUE, omniscient = TRUE)</code></pre>
+<pre><code>## Warning: Removed 48 rows containing missing values (`geom_line()`).</code></pre>
+<p><img src="https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/calcdca2-1.png" width="672" /></p>
+<p>The treat none strategy, by definition, provides zero net benefit, so represents a lower bound of what the other models should provide if they are useful. The treat omnisciently strategy represents the upper bound on what any model could provide. In this case, the treat all strategy does a little better than the glm model in the 10 to 20% threshold range, but otherwise provides less net benefit than both the glm and rf across the rest of the range.</p>
+<p>Let’s again highlight the range of interest that we determined ahead of time based on our choice of threshold which here determines the relative weighting of true and false positives. However, if you asked the penguins, they might choose a different threshold!</p>
+<p>Since we chose 30% as our decision threshold, let’s examine the neighborhood of around 30% looking at 5% in either direction.</p>
+<pre class="r"><code>nb_plot(sick_island ~ glm + rf, data = results_dt, 
+        treat_all = TRUE, treat_none = TRUE, omniscient = TRUE)</code></pre>
+<pre><code>## Warning: Removed 48 rows containing missing values (`geom_line()`).</code></pre>
+<p><img src="https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/calcdca3-1.png" width="672" /></p>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/&amp;text=Net%20Benefit%20and%20Decision%20Curve%20Analysis%20in%20R%20-%20Some%20helpful%20functions" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/&amp;t=Net%20Benefit%20and%20Decision%20Curve%20Analysis%20in%20R%20-%20Some%20helpful%20functions" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Net%20Benefit%20and%20Decision%20Curve%20Analysis%20in%20R%20-%20Some%20helpful%20functions&amp;body=https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/&amp;title=Net%20Benefit%20and%20Decision%20Curve%20Analysis%20in%20R%20-%20Some%20helpful%20functions" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Net%20Benefit%20and%20Decision%20Curve%20Analysis%20in%20R%20-%20Some%20helpful%20functions%20https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/&amp;title=Net%20Benefit%20and%20Decision%20Curve%20Analysis%20in%20R%20-%20Some%20helpful%20functions" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://gweissman.github.io"><img class="avatar mr-3 avatar-circle" src="/author/avatar_hu4330caceae784bb3a623b2f8128dd214_1004934_270x270_fill_q75_lanczos_center.jpeg" alt=""></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://gweissman.github.io"></a></h5>
+      <h6 class="card-subtitle">Assistant Professor of Medicine</h6>
+      <p class="card-text">I am a pulmonary and critical care physician at the University of Pennsylvania Perelman School of Medicine, and core faculty member at the Palliative and Advanced Illness Research (PAIR) Center. My work seeks to translate innovations in artificial intelligence methods into bedside clinical decision support systems that alleviate uncertainty in critical clinical decisions. My research interests include clinical informatics, natural language processing, machine learning, population health, and pragmatic trials.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/garyweissman" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?hl=en&amp;user=Ollx0JMAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/gweissman" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js"></script>
+
+    
+    
+    
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.d68ecd57c0ec1f1f61d65fd568f1c3a0.js"></script>
+
+    
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</body>
+</html>

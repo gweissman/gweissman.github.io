@@ -3,15 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gweissman.github.io/</loc>
-    <lastmod>2022-02-25T08:43:12-05:00</lastmod>
+    <lastmod>2022-11-30T11:42:35-05:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/categories/</loc>
-    <lastmod>2022-02-25T08:43:12-05:00</lastmod>
+    <lastmod>2022-11-30T11:42:35-05:00</lastmod>
   </url><url>
-    <loc>https://gweissman.github.io/category/nlp/</loc>
-    <lastmod>2022-02-25T08:43:12-05:00</lastmod>
+    <loc>https://gweissman.github.io/category/gmish/</loc>
+    <lastmod>2022-11-30T11:42:35-05:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/</loc>
+    <lastmod>2022-11-30T11:42:35-05:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/post/</loc>
+    <lastmod>2022-11-30T11:42:35-05:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/category/r/</loc>
+    <lastmod>2022-11-30T11:42:35-05:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/category/nlp/</loc>
     <lastmod>2022-02-25T08:43:12-05:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/category/python/</loc>
@@ -20,26 +29,68 @@
     <loc>https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/</loc>
     <lastmod>2022-02-25T08:43:12-05:00</lastmod>
   </url><url>
+    <loc>https://gweissman.github.io/author/andrew-crane-droesch/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/authors/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/blanca-himes/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/bruce-kinosian/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/publication/frailty_jamia_2021/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/folasade-lapite/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/gary-weissman/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/jacob-martin/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/jasmine-silvestri/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/joseph-puhl/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/joshua-diamond/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/lyle-ungar/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/michael-sims/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/publication/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/rebecca-hubbard/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/scott-halpern/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/tyler-kmiec/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/author/vivek-ahya/</loc>
+    <lastmod>2021-11-13T00:00:00-04:00</lastmod>
+  </url><url>
     <loc>https://gweissman.github.io/publication/speaking_breathing/</loc>
     <lastmod>2020-06-25T00:00:00-04:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/author/anica-law/</loc>
     <lastmod>2020-06-25T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://gweissman.github.io/authors/</loc>
-    <lastmod>2020-06-25T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://gweissman.github.io/author/gary-weissman/</loc>
-    <lastmod>2020-06-25T00:00:00-04:00</lastmod>
-  </url><url>
     <loc>https://gweissman.github.io/author/jack-iwashyna/</loc>
     <lastmod>2020-06-25T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://gweissman.github.io/publication/</loc>
-    <lastmod>2020-06-25T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://gweissman.github.io/author/andrew-crane-droesch/</loc>
-    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/author/asaf-hanish/</loc>
     <lastmod>2020-04-07T00:00:00-04:00</lastmod>
@@ -77,9 +128,6 @@
     <loc>https://gweissman.github.io/author/pj-brennan/</loc>
     <lastmod>2020-04-07T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://gweissman.github.io/author/scott-halpern/</loc>
-    <lastmod>2020-04-07T00:00:00-04:00</lastmod>
-  </url><url>
     <loc>https://gweissman.github.io/author/thaibinh-luong/</loc>
     <lastmod>2020-04-07T00:00:00-04:00</lastmod>
   </url><url>
@@ -95,9 +143,6 @@
     <loc>https://gweissman.github.io/category/predictive-modeling/</loc>
     <lastmod>2019-04-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://gweissman.github.io/category/r/</loc>
-    <lastmod>2019-04-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://gweissman.github.io/category/brier-score/</loc>
     <lastmod>2019-04-23T00:00:00+00:00</lastmod>
   </url><url>
@@ -111,9 +156,6 @@
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/author/katherine-courtright/</loc>
-    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://gweissman.github.io/author/lyle-ungar/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/author/meeta-kerlin/</loc>
@@ -137,16 +179,10 @@
     <loc>https://gweissman.github.io/author/yihao-yuan/</loc>
     <lastmod>2019-04-01T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://gweissman.github.io/author/blanca-himes/</loc>
-    <lastmod>2018-07-01T00:00:00-04:00</lastmod>
-  </url><url>
     <loc>https://gweissman.github.io/author/casey-greene/</loc>
     <lastmod>2018-07-01T00:00:00-04:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/publication/text_preds_2019/</loc>
-    <lastmod>2018-07-01T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://gweissman.github.io/author/rebecca-hubbard/</loc>
     <lastmod>2018-07-01T00:00:00-04:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/post/building-a-recurrent-neural-network-to-predict-time-series-data-with-keras-in-python/</loc>
@@ -201,8 +237,24 @@
   </url><url>
     <loc>https://gweissman.github.io/author/</loc>
   </url><url>
+    <loc>https://gweissman.github.io/publication/shah_simulated_ccm_2021/</loc>
+  </url><url>
+    <loc>https://gweissman.github.io/author/jeff-rohrbach/</loc>
+  </url><url>
+    <loc>https://gweissman.github.io/author/jennifer-ginestra/</loc>
+  </url><url>
+    <loc>https://gweissman.github.io/author/neil-fishman/</loc>
+  </url><url>
+    <loc>https://gweissman.github.io/author/parth-shah/</loc>
+  </url><url>
+    <loc>https://gweissman.github.io/author/paul-junker/</loc>
+  </url><url>
     <loc>https://gweissman.github.io/publication_types/</loc>
   </url><url>
     <loc>https://gweissman.github.io/tags/</loc>
+  </url><url>
+    <loc>https://gweissman.github.io/publication/embeddings_jbi_2021/</loc>
+  </url><url>
+    <loc>https://gweissman.github.io/author/zachary-flamholz/</loc>
   </url>
 </urlset>

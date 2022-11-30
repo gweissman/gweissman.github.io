@@ -5,12 +5,228 @@
     <link>https://gweissman.github.io/post/</link>
       <atom:link href="https://gweissman.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 25 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 30 Nov 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
       <title>Posts</title>
       <link>https://gweissman.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>Net Benefit and Decision Curve Analysis in R - Some helpful functions</title>
+      <link>https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/</link>
+      <pubDate>Wed, 30 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/</guid>
+      <description>
+
+
+&lt;div id=&#34;background&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Background&lt;/h2&gt;
+&lt;p&gt;One of the challenges of developing clinical prediction models is deciding which one is best. Sometimes traditional performance measures such as the Brier score or C-statistic might be used to quantify to what extent one model performs better than another. But in the realm of clinical medicine, a model’s predictive performance, whether measured by discrimination, calibration, or something else, doesn’t guarantee clinical benefit. When it comes to patients, that is usually the most important thing.&lt;/p&gt;
+&lt;p&gt;The clinical benefit of a prediction model, however, is not straightforward to measure. How well does the model perform for an individual patient? How might delivery of the predictive information to different stakeholders influence (or not) their decision making? Does the model perform better for some groups of patients compared to others? How do individual stakeholders value different aspects of the prediction model, including different errors? How are the costs and benefits accounted for?&lt;/p&gt;
+&lt;p&gt;If one wanted to answer these questions, undertaking a discrete choice experiment, an ethnographic study with qualitative interviews of all stakeholders, a human factors development and design process, and a randomized clinical trial, could help. But these studies are complex, time consuming, and costly. Is there a faster way to compare the clinical benefit of a group of prediction models?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;decision-curve-analysis-and-net-benefit&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Decision curve analysis and net benefit&lt;/h2&gt;
+&lt;p&gt;In 2006, &lt;a href=&#34;https://journals.sagepub.com/doi/10.1177/0272989X06295361&#34;&gt;Vickers and Elkin&lt;/a&gt; introduced the idea of Decision Curve Analysis, an approach to estimate the net benefit of a prediction model using only the data available from the model itself. That is, using only the predicted probabilities of a model along with the observed outcomes, and relying on the assumption that a decision threshold is chosen to represent the relative importance of sensitivity and specificity (or false positive and false negative predictions), the authors describe how to calculate the &lt;strong&gt;net benefit&lt;/strong&gt; of a model.&lt;/p&gt;
+&lt;p&gt;In plain language, &lt;em&gt;the net benefit is the proportion of people rightly treated less the proportion wrongly treated, weighted by the decision threshold to choose treatment or not.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;For a helpful discussion on interpreting decision curves see &lt;a href=&#34;https://diagnprognres.biomedcentral.com/articles/10.1186/s41512-019-0064-7&#34;&gt;Vickers, van Calster, and Steyerberg (2019)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In the original paper, the net benefit is calculated as:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\frac{TP_c}{N} - \frac{FP_c}{N} \left(\frac{p_t}{1 - p_t}\right)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(TP_c\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(FP_c\)&lt;/span&gt; are the true- and false-positive counts, respectively, &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is the number of observations, and &lt;span class=&#34;math inline&#34;&gt;\(p_t\)&lt;/span&gt; is the probability threshold.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;an-implementation-in-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;An implementation in R&lt;/h2&gt;
+&lt;p&gt;Here is an implementation of the net benefit calculation that is implemented in the &lt;a href=&#34;https://github.com/gweissman/gmish&#34;&gt;gmish&lt;/a&gt; package:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nb &amp;lt;- function(preds, obs, p_t, weight = 1) {
+  weight * tpc(preds, obs, thresh = p_t) / length(preds) - fpc(preds, obs, thresh = p_t) / length(preds) * p_t / (1 - p_t)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;tpc&lt;/code&gt; and &lt;code&gt;fpc&lt;/code&gt; functions provide the true- and false-positive counts at the threshold &lt;code&gt;p_t&lt;/code&gt;. This function also allows further weighting but we’ll save that for a later discussion. The default &lt;code&gt;weight = 1&lt;/code&gt; reduces to the original equation described above. To calculate the net benefit over the full range of thresholds and plot a decision curve, here is another function also implemented in the same packae:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nb_plot &amp;lt;- function(form, data, treat_all = TRUE, treat_none = TRUE, omniscient = TRUE, weight = 1, max_neg = 0.1) {
+
+  data &amp;lt;- as.data.table(data)
+  # Identify vars
+  .y &amp;lt;- all.vars(form)[1]
+  .mods &amp;lt;- all.vars(form)[-1]
+
+  dt_list &amp;lt;- lapply(.mods, function(m) {
+    data.table(p_t = seq(0,0.99,.01))[,
+                                                               .(Model = m,
+                                                                 net_benefit = nb(data[,get(m)],
+                                                                                       data[,get(.y)],
+                                                                                       p_t = p_t,
+                                                                                       weight = weight)),
+                                                               by = p_t]
+  })
+
+  if (treat_all) {
+    treat_all_dt &amp;lt;- data.table(p_t = seq(0,0.99,.01))[,
+                                      .(Model = &amp;#39;Treat all&amp;#39;,
+                                        net_benefit = nb(rep(1, nrow(data)), # guess 1 for everyone
+                                                         data[,get(.y)],
+                                                         p_t = p_t,
+                                                         weight = weight)),
+                                      by = p_t]
+    dt_list &amp;lt;- append(dt_list, list(treat_all_dt))
+  }
+
+  if (treat_none) {
+    treat_none_dt &amp;lt;- data.table(Model = &amp;#39;Treat none&amp;#39;, p_t = seq(0,0.99,.01), net_benefit = 0)
+    dt_list &amp;lt;- append(dt_list, list(treat_none_dt))
+  }
+
+  if (omniscient) {
+    omniscient_dt &amp;lt;- data.table(p_t = seq(0,0.99,.01))[,
+                                                      .(Model = &amp;#39;Treat omnisciently&amp;#39;,
+                                                        net_benefit = nb(data[,get(.y)],
+                                                                         data[,get(.y)],
+                                                                         p_t = p_t,
+                                                                         weight = weight)),
+                                                      by = p_t]
+    dt_list &amp;lt;- append(dt_list, list(omniscient_dt))
+  }
+
+  dt_all &amp;lt;- rbindlist(dt_list, use.names = TRUE)
+
+  ymax &amp;lt;- max(dt_all$net_benefit, na.rm = TRUE)
+
+  p &amp;lt;- ggplot(dt_all, aes(p_t, net_benefit, color = Model)) +
+    geom_line(size = 0.3) +
+    xlim(0, 1) + ylim(-1 * max_neg * ymax, ymax * 1.05) +
+    xlab(&amp;#39;Threshold probability&amp;#39;) + ylab(&amp;#39;Net benefit&amp;#39;) +
+    theme_bw() +
+    coord_fixed()
+
+  return(p)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This function accepts a formula &lt;code&gt;form&lt;/code&gt; to indicate the outcome variable and then several models to compare simultaneously. Additional decision curves can be added to the plot for &lt;code&gt;treat_all&lt;/code&gt;, &lt;code&gt;treat_none&lt;/code&gt;, and &lt;code&gt;omniscient&lt;/code&gt; treatment strategies. This calculation is really the benefit accrued to those treated and so the benefit of treating none is by definition zero (and so does not account for the potential costs of a false negative error, i.e. failing to treat someone who could have benefited from treatment).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-a-completely-invented-case-study&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Example (A completely invented case study)&lt;/h2&gt;
+&lt;p&gt;Let’s say we have a bunch of penguins from the &lt;code&gt;palmerpenguins&lt;/code&gt; dataset all hanging out together. Sadly, the water has been contaminated on the island of Biscoe and all of penguins from that island need an urgent antidote to prevent them from falling ill. However, the local ecologist doesn’t know which island the penguins came from and instead can only measure their bills, flippers, body mass, and sex. Let’s build some classification models to help the ecologist find penguins who need treatment.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Load libraries and data
+library(gmish) # remotes::install_github(&amp;#39;gweissman/gmish&amp;#39;) if not installed already
+library(data.table)
+library(ggplot2)
+library(palmerpenguins)
+library(ranger)
+library(ggsci)
+
+# Use complete cases for the example
+pp &amp;lt;- penguins[complete.cases(penguins),]
+
+# Take a look at the data
+
+ggplot(pp, aes(bill_length_mm, flipper_length_mm, size = body_mass_g, color = sex)) +
+  geom_point() +
+  facet_grid(~island) +
+  theme_bw() +
+  scale_color_aaas()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/example-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Build a model
+model1 &amp;lt;- glm(island == &amp;#39;Biscoe&amp;#39; ~ bill_length_mm + flipper_length_mm + body_mass_g + sex, 
+              family = binomial, data = pp)
+summary(model1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## glm(formula = island == &amp;quot;Biscoe&amp;quot; ~ bill_length_mm + flipper_length_mm + 
+##     body_mass_g + sex, family = binomial, data = pp)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.7141  -0.6526  -0.1626   0.3955   2.4611  
+## 
+## Coefficients:
+##                     Estimate Std. Error z value Pr(&amp;gt;|z|)    
+## (Intercept)       -1.417e+01  3.380e+00  -4.192 2.77e-05 ***
+## bill_length_mm    -1.620e-01  4.267e-02  -3.796 0.000147 ***
+## flipper_length_mm  5.012e-02  2.562e-02   1.956 0.050416 .  
+## body_mass_g        2.897e-03  5.061e-04   5.725 1.04e-08 ***
+## sexmale           -1.692e+00  4.020e-01  -4.208 2.57e-05 ***
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 461.49  on 332  degrees of freedom
+## Residual deviance: 254.21  on 328  degrees of freedom
+## AIC: 264.21
+## 
+## Number of Fisher Scoring iterations: 5&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;preds_model1 &amp;lt;- predict(model1, type = &amp;#39;response&amp;#39;)
+# How well does it perform?
+make_perf_df(preds_model1, pp$island == &amp;#39;Biscoe&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   metric   estimate      ci_lo     ci_hi
+## 1  brier 0.11931004 0.09559314 0.1423991
+## 2 sbrier 0.52254884 0.43157444 0.6161522
+## 3    ici 0.08269116 0.04982116 0.1106997
+## 4  lloss 0.38170012 0.32234935 0.4408413
+## 5  cstat 0.88448214 0.84782578 0.9237471&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Build a second model
+model2 &amp;lt;- ranger(island == &amp;#39;Biscoe&amp;#39; ~ bill_length_mm + flipper_length_mm + body_mass_g + sex, 
+               data = pp, probability = TRUE)
+print(model2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Ranger result
+## 
+## Call:
+##  ranger(island == &amp;quot;Biscoe&amp;quot; ~ bill_length_mm + flipper_length_mm +      body_mass_g + sex, data = pp, probability = TRUE) 
+## 
+## Type:                             Probability estimation 
+## Number of trees:                  500 
+## Sample size:                      333 
+## Number of independent variables:  4 
+## Mtry:                             2 
+## Target node size:                 10 
+## Variable importance mode:         none 
+## Splitrule:                        gini 
+## OOB prediction error (Brier s.):  0.1105532&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;preds_model2 &amp;lt;- predict(model2, data = pp)$predictions[,2]
+make_perf_df(preds_model2, pp$island == &amp;#39;Biscoe&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   metric   estimate      ci_lo      ci_hi
+## 1  brier 0.04295960 0.03434823 0.05170119
+## 2 sbrier 0.82808562 0.79736642 0.86060999
+## 3    ici 0.09267194 0.07202128 0.10925943
+## 4  lloss 0.16264332 0.13852103 0.18542181
+## 5  cstat 0.99906171 0.99815957 1.00074915&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Summary predictions
+results_dt &amp;lt;- data.table(sick_island = pp$island == &amp;#39;Biscoe&amp;#39;,
+                         glm = preds_model1,
+                         rf = preds_model2)
+
+# Look at model precision and recall
+pr_plot(sick_island ~ glm + rf, data = results_dt)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 2 rows containing missing values (`geom_point()`).&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 2 rows containing missing values (`geom_line()`).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/example-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Look at model calibration
+calib_plot(sick_island ~ glm + rf, data = results_dt, cuts = 5, rug = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 4 rows containing missing values (`geom_bar()`).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/example-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;So we have a general sense of the models’ performance, which seems pretty good overall. The fact that they are all likely very overfit in this example is important to mention but we’ll deal with that in a later conversation. Now, we’re stuck with the question, which model should we use to pick out the penguins for treatment? The regression model or the random forest model?&lt;/p&gt;
+&lt;p&gt;The intended use case for decision curves is to identify the optimal model &lt;em&gt;given&lt;/em&gt; a choice of threshold. In this case, let’s say that the medication does have some but not terrible side effects, so we prefer a decision threshold around 30%. Which model provides the most benefit in this range?&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# For simplicity, just plot the net benefit of the two models trained above
+nb_plot(sick_island ~ glm + rf, data = results_dt, 
+        treat_all = FALSE, treat_none = FALSE, omniscient = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/calcdca-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Clearly in the 30% threshold range, the random forest model provides more benefit to those treated. Now let’s compare these models against treat all, treat none, and treat omnisciently strategies.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nb_plot(sick_island ~ glm + rf, data = results_dt, 
+        treat_all = TRUE, treat_none = TRUE, omniscient = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 48 rows containing missing values (`geom_line()`).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/calcdca2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The treat none strategy, by definition, provides zero net benefit, so represents a lower bound of what the other models should provide if they are useful. The treat omnisciently strategy represents the upper bound on what any model could provide. In this case, the treat all strategy does a little better than the glm model in the 10 to 20% threshold range, but otherwise provides less net benefit than both the glm and rf across the rest of the range.&lt;/p&gt;
+&lt;p&gt;Let’s again highlight the range of interest that we determined ahead of time based on our choice of threshold which here determines the relative weighting of true and false positives. However, if you asked the penguins, they might choose a different threshold!&lt;/p&gt;
+&lt;p&gt;Since we chose 30% as our decision threshold, let’s examine the neighborhood of around 30% looking at 5% in either direction.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nb_plot(sick_island ~ glm + rf, data = results_dt, 
+        treat_all = TRUE, treat_none = TRUE, omniscient = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 48 rows containing missing values (`geom_line()`).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/calcdca3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Using MetaMap with Python to access the UMLS MetaThesaurus - A Quick Start Guide</title>

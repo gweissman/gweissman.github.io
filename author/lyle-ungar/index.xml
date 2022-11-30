@@ -5,12 +5,20 @@
     <link>https://gweissman.github.io/author/lyle-ungar/</link>
       <atom:link href="https://gweissman.github.io/author/lyle-ungar/index.xml" rel="self" type="application/rss+xml" />
     <description>Lyle Ungar</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 01 Apr 2019 00:00:00 -0400</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 13 Nov 2021 00:00:00 -0400</lastBuildDate>
     <image>
       <url>https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
       <title>Lyle Ungar</title>
       <link>https://gweissman.github.io/author/lyle-ungar/</link>
     </image>
+    
+    <item>
+      <title>Development and validation of a prediction model for actionable aspects of frailty in the text of clinicians’ encounter notes</title>
+      <link>https://gweissman.github.io/publication/frailty_jamia_2021/</link>
+      <pubDate>Sat, 13 Nov 2021 00:00:00 -0400</pubDate>
+      <guid>https://gweissman.github.io/publication/frailty_jamia_2021/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Construct validity of six sentiment analysis methods in the text of encounter notes of patients with critical illness</title>
@@ -25,6 +33,22 @@
       <link>https://gweissman.github.io/publication/text_preds_2019/</link>
       <pubDate>Sun, 01 Jul 2018 00:00:00 -0400</pubDate>
       <guid>https://gweissman.github.io/publication/text_preds_2019/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A Simulated Prospective Evaluation of a Deep Learning Model for Real-Time Prediction of Clinical Deterioration Among Ward Patients</title>
+      <link>https://gweissman.github.io/publication/shah_simulated_ccm_2021/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://gweissman.github.io/publication/shah_simulated_ccm_2021/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Word Embeddings Trained on Published Case Reports Are Lightweight, Effective for Clinical Tasks, and Free of Protected Health Information</title>
+      <link>https://gweissman.github.io/publication/embeddings_jbi_2021/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://gweissman.github.io/publication/embeddings_jbi_2021/</guid>
       <description></description>
     </item>
     
