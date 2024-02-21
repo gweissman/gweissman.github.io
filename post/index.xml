@@ -159,11 +159,11 @@ summary(model1)&lt;/code&gt;&lt;/pre&gt;
 # How well does it perform?
 make_perf_df(preds_model1, pp$island == &amp;#39;Biscoe&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##   metric   estimate      ci_lo     ci_hi
-## 1  brier 0.11931004 0.09630512 0.1422963
-## 2 sbrier 0.52254884 0.43425480 0.6160464
-## 3    ici 0.08269116 0.04709555 0.1086278
-## 4  lloss 0.38170012 0.32020568 0.4414849
-## 5  cstat 0.88448214 0.84635185 0.9251065&lt;/code&gt;&lt;/pre&gt;
+## 1  brier 0.11931004 0.09459123 0.1414849
+## 2 sbrier 0.52254884 0.44031013 0.6204561
+## 3    ici 0.08269116 0.04607298 0.1093371
+## 4  lloss 0.38170012 0.31786040 0.4392324
+## 5  cstat 0.88448214 0.84624249 0.9213535&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Build a second model
 model2 &amp;lt;- ranger(island == &amp;#39;Biscoe&amp;#39; ~ bill_length_mm + flipper_length_mm + body_mass_g + sex, 
                data = pp, probability = TRUE)
@@ -181,15 +181,15 @@ print(model2)&lt;/code&gt;&lt;/pre&gt;
 ## Target node size:                 10 
 ## Variable importance mode:         none 
 ## Splitrule:                        gini 
-## OOB prediction error (Brier s.):  0.1122386&lt;/code&gt;&lt;/pre&gt;
+## OOB prediction error (Brier s.):  0.1107188&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;preds_model2 &amp;lt;- predict(model2, data = pp)$predictions[,2]
 make_perf_df(preds_model2, pp$island == &amp;#39;Biscoe&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   metric   estimate      ci_lo     ci_hi
-## 1  brier 0.04286756 0.03390784 0.0502498
-## 2 sbrier 0.82845395 0.80047009 0.8662713
-## 3    ici 0.08972289 0.06855921 0.1077833
-## 4  lloss 0.16173035 0.13794986 0.1845998
-## 5  cstat 0.99866474 0.99750985 1.0005113&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   metric   estimate      ci_lo      ci_hi
+## 1  brier 0.04343418 0.03476987 0.05138225
+## 2 sbrier 0.82618645 0.79477513 0.86025131
+## 3    ici 0.09017145 0.07128279 0.10680068
+## 4  lloss 0.16303220 0.14019543 0.18625625
+## 5  cstat 0.99862865 0.99736560 1.00072050&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Summary predictions
 results_dt &amp;lt;- data.table(sick_island = pp$island == &amp;#39;Biscoe&amp;#39;,
                          glm = preds_model1,
@@ -220,8 +220,8 @@ nb_plot(sick_island ~ glm + rf, data = results_dt,
 &lt;p&gt;Since we chose 30% as our decision threshold, let’s examine the neighborhood around 30% looking at 5% in either direction.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nb_plot(sick_island ~ glm + rf, data = results_dt, 
         treat_all = TRUE, treat_none = TRUE, omniscient = TRUE) &amp;amp;
-  geom_rect(xmin = 0.25, xmax = 0.35, ymin = 0, ymax = 0.5, color = &amp;#39;gray&amp;#39;, 
-            fill = &amp;#39;gray&amp;#39;, alpha = 0.01,  inherit.aes = FALSE)&lt;/code&gt;&lt;/pre&gt;
+  geom_rect(xmin = 0.25, xmax = 0.35, ymin = -Inf, ymax = Inf, 
+            fill = &amp;#39;orange&amp;#39;, color = &amp;#39;orange&amp;#39;, alpha = 0.01, inherit.aes = FALSE)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Removed 48 rows containing missing values (`geom_line()`).&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/index.en_files/figure-html/calcdca3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;In this range of interest, the random forest model provides the highest net benefit. Let’s go save some penguins!&lt;/p&gt;
