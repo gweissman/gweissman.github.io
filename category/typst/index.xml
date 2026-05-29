@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>typst | Gary Weissman, MD, MSHP</title>
+    <link>https://gweissman.github.io/category/typst/</link>
+      <atom:link href="https://gweissman.github.io/category/typst/index.xml" rel="self" type="application/rss+xml" />
+    <description>typst</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us=</language><lastBuildDate>Thu, 28 May 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <title>typst</title>
+      <link>https://gweissman.github.io/category/typst/</link>
+    </image>
+    
+    <item>
+      <title>Using Typst to write beautiful NIH grants</title>
+      <link>https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/</link>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/</guid>
+      <description>&lt;p&gt;There comes a time when you have to sit down and write a grant. You want to stay focused on the science and the strategy without distractions from your corporate word processor. And you may want an unhealthy amount of control over the typesetting and formatting of the document. If this sounds like you, you are in luck! You may have tried &lt;a href=&#34;https://www.markdownguide.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;markdown&lt;/a&gt; and &lt;a href=&#34;https://quarto.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;quarto&lt;/a&gt;, appreciated their speed and clean look, but found the control over formatting necessary for a grant to be insufficient. So you may have tried &lt;a href=&#34;https://www.latex-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LaTeX&lt;/a&gt; with incredible formatting control and beautiful output, but spent too many hours of your life debugging a missing curly brace or waiting for documents to build. The good news is, now there is &lt;a href=&#34;https://typst.app&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Typst&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;Typst is an open-source project that provides the best solution I&amp;rsquo;ve ever seen to write documents quickly, cleanly, and produce beautifully typeset output. The Typst project comes with &lt;a href=&#34;https://typst.app/docs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;extensive documentation&lt;/a&gt;, including some detailed &lt;a href=&#34;https://typst.app/docs/guides/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;guides&lt;/a&gt; for LaTeX users and building accessible documents. I&amp;rsquo;ve been using Typst for more than a year now for all of my grant proposals and manuscripts. And I love it.&lt;/p&gt;
+&lt;p&gt;For example, many of the quick formatting options are similar to markdown for bold and italics, while underlining is very simple. You could write: &lt;code&gt;This is *important* to _really_ understand what is #underline[going on].&lt;/code&gt; And get the output:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/simple-sentence_huc49a691c6557b25ddf29a3744231cc37_7853_f83199e6f8bd1a4fe5573a8be68972bb.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/simple-sentence_huc49a691c6557b25ddf29a3744231cc37_7853_b68e43b2ff41d01c6990b45bb7d41e50.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/simple-sentence_huc49a691c6557b25ddf29a3744231cc37_7853_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/images/simple-sentence_huc49a691c6557b25ddf29a3744231cc37_7853_f83199e6f8bd1a4fe5573a8be68972bb.png&#34;
+               width=&#34;468&#34;
+               height=&#34;48&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;In this blog post, I&amp;rsquo;ll explain how I tweaked the formatting settings to comply with NIH criteria and build a creative and fun workflow for grant writing. At the bottom, I&amp;rsquo;ve linked a [document template](repository](&lt;a href=&#34;https://github.com/weissman-lab/typst_grant_template&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/weissman-lab/typst_grant_template&lt;/a&gt;) that includes all of the code in one place to get you started.&lt;/p&gt;
+&lt;h1 id=&#34;setup&#34;&gt;Setup&lt;/h1&gt;
+&lt;p&gt;I work on a Mac, so install is easy via &lt;a href=&#34;https://formulae.brew.sh/formula/typst&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;brew&lt;/a&gt;. Or see the &lt;a href=&#34;https://typst.app/open-source/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Typst documentation&lt;/a&gt; for installation options across a range of platforms.&lt;/p&gt;
+&lt;p&gt;You can work with whatever interactive development environment suits your style. For quick edits, I like to work in my favorite lightweight text editor while Typst automatically watches the document and renders to PDF automatically with any changes. Once you&amp;rsquo;ve created a file, simply open your bash terminal and use&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{bash}&#34;&gt;typst watch my_grant.typ
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or if you just want to compile once, use&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{bash}&#34;&gt;typst compile my_grant.typ
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The documents render in milliseconds and the error messages are usually informative and clear.&lt;/p&gt;
+&lt;p&gt;For more complex documents, I like to use the outstanding &lt;a href=&#34;https://github.com/Myriad-Dreamin/tinymist&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tinymist Typst plugin for VS Code&lt;/a&gt; that provides a wide array of features to make writing, debugging, citations, and editing a breeze. The Typst organization also offers a &lt;a href=&#34;https://typst.app/pricing/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;web-based editing environment&lt;/a&gt; similar to Overleaf with free and paid tiers.&lt;/p&gt;
+&lt;h1 id=&#34;nih-grant-formatting&#34;&gt;NIH grant formatting&lt;/h1&gt;
+&lt;p&gt;The specific formatting requirements for your grant will vary by the &lt;a href=&#34;https://grants.nih.gov/grants-process/write-application/how-to-apply-application-guide/page-limits&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;funding mechanism&lt;/a&gt;. So be sure to review your notice of funding opportunity (NOFO) and associated documents in detail. Here are some standard NIH formatting requirements and how they can be implemented in Typst.&lt;/p&gt;
+&lt;h2 id=&#34;page-margins-font-and-spacing&#34;&gt;Page, margins, font, and spacing&lt;/h2&gt;
+&lt;p&gt;The page itself is 8.5&amp;quot; x 11&amp;quot; and margins are usually allowed down to 0.5&amp;quot;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{typst}&#34;&gt;#set page(width: 8.5in, height: 11in, margin: 0.5in)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The text is often 11pt using a standard font like Arial. I like to turn hyphenation off and justification on because I think it looks nicer.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{typst}&#34;&gt;#set text(font: &amp;quot;Arial&amp;quot;, size: 11pt, hyphenate: false)
+#set par(justify: true)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;figure-wrapping&#34;&gt;Figure wrapping&lt;/h2&gt;
+&lt;p&gt;One of the most important parts of writing a grant is inserting tables and figures at just the right size and location. This also requires wrapping text around the exhibit to maintain clarity while also maximizing your use of space on the page. When I used to write grants in LaTeX, I used the &lt;code&gt;wrapfig&lt;/code&gt; package which worked very well. Typst has a library that works similarly called &lt;a href=&#34;https://typst.app/universe/package/wrap-it/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;wrap-it&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I like a little more control over the details of the formatting, so I&amp;rsquo;ll show here another approach that requires some more manual adjustment but provides full formatting control.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{typst}&#34;&gt;// some sample text
+#lorem(46)
+
+// create a grid where the text and image will go side-by-side
+#grid(columns : (1fr, 1fr), // the relative &amp;quot;fr&amp;quot;action of the page width for each column
+  gutter: 10pt, // how much space between the columns of the grid
+  [#lorem(75)], // content of the left grid element
+  [#image(&amp;quot;exhibits/conceptual_model.svg&amp;quot;)] // content of the right grid element
+)
+
+// more text after the wrapped area
+#lorem(46)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that Typst nicely handles several image formats, including pdf, svg, png, and many others. Here&amp;rsquo;s the first draft:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;First draft of some wrapped text using a grid.&#34; srcset=&#34;
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft1_huf3bed5e53e4897a5209e5dc36646610f_87638_7f1c3ac35a9b53a79ca13d8f4d86187b.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft1_huf3bed5e53e4897a5209e5dc36646610f_87638_879d78a000a5d0512ab9f3180224f31e.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft1_huf3bed5e53e4897a5209e5dc36646610f_87638_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft1_huf3bed5e53e4897a5209e5dc36646610f_87638_7f1c3ac35a9b53a79ca13d8f4d86187b.png&#34;
+               width=&#34;760&#34;
+               height=&#34;351&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Now let&amp;rsquo;s enhance this a bit by&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;reducing extra space above and below the grid by inserting negative vertical space with &lt;code&gt;#v()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;making the text justified more nicely in the grid by adding a custom justified line break with &lt;code&gt;#jlb&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;adjusting the column width of the conceptual model by changing the relative &lt;code&gt;fr&lt;/code&gt;action&lt;/li&gt;
+&lt;li&gt;adding a caption to the image and adjust the space (&lt;code&gt;gap&lt;/code&gt;) between the figure and caption&lt;/li&gt;
+&lt;li&gt;creating a label &lt;code&gt;&amp;lt;fig-conceptual-model&lt;/code&gt; for the image so we can reference it &lt;code&gt;@fig-conceptual-model&lt;/code&gt; directly in the text&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{typst}&#34;&gt;// Custom justified line break for column text
+#let jlb = linebreak(justify: true)
+
+// some sample text
+#lorem(46)
+#v(-5pt) // get rid of extra white space
+// create a grid where the text and image will go side-by-side
+#grid(columns : (1.5fr, 1fr), // the relative &amp;quot;fr&amp;quot;action of the page width for each column
+  gutter: 10pt, // how much space between the columns of the grid
+  [#lorem(75) #jlb], // content of the left grid element
+  [#figure(image(&amp;quot;exhibits/conceptual_model.pdf&amp;quot;), 
+    gap: -10pt, caption: [Time is a circle.]
+   ) &amp;lt;fig-conceptual-model&amp;gt;
+  ] // content of the right grid element
+  )
+#v(-5pt) // get rid of extra white space
+// more text after the wrapped area
+This can all be seen very clearly in @fig-conceptual-model. #lorem(46)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;A second draft with some enhancements of wrapped text using a grid.&#34; srcset=&#34;
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft2_hud3a05bef84575aef4d08c2f375c93301_91986_027ee7c8803ae7c00e45a332375a2cb9.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft2_hud3a05bef84575aef4d08c2f375c93301_91986_91b6eec31a649c383fb318805b16bca9.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft2_hud3a05bef84575aef4d08c2f375c93301_91986_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft2_hud3a05bef84575aef4d08c2f375c93301_91986_027ee7c8803ae7c00e45a332375a2cb9.png&#34;
+               width=&#34;760&#34;
+               height=&#34;344&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;section-headers&#34;&gt;Section headers&lt;/h2&gt;
+&lt;p&gt;An important part of writing a grant is designation sections. You could do this using the built-in header formats:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{typst}&#34;&gt;= Approach
+
+This section describes the general approach to the study.
+
+== Preliminary Data
+
+This is a subsection describing our promising preliminary data.
+
+=== First study results
+
+Here is sub-subsection about how this proposal is feasible.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&amp;rsquo;s the output using the default formatting.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Default formatting of headers.&#34; srcset=&#34;
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers1_hu594dc9598b0cc7d8793014ae2095093e_22316_a079d3783fdb9398fc74cb380524ab80.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers1_hu594dc9598b0cc7d8793014ae2095093e_22316_9aba85063227f6b28bd5b3c3d9877add.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers1_hu594dc9598b0cc7d8793014ae2095093e_22316_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers1_hu594dc9598b0cc7d8793014ae2095093e_22316_a079d3783fdb9398fc74cb380524ab80.png&#34;
+               width=&#34;570&#34;
+               height=&#34;238&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;And now let&amp;rsquo;s spruce these up a bit with some customizations.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{typst}&#34;&gt;// Set up headings
+#set heading(numbering: &amp;quot;A.1.a.&amp;quot;) 
+#show heading: set text(size: 12pt)
+#show heading.where(level: 1): it =&amp;gt; {
+  box(
+  stroke: (bottom: 0.5pt),
+  inset: (bottom: 0.2em),
+)[#text(size: 11pt, weight: &amp;quot;bold&amp;quot;, it)]
+}
+
+#show heading.where(level: 2): it =&amp;gt; {
+ text(size: 11pt, weight: &amp;quot;bold&amp;quot;, it)
+ v(5pt)
+}
+
+#show heading.where(level: 3): it =&amp;gt; {
+  box(
+  stroke: (bottom: 0.5pt),
+  inset: (bottom: 0.2em),
+)[#text(size: 11pt, weight: &amp;quot;medium&amp;quot;, it)]
+}
+
+= Approach
+
+This section describes the general approach to the study.
+
+== Preliminary Data
+
+This is a subsection describing our promising preliminary data.
+
+=== First study results
+
+Here is sub-subsection about how this proposal is feasible.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Customized numbering for headers.&#34; srcset=&#34;
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers2_hu01a1d9d05ea0b6f750487e74c7879e1d_21928_3516733df06f5bd24413157ebb0c8f0a.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers2_hu01a1d9d05ea0b6f750487e74c7879e1d_21928_16108b6c15980607e2ca455c67021a32.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers2_hu01a1d9d05ea0b6f750487e74c7879e1d_21928_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers2_hu01a1d9d05ea0b6f750487e74c7879e1d_21928_3516733df06f5bd24413157ebb0c8f0a.png&#34;
+               width=&#34;526&#34;
+               height=&#34;234&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;call-out-boxes&#34;&gt;Call-out boxes&lt;/h2&gt;
+&lt;p&gt;Another feature I like to use in grant writing is a call-out box. This might be used to highlight a new section for a specific aim, underscore a particular innovation, or draw attention to an important scientific choice that you anticipate a reviewer will want to know more about.&lt;/p&gt;
+&lt;p&gt;There are a few nice libraries in Typst to do this with minimal overhead. I will use &lt;a href=&#34;https://typst.app/universe/package/showybox/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;showybox&lt;/a&gt; here though there are others in the &lt;a href=&#34;https://typst.app/universe/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Typst package universe&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{typst}&#34;&gt;#import &amp;quot;@preview/showybox:2.0.4&amp;quot;: showybox // for pop-up boxes
+
+#showybox(frame: (
+    border-color: blue,
+    title-color: blue.lighten(30%),
+    body-color: blue.lighten(95%),
+    footer-color: blue.lighten(80%)
+  ),[
+  *Specific Aim 1: Develop a new method to improve the estimate of outcomes in this population.*
+])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This creates a nice divider to highlight the beginning of a new section describing an aim.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Specific aim section header using a call-out box.&#34; srcset=&#34;
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/aim-callout-box_hu6554bfd286ad3cc45de46f8e20a1c145_11815_52ee5eba76741163a4b0a6aa2c30093f.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/aim-callout-box_hu6554bfd286ad3cc45de46f8e20a1c145_11815_9c16a1967fb761e6890480ab336066eb.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/aim-callout-box_hu6554bfd286ad3cc45de46f8e20a1c145_11815_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/images/aim-callout-box_hu6554bfd286ad3cc45de46f8e20a1c145_11815_52ee5eba76741163a4b0a6aa2c30093f.png&#34;
+               width=&#34;760&#34;
+               height=&#34;51&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Or use the same approach to call the reviewer&amp;rsquo;s attention to a methodologic choice in your proposal.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{typst}&#34;&gt;#showybox(frame: (
+    border-color: blue,
+    title-color: blue.lighten(30%),
+    body-color: blue.lighten(95%),
+    footer-color: blue.lighten(80%)
+  ),[
+  *Critical analytic decision: Represent mortality as a binary variable.*
+], 
+[While there are stories of people passing back and forth between this world and the next (e.g. see Orpheus and Euridyce), we have elected to model mortaity as a binary outcome. Although this reduces the validity of any measurements related to study participants traveling to and subsequently returning from the underworld, it does reflect a more stable representation for most planned study participants who are real people and not mythical figures.] 
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Using a call-out box to highlight a critical decision in your approach.&#34; srcset=&#34;
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/critical-decision_hu410c3ed7adec74976415b15f48d8dc63_42764_7a2f1429ed0428cd996264e712dc9696.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/critical-decision_hu410c3ed7adec74976415b15f48d8dc63_42764_1ee5f29294f6a9c86e8e0434d46f5c09.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/critical-decision_hu410c3ed7adec74976415b15f48d8dc63_42764_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/images/critical-decision_hu410c3ed7adec74976415b15f48d8dc63_42764_7a2f1429ed0428cd996264e712dc9696.png&#34;
+               width=&#34;760&#34;
+               height=&#34;162&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;p&gt;Typst provides seamless integration wtih your current &lt;code&gt;.bib&lt;/code&gt; file. I use Zotero as a reference manager then drag references into project-specific bib files. The VS Code plugin mentioned above reads those bib files to provide autocompletion while typing. Typst does also provide a custom reference format (&lt;a href=&#34;https://typst.app/docs/reference/model/bibliography/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hayagriva&lt;/a&gt;) that works with &lt;code&gt;.yaml&lt;/code&gt; files and was developed specifically for Typst, though I have found it easier to stick with my current bibtex-based workflow. Here&amp;rsquo;s an example.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s say you have your references saved in the file &lt;code&gt;grant_references.bib&lt;/code&gt; which looks like:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@article{tversky1974judgment,
+  title={Judgment under uncertainty: Heuristics and biases},
+  author={Tversky, Amos and Kahneman, Daniel},
+  journal={Science},
+  volume={185},
+  number={4157},
+  pages={1124--1131},
+  year={1974},
+  publisher={American Association for the Advancement of Science}
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can cite this in the text using the &lt;code&gt;@&lt;/code&gt; symbol and creating a bibliography. Typst has many &lt;a href=&#34;https://typst.app/docs/reference/model/bibliography/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;built-in bibliography formats&lt;/a&gt; though you can customize your own with a &lt;code&gt;.csl&lt;/code&gt; file as needed.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{typst}&#34;&gt;
+One of the best papers I&#39;ve ever read.@tversky1974judgment
+
+= References
+
+#bibliography(&amp;quot;grant_references.bib&amp;quot;, title : none, style: &amp;quot;vancouver-superscript&amp;quot;)  
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This produces:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Citations with a reference section.&#34; srcset=&#34;
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/references_hu7702c73a89ce8f036a4cfed34017da9e_18715_74f4fe1fced411df1c12bd72aa2a664e.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/references_hu7702c73a89ce8f036a4cfed34017da9e_18715_a6fac43527c53c8845856aab9e817060.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/references_hu7702c73a89ce8f036a4cfed34017da9e_18715_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/images/references_hu7702c73a89ce8f036a4cfed34017da9e_18715_74f4fe1fced411df1c12bd72aa2a664e.png&#34;
+               width=&#34;760&#34;
+               height=&#34;130&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;One thing to note is that the in-line citation in the resultant PDF file will include a hyperlink to the reference in the bibliography section. While this can be helpful for reading, it&amp;rsquo;s not permitted in NIH PDF files. And I haven&amp;rsquo;t found a way to turn this off during the compilation process. The easiest fix is to print the resultant PDF to another PDF file which eliminates the internal hyperlinks prior to submitting to NIH.&lt;/p&gt;
+&lt;h2 id=&#34;miscellaneous-formatting&#34;&gt;Miscellaneous formatting&lt;/h2&gt;
+&lt;p&gt;Here are a few extra formatting tips and tricks I learned along the way.&lt;/p&gt;
+&lt;p&gt;Sometimes, if a paragraph leaves only a line or two at the bottom or top of a page, Typst will move the entire paragraph up or down to keep those lines from hanging. This results in extra whitespace that is not used and is obviously a bad use of real estate in a proposal even if it does look a little nice from a typesetting standpoint. The solution to this, not very nicely named, is to minimize widows and orphans.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{typst}&#34;&gt;// Stop incomplete paragraphs from breaking to next page
+#set text(costs: (widow: 0%, orphan: 0%))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Another nice feature of Typst is the ability to insert code from other documents. This is helpful if you want to keep sections of your grant in separate files for cleaner organization and then stitch them together into a full document. Similar to LaTeX&amp;rsquo;s &lt;code&gt;\include{}&lt;/code&gt;, Typst provides &lt;code&gt;#include(&amp;quot;extras/myfile.typ&amp;quot;)&lt;/code&gt; to accomplish the same.&lt;/p&gt;
+&lt;p&gt;I can&amp;rsquo;t explain why, but sometimes a superscript will randomly appear in bold. To fix this, I include this at the top of the document and it seems to fix the problem:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{typst}&#34;&gt;// Sometimes superscripts randomly appear bold, so do this:
+// https://github.com/typst/typst/issues/4006
+#set super(typographic: false)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Typst has so many other packages the Universe that are worth exploring and may be helpful for your work. Here&amp;rsquo;s one I found recently called &lt;code&gt;lilaq&lt;/code&gt; that makes &lt;a href=&#34;https://typst.app/universe/package/lilaq/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;very nice data visualizations&lt;/a&gt;. For example, from some sample code on the lilaq website, you can write:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{typst}&#34;&gt;#import &amp;quot;@preview/lilaq:0.6.0&amp;quot; as lq
+
+#let x = lq.linspace(0, 10)
+#let y = x.map(x =&amp;gt; calc.sin(0.1 * x * x))
+
+#lq.diagram(
+  lq.plot(x, y),
+  lq.plot(x, x =&amp;gt; calc.sin(x + 0.541))
+)
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Which will produce:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Data plotting using the lilaq package.&#34; srcset=&#34;
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/lilaq-plot_hu5da2933d97c14a5223d09cab17fcf13c_28921_73b38e9cf4577268c1d20f9fab0840e5.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/lilaq-plot_hu5da2933d97c14a5223d09cab17fcf13c_28921_5e94a9c000237428a2deb96dd3f626e9.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/lilaq-plot_hu5da2933d97c14a5223d09cab17fcf13c_28921_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/images/lilaq-plot_hu5da2933d97c14a5223d09cab17fcf13c_28921_73b38e9cf4577268c1d20f9fab0840e5.png&#34;
+               width=&#34;460&#34;
+               height=&#34;308&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h1 id=&#34;putting-it-all-together&#34;&gt;Putting it all together&lt;/h1&gt;
+&lt;p&gt;Combining all of this into a single document looks like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{typst}&#34;&gt;#import &amp;quot;@preview/showybox:2.0.4&amp;quot;: showybox // for pop-up boxes
+#import &amp;quot;@preview/lilaq:0.6.0&amp;quot; as lq
+
+#set page(width: 8.5in, height: 11in, margin: 0.5in)
+#set text(font: &amp;quot;Arial&amp;quot;, size: 11pt, hyphenate: false)
+#set par(justify: true)
+
+// Stop incomplete paragraphs from breaking to next page
+#set text(costs: (widow: 0%, orphan: 0%))
+
+// Sometimes superscripts randomly appear bold, so do this:
+// https://github.com/typst/typst/issues/4006
+#set super(typographic: false)
+
+// Make captions small font and fix spacing (NIH allows 8pt font in captions)
+#show figure.caption: it =&amp;gt; [#par(leading: 0.3em)[
+  #text(8pt, it.supplement)
+  #text(8pt, context it.counter.display(it.numbering))#text(8pt,[:])
+  #text(8pt, it.body)]
+]
+
+// Custom justified line break for column text
+#let jlb = linebreak(justify: true)
+
+// Set up headings
+#set heading(numbering: &amp;quot;A.1.a.&amp;quot;) 
+#show heading: set text(size: 12pt)
+#show heading.where(level: 1): it =&amp;gt; {
+  box(
+  stroke: (bottom: 0.5pt),
+  inset: (bottom: 0.2em),
+)[#text(size: 11pt, weight: &amp;quot;bold&amp;quot;, it)]
+}
+
+#show heading.where(level: 2): it =&amp;gt; {
+ text(size: 11pt, weight: &amp;quot;bold&amp;quot;, it)
+ v(5pt)
+}
+
+#show heading.where(level: 3): it =&amp;gt; {
+  box(
+  stroke: (bottom: 0.5pt),
+  inset: (bottom: 0.2em),
+)[#text(size: 11pt, weight: &amp;quot;medium&amp;quot;, it)]
+}
+
+
+
+= Approach 
+
+One of the best papers I&#39;ve ever read.@tversky1974judgment #lorem(25)
+
+== More details
+
+This is a subsection with details about all of this work. #lorem(40)
+#v(-5pt) // get rid of extra white space
+// create a grid where the text and image will go side-by-side
+#grid(columns : (1.5fr, 1fr), // the relative &amp;quot;fr&amp;quot;action of the page width for each column
+  gutter: 10pt, // how much space between the columns of the grid
+  [#lorem(75) #jlb], // content of the left grid element
+  [#figure(image(&amp;quot;exhibits/conceptual_model.pdf&amp;quot;), gap: -10pt, caption: [Time is a circle.]) &amp;lt;fig-conceptual-model&amp;gt;] // content of the right grid element
+  )
+#v(-5pt) // get rid of extra white space
+// more text after the wrapped area
+This can all be seen very clearly in @fig-conceptual-model. #lorem(25)
+
+=== Even more details
+
+This is a sub-subsection. This is *important* to _really_ understand what is #underline[going on].
+
+#showybox(frame: (
+    border-color: blue,
+    title-color: blue.lighten(30%),
+    body-color: blue.lighten(95%),
+    footer-color: blue.lighten(80%)
+  ),[
+  *Specific Aim 1: Develop a new method to improve the estimate of outcomes in this population.*
+])
+
+#showybox(frame: (
+    border-color: blue,
+    title-color: blue.lighten(30%),
+    body-color: blue.lighten(95%),
+    footer-color: blue.lighten(80%)
+  ),[
+  *Critical analytic decision: Represent mortality as a binary variable.*
+], 
+[While there are stories of people passing back and forth between this world and the next (e.g. see Orpheus and Euridyce), we have elected to model mortality as a binary outcome. Although this reduces the validity of any measurements related to study participants traveling to and subsequently returning from the underworld, it does reflect a more stable representation for most planned study participants who are real people and not mythical figures.] 
+)
+
+#grid(columns: (1.6fr, 1fr), gutter: 10pt,
+[#lorem(75)],
+[
+  #let x = lq.linspace(0, 10)
+#let y = x.map(x =&amp;gt; calc.sin(0.1 * x * x))
+
+#lq.diagram(
+  lq.plot(x, y),
+  lq.plot(x, x =&amp;gt; calc.sin(x + 0.541))
+)
+]
+)
+
+= References
+
+#bibliography(&amp;quot;grant_references.bib&amp;quot;, title : none, style: &amp;quot;vancouver-superscript&amp;quot;)  
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&amp;rsquo;s what the compiled page might look like using all these tricks in one place:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Full page of grant text.&#34; srcset=&#34;
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/full-page_hu42d6db1b6af7f8957669aa1aa6c21343_348615_407734227f33effa0f9a970551a62248.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/full-page_hu42d6db1b6af7f8957669aa1aa6c21343_348615_d4230653988cbff2d0d3e3c4ec1a582b.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/full-page_hu42d6db1b6af7f8957669aa1aa6c21343_348615_1200x1200_fit_lanczos_3.png 1200w&#34;
+               src=&#34;https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/images/full-page_hu42d6db1b6af7f8957669aa1aa6c21343_348615_407734227f33effa0f9a970551a62248.png&#34;
+               width=&#34;589&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;And here&amp;rsquo;s a simple GitHub &lt;a href=&#34;https://github.com/weissman-lab/typst_grant_template&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;repository&lt;/a&gt; with the files needed to start your own grant proposal. Thanks, Typst team! And happy writing!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

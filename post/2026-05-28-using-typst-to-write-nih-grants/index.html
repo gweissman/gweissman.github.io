@@ -1,0 +1,1669 @@
+<!DOCTYPE html><html lang="en-us=" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="There comes a time when you have to sit down and write a grant. You want to stay focused on the science and the strategy without distractions from your corporate word processor." />
+
+  
+  <link rel="alternate" hreflang="en-us=" href="https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.9f457a613f02e9027025db7311c58ccf.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@@garyweissman" />
+    <meta property="twitter:creator" content="@@garyweissman" />
+  
+  <meta property="og:site_name" content="Gary Weissman, MD, MSHP" />
+  <meta property="og:url" content="https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/" />
+  <meta property="og:title" content="Using Typst to write beautiful NIH grants | Gary Weissman, MD, MSHP" />
+  <meta property="og:description" content="There comes a time when you have to sit down and write a grant. You want to stay focused on the science and the strategy without distractions from your corporate word processor." /><meta property="og:image" content="https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us=" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2026-05-28T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2026-05-28T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/"
+  },
+  "headline": "Using Typst to write beautiful NIH grants",
+  
+  "datePublished": "2026-05-28T00:00:00Z",
+  "dateModified": "2026-05-28T00:00:00Z",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Gary Weissman Lab",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "There comes a time when you have to sit down and write a grant. You want to stay focused on the science and the strategy without distractions from your corporate word processor."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Using Typst to write beautiful NIH grants | Gary Weissman, MD, MSHP</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="691983cf3a7d784b9b86911ab0f04e02" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Gary Weissman, MD, MSHP</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Gary Weissman, MD, MSHP</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Using Typst to write beautiful NIH grants</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 28, 2026
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    12 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/typst/">typst</a>, <a href="/category/grant/">grant</a>, <a href="/category/nih/">NIH</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>There comes a time when you have to sit down and write a grant. You want to stay focused on the science and the strategy without distractions from your corporate word processor. And you may want an unhealthy amount of control over the typesetting and formatting of the document. If this sounds like you, you are in luck! You may have tried <a href="https://www.markdownguide.org/" target="_blank" rel="noopener">markdown</a> and <a href="https://quarto.org/" target="_blank" rel="noopener">quarto</a>, appreciated their speed and clean look, but found the control over formatting necessary for a grant to be insufficient. So you may have tried <a href="https://www.latex-project.org/" target="_blank" rel="noopener">LaTeX</a> with incredible formatting control and beautiful output, but spent too many hours of your life debugging a missing curly brace or waiting for documents to build. The good news is, now there is <a href="https://typst.app" target="_blank" rel="noopener">Typst</a>!</p>
+<p>Typst is an open-source project that provides the best solution I&rsquo;ve ever seen to write documents quickly, cleanly, and produce beautifully typeset output. The Typst project comes with <a href="https://typst.app/docs/" target="_blank" rel="noopener">extensive documentation</a>, including some detailed <a href="https://typst.app/docs/guides/" target="_blank" rel="noopener">guides</a> for LaTeX users and building accessible documents. I&rsquo;ve been using Typst for more than a year now for all of my grant proposals and manuscripts. And I love it.</p>
+<p>For example, many of the quick formatting options are similar to markdown for bold and italics, while underlining is very simple. You could write: <code>This is *important* to _really_ understand what is #underline[going on].</code> And get the output:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/simple-sentence_huc49a691c6557b25ddf29a3744231cc37_7853_f83199e6f8bd1a4fe5573a8be68972bb.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/simple-sentence_huc49a691c6557b25ddf29a3744231cc37_7853_b68e43b2ff41d01c6990b45bb7d41e50.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/simple-sentence_huc49a691c6557b25ddf29a3744231cc37_7853_1200x1200_fit_lanczos_3.png 1200w"
+               src="/post/2026-05-28-using-typst-to-write-nih-grants/images/simple-sentence_huc49a691c6557b25ddf29a3744231cc37_7853_f83199e6f8bd1a4fe5573a8be68972bb.png"
+               width="468"
+               height="48"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>In this blog post, I&rsquo;ll explain how I tweaked the formatting settings to comply with NIH criteria and build a creative and fun workflow for grant writing. At the bottom, I&rsquo;ve linked a [document template](repository](<a href="https://github.com/weissman-lab/typst_grant_template" target="_blank" rel="noopener">https://github.com/weissman-lab/typst_grant_template</a>) that includes all of the code in one place to get you started.</p>
+<h1 id="setup">Setup</h1>
+<p>I work on a Mac, so install is easy via <a href="https://formulae.brew.sh/formula/typst" target="_blank" rel="noopener">brew</a>. Or see the <a href="https://typst.app/open-source/" target="_blank" rel="noopener">Typst documentation</a> for installation options across a range of platforms.</p>
+<p>You can work with whatever interactive development environment suits your style. For quick edits, I like to work in my favorite lightweight text editor while Typst automatically watches the document and renders to PDF automatically with any changes. Once you&rsquo;ve created a file, simply open your bash terminal and use</p>
+<pre><code class="language-{bash}">typst watch my_grant.typ
+</code></pre>
+<p>Or if you just want to compile once, use</p>
+<pre><code class="language-{bash}">typst compile my_grant.typ
+</code></pre>
+<p>The documents render in milliseconds and the error messages are usually informative and clear.</p>
+<p>For more complex documents, I like to use the outstanding <a href="https://github.com/Myriad-Dreamin/tinymist" target="_blank" rel="noopener">Tinymist Typst plugin for VS Code</a> that provides a wide array of features to make writing, debugging, citations, and editing a breeze. The Typst organization also offers a <a href="https://typst.app/pricing/" target="_blank" rel="noopener">web-based editing environment</a> similar to Overleaf with free and paid tiers.</p>
+<h1 id="nih-grant-formatting">NIH grant formatting</h1>
+<p>The specific formatting requirements for your grant will vary by the <a href="https://grants.nih.gov/grants-process/write-application/how-to-apply-application-guide/page-limits" target="_blank" rel="noopener">funding mechanism</a>. So be sure to review your notice of funding opportunity (NOFO) and associated documents in detail. Here are some standard NIH formatting requirements and how they can be implemented in Typst.</p>
+<h2 id="page-margins-font-and-spacing">Page, margins, font, and spacing</h2>
+<p>The page itself is 8.5&quot; x 11&quot; and margins are usually allowed down to 0.5&quot;.</p>
+<pre><code class="language-{typst}">#set page(width: 8.5in, height: 11in, margin: 0.5in)
+</code></pre>
+<p>The text is often 11pt using a standard font like Arial. I like to turn hyphenation off and justification on because I think it looks nicer.</p>
+<pre><code class="language-{typst}">#set text(font: &quot;Arial&quot;, size: 11pt, hyphenate: false)
+#set par(justify: true)
+</code></pre>
+<h2 id="figure-wrapping">Figure wrapping</h2>
+<p>One of the most important parts of writing a grant is inserting tables and figures at just the right size and location. This also requires wrapping text around the exhibit to maintain clarity while also maximizing your use of space on the page. When I used to write grants in LaTeX, I used the <code>wrapfig</code> package which worked very well. Typst has a library that works similarly called <a href="https://typst.app/universe/package/wrap-it/" target="_blank" rel="noopener"><code>wrap-it</code></a>.</p>
+<p>I like a little more control over the details of the formatting, so I&rsquo;ll show here another approach that requires some more manual adjustment but provides full formatting control.</p>
+<pre><code class="language-{typst}">// some sample text
+#lorem(46)
+
+// create a grid where the text and image will go side-by-side
+#grid(columns : (1fr, 1fr), // the relative &quot;fr&quot;action of the page width for each column
+  gutter: 10pt, // how much space between the columns of the grid
+  [#lorem(75)], // content of the left grid element
+  [#image(&quot;exhibits/conceptual_model.svg&quot;)] // content of the right grid element
+)
+
+// more text after the wrapped area
+#lorem(46)
+</code></pre>
+<p>Note that Typst nicely handles several image formats, including pdf, svg, png, and many others. Here&rsquo;s the first draft:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="First draft of some wrapped text using a grid." srcset="
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft1_huf3bed5e53e4897a5209e5dc36646610f_87638_7f1c3ac35a9b53a79ca13d8f4d86187b.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft1_huf3bed5e53e4897a5209e5dc36646610f_87638_879d78a000a5d0512ab9f3180224f31e.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft1_huf3bed5e53e4897a5209e5dc36646610f_87638_1200x1200_fit_lanczos_3.png 1200w"
+               src="/post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft1_huf3bed5e53e4897a5209e5dc36646610f_87638_7f1c3ac35a9b53a79ca13d8f4d86187b.png"
+               width="760"
+               height="351"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Now let&rsquo;s enhance this a bit by</p>
+<ul>
+<li>reducing extra space above and below the grid by inserting negative vertical space with <code>#v()</code></li>
+<li>making the text justified more nicely in the grid by adding a custom justified line break with <code>#jlb</code></li>
+<li>adjusting the column width of the conceptual model by changing the relative <code>fr</code>action</li>
+<li>adding a caption to the image and adjust the space (<code>gap</code>) between the figure and caption</li>
+<li>creating a label <code>&lt;fig-conceptual-model</code> for the image so we can reference it <code>@fig-conceptual-model</code> directly in the text</li>
+</ul>
+<pre><code class="language-{typst}">// Custom justified line break for column text
+#let jlb = linebreak(justify: true)
+
+// some sample text
+#lorem(46)
+#v(-5pt) // get rid of extra white space
+// create a grid where the text and image will go side-by-side
+#grid(columns : (1.5fr, 1fr), // the relative &quot;fr&quot;action of the page width for each column
+  gutter: 10pt, // how much space between the columns of the grid
+  [#lorem(75) #jlb], // content of the left grid element
+  [#figure(image(&quot;exhibits/conceptual_model.pdf&quot;), 
+    gap: -10pt, caption: [Time is a circle.]
+   ) &lt;fig-conceptual-model&gt;
+  ] // content of the right grid element
+  )
+#v(-5pt) // get rid of extra white space
+// more text after the wrapped area
+This can all be seen very clearly in @fig-conceptual-model. #lorem(46)
+</code></pre>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="A second draft with some enhancements of wrapped text using a grid." srcset="
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft2_hud3a05bef84575aef4d08c2f375c93301_91986_027ee7c8803ae7c00e45a332375a2cb9.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft2_hud3a05bef84575aef4d08c2f375c93301_91986_91b6eec31a649c383fb318805b16bca9.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft2_hud3a05bef84575aef4d08c2f375c93301_91986_1200x1200_fit_lanczos_3.png 1200w"
+               src="/post/2026-05-28-using-typst-to-write-nih-grants/images/image-wrap-draft2_hud3a05bef84575aef4d08c2f375c93301_91986_027ee7c8803ae7c00e45a332375a2cb9.png"
+               width="760"
+               height="344"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="section-headers">Section headers</h2>
+<p>An important part of writing a grant is designation sections. You could do this using the built-in header formats:</p>
+<pre><code class="language-{typst}">= Approach
+
+This section describes the general approach to the study.
+
+== Preliminary Data
+
+This is a subsection describing our promising preliminary data.
+
+=== First study results
+
+Here is sub-subsection about how this proposal is feasible.
+</code></pre>
+<p>Here&rsquo;s the output using the default formatting.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="Default formatting of headers." srcset="
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers1_hu594dc9598b0cc7d8793014ae2095093e_22316_a079d3783fdb9398fc74cb380524ab80.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers1_hu594dc9598b0cc7d8793014ae2095093e_22316_9aba85063227f6b28bd5b3c3d9877add.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers1_hu594dc9598b0cc7d8793014ae2095093e_22316_1200x1200_fit_lanczos_3.png 1200w"
+               src="/post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers1_hu594dc9598b0cc7d8793014ae2095093e_22316_a079d3783fdb9398fc74cb380524ab80.png"
+               width="570"
+               height="238"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>And now let&rsquo;s spruce these up a bit with some customizations.</p>
+<pre><code class="language-{typst}">// Set up headings
+#set heading(numbering: &quot;A.1.a.&quot;) 
+#show heading: set text(size: 12pt)
+#show heading.where(level: 1): it =&gt; {
+  box(
+  stroke: (bottom: 0.5pt),
+  inset: (bottom: 0.2em),
+)[#text(size: 11pt, weight: &quot;bold&quot;, it)]
+}
+
+#show heading.where(level: 2): it =&gt; {
+ text(size: 11pt, weight: &quot;bold&quot;, it)
+ v(5pt)
+}
+
+#show heading.where(level: 3): it =&gt; {
+  box(
+  stroke: (bottom: 0.5pt),
+  inset: (bottom: 0.2em),
+)[#text(size: 11pt, weight: &quot;medium&quot;, it)]
+}
+
+= Approach
+
+This section describes the general approach to the study.
+
+== Preliminary Data
+
+This is a subsection describing our promising preliminary data.
+
+=== First study results
+
+Here is sub-subsection about how this proposal is feasible.
+</code></pre>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="Customized numbering for headers." srcset="
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers2_hu01a1d9d05ea0b6f750487e74c7879e1d_21928_3516733df06f5bd24413157ebb0c8f0a.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers2_hu01a1d9d05ea0b6f750487e74c7879e1d_21928_16108b6c15980607e2ca455c67021a32.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers2_hu01a1d9d05ea0b6f750487e74c7879e1d_21928_1200x1200_fit_lanczos_3.png 1200w"
+               src="/post/2026-05-28-using-typst-to-write-nih-grants/images/section-headers2_hu01a1d9d05ea0b6f750487e74c7879e1d_21928_3516733df06f5bd24413157ebb0c8f0a.png"
+               width="526"
+               height="234"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="call-out-boxes">Call-out boxes</h2>
+<p>Another feature I like to use in grant writing is a call-out box. This might be used to highlight a new section for a specific aim, underscore a particular innovation, or draw attention to an important scientific choice that you anticipate a reviewer will want to know more about.</p>
+<p>There are a few nice libraries in Typst to do this with minimal overhead. I will use <a href="https://typst.app/universe/package/showybox/" target="_blank" rel="noopener">showybox</a> here though there are others in the <a href="https://typst.app/universe/" target="_blank" rel="noopener">Typst package universe</a>.</p>
+<pre><code class="language-{typst}">#import &quot;@preview/showybox:2.0.4&quot;: showybox // for pop-up boxes
+
+#showybox(frame: (
+    border-color: blue,
+    title-color: blue.lighten(30%),
+    body-color: blue.lighten(95%),
+    footer-color: blue.lighten(80%)
+  ),[
+  *Specific Aim 1: Develop a new method to improve the estimate of outcomes in this population.*
+])
+</code></pre>
+<p>This creates a nice divider to highlight the beginning of a new section describing an aim.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="Specific aim section header using a call-out box." srcset="
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/aim-callout-box_hu6554bfd286ad3cc45de46f8e20a1c145_11815_52ee5eba76741163a4b0a6aa2c30093f.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/aim-callout-box_hu6554bfd286ad3cc45de46f8e20a1c145_11815_9c16a1967fb761e6890480ab336066eb.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/aim-callout-box_hu6554bfd286ad3cc45de46f8e20a1c145_11815_1200x1200_fit_lanczos_3.png 1200w"
+               src="/post/2026-05-28-using-typst-to-write-nih-grants/images/aim-callout-box_hu6554bfd286ad3cc45de46f8e20a1c145_11815_52ee5eba76741163a4b0a6aa2c30093f.png"
+               width="760"
+               height="51"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Or use the same approach to call the reviewer&rsquo;s attention to a methodologic choice in your proposal.</p>
+<pre><code class="language-{typst}">#showybox(frame: (
+    border-color: blue,
+    title-color: blue.lighten(30%),
+    body-color: blue.lighten(95%),
+    footer-color: blue.lighten(80%)
+  ),[
+  *Critical analytic decision: Represent mortality as a binary variable.*
+], 
+[While there are stories of people passing back and forth between this world and the next (e.g. see Orpheus and Euridyce), we have elected to model mortaity as a binary outcome. Although this reduces the validity of any measurements related to study participants traveling to and subsequently returning from the underworld, it does reflect a more stable representation for most planned study participants who are real people and not mythical figures.] 
+)
+</code></pre>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="Using a call-out box to highlight a critical decision in your approach." srcset="
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/critical-decision_hu410c3ed7adec74976415b15f48d8dc63_42764_7a2f1429ed0428cd996264e712dc9696.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/critical-decision_hu410c3ed7adec74976415b15f48d8dc63_42764_1ee5f29294f6a9c86e8e0434d46f5c09.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/critical-decision_hu410c3ed7adec74976415b15f48d8dc63_42764_1200x1200_fit_lanczos_3.png 1200w"
+               src="/post/2026-05-28-using-typst-to-write-nih-grants/images/critical-decision_hu410c3ed7adec74976415b15f48d8dc63_42764_7a2f1429ed0428cd996264e712dc9696.png"
+               width="760"
+               height="162"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="references">References</h2>
+<p>Typst provides seamless integration wtih your current <code>.bib</code> file. I use Zotero as a reference manager then drag references into project-specific bib files. The VS Code plugin mentioned above reads those bib files to provide autocompletion while typing. Typst does also provide a custom reference format (<a href="https://typst.app/docs/reference/model/bibliography/" target="_blank" rel="noopener">Hayagriva</a>) that works with <code>.yaml</code> files and was developed specifically for Typst, though I have found it easier to stick with my current bibtex-based workflow. Here&rsquo;s an example.</p>
+<p>Let&rsquo;s say you have your references saved in the file <code>grant_references.bib</code> which looks like:</p>
+<pre><code>@article{tversky1974judgment,
+  title={Judgment under uncertainty: Heuristics and biases},
+  author={Tversky, Amos and Kahneman, Daniel},
+  journal={Science},
+  volume={185},
+  number={4157},
+  pages={1124--1131},
+  year={1974},
+  publisher={American Association for the Advancement of Science}
+}
+
+</code></pre>
+<p>You can cite this in the text using the <code>@</code> symbol and creating a bibliography. Typst has many <a href="https://typst.app/docs/reference/model/bibliography/" target="_blank" rel="noopener">built-in bibliography formats</a> though you can customize your own with a <code>.csl</code> file as needed.</p>
+<pre><code class="language-{typst}">
+One of the best papers I've ever read.@tversky1974judgment
+
+= References
+
+#bibliography(&quot;grant_references.bib&quot;, title : none, style: &quot;vancouver-superscript&quot;)  
+
+</code></pre>
+<p>This produces:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="Citations with a reference section." srcset="
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/references_hu7702c73a89ce8f036a4cfed34017da9e_18715_74f4fe1fced411df1c12bd72aa2a664e.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/references_hu7702c73a89ce8f036a4cfed34017da9e_18715_a6fac43527c53c8845856aab9e817060.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/references_hu7702c73a89ce8f036a4cfed34017da9e_18715_1200x1200_fit_lanczos_3.png 1200w"
+               src="/post/2026-05-28-using-typst-to-write-nih-grants/images/references_hu7702c73a89ce8f036a4cfed34017da9e_18715_74f4fe1fced411df1c12bd72aa2a664e.png"
+               width="760"
+               height="130"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>One thing to note is that the in-line citation in the resultant PDF file will include a hyperlink to the reference in the bibliography section. While this can be helpful for reading, it&rsquo;s not permitted in NIH PDF files. And I haven&rsquo;t found a way to turn this off during the compilation process. The easiest fix is to print the resultant PDF to another PDF file which eliminates the internal hyperlinks prior to submitting to NIH.</p>
+<h2 id="miscellaneous-formatting">Miscellaneous formatting</h2>
+<p>Here are a few extra formatting tips and tricks I learned along the way.</p>
+<p>Sometimes, if a paragraph leaves only a line or two at the bottom or top of a page, Typst will move the entire paragraph up or down to keep those lines from hanging. This results in extra whitespace that is not used and is obviously a bad use of real estate in a proposal even if it does look a little nice from a typesetting standpoint. The solution to this, not very nicely named, is to minimize widows and orphans.</p>
+<pre><code class="language-{typst}">// Stop incomplete paragraphs from breaking to next page
+#set text(costs: (widow: 0%, orphan: 0%))
+</code></pre>
+<p>Another nice feature of Typst is the ability to insert code from other documents. This is helpful if you want to keep sections of your grant in separate files for cleaner organization and then stitch them together into a full document. Similar to LaTeX&rsquo;s <code>\include{}</code>, Typst provides <code>#include(&quot;extras/myfile.typ&quot;)</code> to accomplish the same.</p>
+<p>I can&rsquo;t explain why, but sometimes a superscript will randomly appear in bold. To fix this, I include this at the top of the document and it seems to fix the problem:</p>
+<pre><code class="language-{typst}">// Sometimes superscripts randomly appear bold, so do this:
+// https://github.com/typst/typst/issues/4006
+#set super(typographic: false)
+</code></pre>
+<p>Typst has so many other packages the Universe that are worth exploring and may be helpful for your work. Here&rsquo;s one I found recently called <code>lilaq</code> that makes <a href="https://typst.app/universe/package/lilaq/" target="_blank" rel="noopener">very nice data visualizations</a>. For example, from some sample code on the lilaq website, you can write:</p>
+<pre><code class="language-{typst}">#import &quot;@preview/lilaq:0.6.0&quot; as lq
+
+#let x = lq.linspace(0, 10)
+#let y = x.map(x =&gt; calc.sin(0.1 * x * x))
+
+#lq.diagram(
+  lq.plot(x, y),
+  lq.plot(x, x =&gt; calc.sin(x + 0.541))
+)
+
+</code></pre>
+<p>Which will produce:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="Data plotting using the lilaq package." srcset="
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/lilaq-plot_hu5da2933d97c14a5223d09cab17fcf13c_28921_73b38e9cf4577268c1d20f9fab0840e5.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/lilaq-plot_hu5da2933d97c14a5223d09cab17fcf13c_28921_5e94a9c000237428a2deb96dd3f626e9.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/lilaq-plot_hu5da2933d97c14a5223d09cab17fcf13c_28921_1200x1200_fit_lanczos_3.png 1200w"
+               src="/post/2026-05-28-using-typst-to-write-nih-grants/images/lilaq-plot_hu5da2933d97c14a5223d09cab17fcf13c_28921_73b38e9cf4577268c1d20f9fab0840e5.png"
+               width="460"
+               height="308"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h1 id="putting-it-all-together">Putting it all together</h1>
+<p>Combining all of this into a single document looks like:</p>
+<pre><code class="language-{typst}">#import &quot;@preview/showybox:2.0.4&quot;: showybox // for pop-up boxes
+#import &quot;@preview/lilaq:0.6.0&quot; as lq
+
+#set page(width: 8.5in, height: 11in, margin: 0.5in)
+#set text(font: &quot;Arial&quot;, size: 11pt, hyphenate: false)
+#set par(justify: true)
+
+// Stop incomplete paragraphs from breaking to next page
+#set text(costs: (widow: 0%, orphan: 0%))
+
+// Sometimes superscripts randomly appear bold, so do this:
+// https://github.com/typst/typst/issues/4006
+#set super(typographic: false)
+
+// Make captions small font and fix spacing (NIH allows 8pt font in captions)
+#show figure.caption: it =&gt; [#par(leading: 0.3em)[
+  #text(8pt, it.supplement)
+  #text(8pt, context it.counter.display(it.numbering))#text(8pt,[:])
+  #text(8pt, it.body)]
+]
+
+// Custom justified line break for column text
+#let jlb = linebreak(justify: true)
+
+// Set up headings
+#set heading(numbering: &quot;A.1.a.&quot;) 
+#show heading: set text(size: 12pt)
+#show heading.where(level: 1): it =&gt; {
+  box(
+  stroke: (bottom: 0.5pt),
+  inset: (bottom: 0.2em),
+)[#text(size: 11pt, weight: &quot;bold&quot;, it)]
+}
+
+#show heading.where(level: 2): it =&gt; {
+ text(size: 11pt, weight: &quot;bold&quot;, it)
+ v(5pt)
+}
+
+#show heading.where(level: 3): it =&gt; {
+  box(
+  stroke: (bottom: 0.5pt),
+  inset: (bottom: 0.2em),
+)[#text(size: 11pt, weight: &quot;medium&quot;, it)]
+}
+
+
+
+= Approach 
+
+One of the best papers I've ever read.@tversky1974judgment #lorem(25)
+
+== More details
+
+This is a subsection with details about all of this work. #lorem(40)
+#v(-5pt) // get rid of extra white space
+// create a grid where the text and image will go side-by-side
+#grid(columns : (1.5fr, 1fr), // the relative &quot;fr&quot;action of the page width for each column
+  gutter: 10pt, // how much space between the columns of the grid
+  [#lorem(75) #jlb], // content of the left grid element
+  [#figure(image(&quot;exhibits/conceptual_model.pdf&quot;), gap: -10pt, caption: [Time is a circle.]) &lt;fig-conceptual-model&gt;] // content of the right grid element
+  )
+#v(-5pt) // get rid of extra white space
+// more text after the wrapped area
+This can all be seen very clearly in @fig-conceptual-model. #lorem(25)
+
+=== Even more details
+
+This is a sub-subsection. This is *important* to _really_ understand what is #underline[going on].
+
+#showybox(frame: (
+    border-color: blue,
+    title-color: blue.lighten(30%),
+    body-color: blue.lighten(95%),
+    footer-color: blue.lighten(80%)
+  ),[
+  *Specific Aim 1: Develop a new method to improve the estimate of outcomes in this population.*
+])
+
+#showybox(frame: (
+    border-color: blue,
+    title-color: blue.lighten(30%),
+    body-color: blue.lighten(95%),
+    footer-color: blue.lighten(80%)
+  ),[
+  *Critical analytic decision: Represent mortality as a binary variable.*
+], 
+[While there are stories of people passing back and forth between this world and the next (e.g. see Orpheus and Euridyce), we have elected to model mortality as a binary outcome. Although this reduces the validity of any measurements related to study participants traveling to and subsequently returning from the underworld, it does reflect a more stable representation for most planned study participants who are real people and not mythical figures.] 
+)
+
+#grid(columns: (1.6fr, 1fr), gutter: 10pt,
+[#lorem(75)],
+[
+  #let x = lq.linspace(0, 10)
+#let y = x.map(x =&gt; calc.sin(0.1 * x * x))
+
+#lq.diagram(
+  lq.plot(x, y),
+  lq.plot(x, x =&gt; calc.sin(x + 0.541))
+)
+]
+)
+
+= References
+
+#bibliography(&quot;grant_references.bib&quot;, title : none, style: &quot;vancouver-superscript&quot;)  
+
+</code></pre>
+<p>Here&rsquo;s what the compiled page might look like using all these tricks in one place:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="Full page of grant text." srcset="
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/full-page_hu42d6db1b6af7f8957669aa1aa6c21343_348615_407734227f33effa0f9a970551a62248.png 400w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/full-page_hu42d6db1b6af7f8957669aa1aa6c21343_348615_d4230653988cbff2d0d3e3c4ec1a582b.png 760w,
+               /post/2026-05-28-using-typst-to-write-nih-grants/images/full-page_hu42d6db1b6af7f8957669aa1aa6c21343_348615_1200x1200_fit_lanczos_3.png 1200w"
+               src="/post/2026-05-28-using-typst-to-write-nih-grants/images/full-page_hu42d6db1b6af7f8957669aa1aa6c21343_348615_407734227f33effa0f9a970551a62248.png"
+               width="589"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>And here&rsquo;s a simple GitHub <a href="https://github.com/weissman-lab/typst_grant_template" target="_blank" rel="noopener">repository</a> with the files needed to start your own grant proposal. Thanks, Typst team! And happy writing!</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/&amp;text=Using%20Typst%20to%20write%20beautiful%20NIH%20grants" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/&amp;t=Using%20Typst%20to%20write%20beautiful%20NIH%20grants" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Using%20Typst%20to%20write%20beautiful%20NIH%20grants&amp;body=https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/&amp;title=Using%20Typst%20to%20write%20beautiful%20NIH%20grants" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Using%20Typst%20to%20write%20beautiful%20NIH%20grants%20https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/&amp;title=Using%20Typst%20to%20write%20beautiful%20NIH%20grants" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://gweissman.github.io"><img class="avatar mr-3 avatar-circle" src="/author/avatar_hu93d7998d05c3aae9d97f6908a9bcdfba_158631_270x270_fill_q75_lanczos_center.jpg" alt=""></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://gweissman.github.io"></a></h5>
+      <h6 class="card-subtitle">Assistant Professor of Medicine and Informatics</h6>
+      <p class="card-text">I am a pulmonary and critical care physician at the University of Pennsylvania Perelman School of Medicine, and core faculty member at the Palliative and Advanced Illness Research (PAIR) Center. My work seeks to translate innovations in artificial intelligence methods into bedside clinical decision support systems that alleviate uncertainty in critical clinical decisions. My research interests include clinical informatics, artificial intelligence, natural language processing, machine learning, population health, and pragmatic trials.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/garyweissman" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?hl=en&amp;user=Ollx0JMAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/weissman-lab" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js"></script>
+
+    
+    
+    
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.d68ecd57c0ec1f1f61d65fd568f1c3a0.js"></script>
+
+    
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</body>
+</html>

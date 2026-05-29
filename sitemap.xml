@@ -3,7 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gweissman.github.io/</loc>
-    <lastmod>2023-01-06T00:00:00-04:00</lastmod>
+    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/categories/</loc>
+    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/category/grant/</loc>
+    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/category/nih/</loc>
+    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/post/</loc>
+    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/category/typst/</loc>
+    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/post/2026-05-28-using-typst-to-write-nih-grants/</loc>
+    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/</loc>
+    <lastmod>2025-02-19T08:40:21-05:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/category/julia/</loc>
+    <lastmod>2025-02-19T08:40:21-05:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/category/python/</loc>
+    <lastmod>2025-02-19T08:40:21-05:00</lastmod>
+  </url><url>
+    <loc>https://gweissman.github.io/category/r/</loc>
+    <lastmod>2025-02-19T08:40:21-05:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/author/alexander-t.-moffett/</loc>
     <lastmod>2023-01-06T00:00:00-04:00</lastmod>
@@ -32,25 +62,13 @@
     <loc>https://gweissman.github.io/author/scott-d.-halpern/</loc>
     <lastmod>2023-01-06T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://gweissman.github.io/categories/</loc>
-    <lastmod>2022-11-30T11:42:35-05:00</lastmod>
-  </url><url>
     <loc>https://gweissman.github.io/category/gmish/</loc>
     <lastmod>2022-11-30T11:42:35-05:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/post/net-benefit-and-decision-curve-analysis-in-r-some-helpful-functions/</loc>
     <lastmod>2022-11-30T11:42:35-05:00</lastmod>
   </url><url>
-    <loc>https://gweissman.github.io/post/</loc>
-    <lastmod>2022-11-30T11:42:35-05:00</lastmod>
-  </url><url>
-    <loc>https://gweissman.github.io/category/r/</loc>
-    <lastmod>2022-11-30T11:42:35-05:00</lastmod>
-  </url><url>
     <loc>https://gweissman.github.io/category/nlp/</loc>
-    <lastmod>2022-02-25T08:43:12-05:00</lastmod>
-  </url><url>
-    <loc>https://gweissman.github.io/category/python/</loc>
     <lastmod>2022-02-25T08:43:12-05:00</lastmod>
   </url><url>
     <loc>https://gweissman.github.io/post/using-metamap-with-python-to-access-the-umls-metathesaurus-a-quick-start-guide/</loc>

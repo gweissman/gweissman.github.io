@@ -5,12 +5,127 @@
     <link>https://gweissman.github.io/category/python/</link>
       <atom:link href="https://gweissman.github.io/category/python/index.xml" rel="self" type="application/rss+xml" />
     <description>python</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 25 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us=</language><lastBuildDate>Wed, 19 Feb 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
       <title>python</title>
       <link>https://gweissman.github.io/category/python/</link>
     </image>
+    
+    <item>
+      <title>Benchmarking Recursion Speed in R, Python, and Julia</title>
+      <link>https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/</link>
+      <pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/</guid>
+      <description>
+
+
+&lt;p&gt;There are so many exciting things happening the world of statistical programming languages for data science. R, Python, and Julia each has great reasons to include in your toolbox. Arguing which one is best is akin to arguing over whether Spanish, Italian, or French is “better.” Our lab uses them all and we try to suit the tool to the project and its people.&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Although not typically used for data science applications, recursive functions offer a quick and easy (albeit limited) test of a programming language’s speed. The &lt;a href=&#34;https://en.wikipedia.org/wiki/Fibonacci_sequence&#34;&gt;Fibonacci sequence&lt;/a&gt; is a sequence of numbers in which the next value equals the sum of the two previous values. Thus the sequence looks like&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+F_n = 0, 1, 1, 2, 3, 5, 18, 13...
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Calculating the &lt;span class=&#34;math inline&#34;&gt;\(N^{th}\)&lt;/span&gt; value of the sequence could be done iteratively using a &lt;code&gt;for&lt;/code&gt; loop. For many programming languages, this is probably the fastest approach. Alternatively, a recursive approach — one in which a function calls itself again and again — also provides an elegant solution.&lt;/p&gt;
+&lt;p&gt;Let’s try to implement a recursive function to calculate the &lt;span class=&#34;math inline&#34;&gt;\(N^{th}\)&lt;/span&gt; value of the Fibonacci sequence in R, Python, and Julia. We’ll time each run and see how these approaches compare.&lt;/p&gt;
+&lt;div id=&#34;r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;R&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Define recursion function for fibonacci sequence
+fib &amp;lt;- function(n) {
+  if (n == 0) return (0)
+  if (n &amp;lt;= 2) return (1)
+  return (fib(n - 1) + fib(n - 2))
+}
+
+# Define range of sequence to explore, 1 through 40
+Ns = 0:40
+
+# Estimate the time taken for each run
+Ts = sapply(Ns, \(n) system.time(fib(n))[3])
+
+# Plot the results
+plot(Ns, Ts, type = &amp;quot;l&amp;quot;, 
+     xlab = &amp;quot;N&amp;quot;, ylab = &amp;quot;time (s)&amp;quot;, 
+     col = &amp;quot;blue&amp;quot;,
+     main = &amp;quot;Recursive calculation of Fibonacci numbers (R)&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/index.en_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Total time
+print(paste0(&amp;quot;Total time was &amp;quot;, sum(Ts), &amp;quot; seconds in R.&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Total time was 150.873 seconds in R.&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;python&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Python&lt;/h2&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import matplotlib.pyplot as plt
+from timeit import timeit
+
+# Define recursion function for fibonacci sequence
+def fib(n):
+  if (n == 0):
+    return 0
+  elif (n &amp;lt;= 2):
+    return 1
+  else:
+    return (fib(n - 1) + fib(n - 2))
+
+# Define range of sequence to explore, 1 through 40
+Ns = range(0,41)
+
+# Estimate the time taken for each run
+Ts = [timeit(lambda: fib(x), number = 1) for x in Ns]
+
+# Plot the results
+plt.plot(Ns, Ts, marker = &amp;quot;&amp;quot;)
+plt.xlabel(&amp;quot;N&amp;quot;)
+plt.ylabel(&amp;quot;time (s)&amp;quot;)
+plt.title(&amp;quot;Recursive calculation of Fibonacci numbers (Python)&amp;quot;)
+plt.show()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/index.en_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# Total time
+print(f&amp;quot;Total time was {sum(Ts)} seconds in Python.&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Total time was 24.07692269596737 seconds in Python.&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;julia&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Julia&lt;/h2&gt;
+&lt;pre class=&#34;julia&#34;&gt;&lt;code&gt;using Plots;
+
+# Define recursion function for fibonacci sequence
+fib = function(n)
+  if n == 0
+    return 0
+  elseif n &amp;lt;= 2
+    return 1
+  else
+    return fib(n - 1) + fib(n - 2)
+  end  
+end;
+
+# Define range of sequence to explore, 1 through 40
+Ns = 0:40;
+
+# Estimate the time taken for each run
+Ts = [@elapsed fib(x) for x in Ns];
+
+# Plot the results
+plot(Ns, Ts, 
+     xlabel = &amp;quot;N&amp;quot;, ylabel = &amp;quot;time (s)&amp;quot;, 
+     title = &amp;quot;Recursive calculation of Fibonacci numbers (Julia)&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/index.en_files/figure-html/unnamed-chunk-3-J1.png&#34; width=&#34;300&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;julia&#34;&gt;&lt;code&gt;
+# Total time
+print(&amp;quot;Total time was $(sum(Ts)) seconds in Julia&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Total time was 10.863438192 seconds in Julia&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summary&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;Calculating the first 40 elements of the Fibonacci sequence using a recursive algorithm took about 152, 24, and 11 seconds, for R, Python, and Julia, respectively. Overall pretty fast, and pretty significant differences among the languages. Notably, we didn’t account for start up time, time to check syntax, time to set up the environment, and other overheard. The R code was easily written in base R without the need for any additional packages. The Python environment was notably the slowest to set up and required installing &lt;code&gt;matplotlib&lt;/code&gt; into a virtual environment that would run within Rstudio, which was used to render this document. The Julia example required installing and loading the &lt;code&gt;Plots&lt;/code&gt; library, but this was already done as the same local environment I use was called by Rstudio without any additional configuration. Which language do you reach for first? When in Rome…&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes footnotes-end-of-document&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;As an extra bonus, this notebook is a great example of how to use R, Python, and Julia together in a single notebook!&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Using MetaMap with Python to access the UMLS MetaThesaurus - A Quick Start Guide</title>

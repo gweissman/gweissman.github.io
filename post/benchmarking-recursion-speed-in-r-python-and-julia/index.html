@@ -1,0 +1,1190 @@
+<!DOCTYPE html><html lang="en-us=" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="There are so many exciting things happening the world of statistical programming languages for data science. R, Python, and Julia each has great reasons to include in your toolbox. Arguing which one is best is akin to arguing over whether Spanish, Italian, or French is “better." />
+
+  
+  <link rel="alternate" hreflang="en-us=" href="https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.9f457a613f02e9027025db7311c58ccf.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@@garyweissman" />
+    <meta property="twitter:creator" content="@@garyweissman" />
+  
+  <meta property="og:site_name" content="Gary Weissman, MD, MSHP" />
+  <meta property="og:url" content="https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/" />
+  <meta property="og:title" content="Benchmarking Recursion Speed in R, Python, and Julia | Gary Weissman, MD, MSHP" />
+  <meta property="og:description" content="There are so many exciting things happening the world of statistical programming languages for data science. R, Python, and Julia each has great reasons to include in your toolbox. Arguing which one is best is akin to arguing over whether Spanish, Italian, or French is “better." /><meta property="og:image" content="https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us=" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2025-02-19T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2025-02-19T08:40:21-05:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/"
+  },
+  "headline": "Benchmarking Recursion Speed in R, Python, and Julia",
+  
+  "datePublished": "2025-02-19T00:00:00Z",
+  "dateModified": "2025-02-19T08:40:21-05:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Gary Weissman Lab",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gweissman.github.io/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "There are so many exciting things happening the world of statistical programming languages for data science. R, Python, and Julia each has great reasons to include in your toolbox. Arguing which one is best is akin to arguing over whether Spanish, Italian, or French is “better."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Benchmarking Recursion Speed in R, Python, and Julia | Gary Weissman, MD, MSHP</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="56336e287d4529b6188f268680b95e4f" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Gary Weissman, MD, MSHP</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Gary Weissman, MD, MSHP</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Benchmarking Recursion Speed in R, Python, and Julia</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Feb 19, 2025
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/r/">r</a>, <a href="/category/python/">python</a>, <a href="/category/julia/">julia</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<p>There are so many exciting things happening the world of statistical programming languages for data science. R, Python, and Julia each has great reasons to include in your toolbox. Arguing which one is best is akin to arguing over whether Spanish, Italian, or French is “better.” Our lab uses them all and we try to suit the tool to the project and its people.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Although not typically used for data science applications, recursive functions offer a quick and easy (albeit limited) test of a programming language’s speed. The <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence">Fibonacci sequence</a> is a sequence of numbers in which the next value equals the sum of the two previous values. Thus the sequence looks like</p>
+<p><span class="math display">\[
+F_n = 0, 1, 1, 2, 3, 5, 18, 13...
+\]</span></p>
+<p>Calculating the <span class="math inline">\(N^{th}\)</span> value of the sequence could be done iteratively using a <code>for</code> loop. For many programming languages, this is probably the fastest approach. Alternatively, a recursive approach — one in which a function calls itself again and again — also provides an elegant solution.</p>
+<p>Let’s try to implement a recursive function to calculate the <span class="math inline">\(N^{th}\)</span> value of the Fibonacci sequence in R, Python, and Julia. We’ll time each run and see how these approaches compare.</p>
+<div id="r" class="section level2">
+<h2>R</h2>
+<pre class="r"><code># Define recursion function for fibonacci sequence
+fib &lt;- function(n) {
+  if (n == 0) return (0)
+  if (n &lt;= 2) return (1)
+  return (fib(n - 1) + fib(n - 2))
+}
+
+# Define range of sequence to explore, 1 through 40
+Ns = 0:40
+
+# Estimate the time taken for each run
+Ts = sapply(Ns, \(n) system.time(fib(n))[3])
+
+# Plot the results
+plot(Ns, Ts, type = &quot;l&quot;, 
+     xlab = &quot;N&quot;, ylab = &quot;time (s)&quot;, 
+     col = &quot;blue&quot;,
+     main = &quot;Recursive calculation of Fibonacci numbers (R)&quot;)</code></pre>
+<p><img src="https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/index.en_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code># Total time
+print(paste0(&quot;Total time was &quot;, sum(Ts), &quot; seconds in R.&quot;))</code></pre>
+<pre><code>## [1] &quot;Total time was 150.873 seconds in R.&quot;</code></pre>
+</div>
+<div id="python" class="section level2">
+<h2>Python</h2>
+<pre class="python"><code>import matplotlib.pyplot as plt
+from timeit import timeit
+
+# Define recursion function for fibonacci sequence
+def fib(n):
+  if (n == 0):
+    return 0
+  elif (n &lt;= 2):
+    return 1
+  else:
+    return (fib(n - 1) + fib(n - 2))
+
+# Define range of sequence to explore, 1 through 40
+Ns = range(0,41)
+
+# Estimate the time taken for each run
+Ts = [timeit(lambda: fib(x), number = 1) for x in Ns]
+
+# Plot the results
+plt.plot(Ns, Ts, marker = &quot;&quot;)
+plt.xlabel(&quot;N&quot;)
+plt.ylabel(&quot;time (s)&quot;)
+plt.title(&quot;Recursive calculation of Fibonacci numbers (Python)&quot;)
+plt.show()</code></pre>
+<p><img src="https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/index.en_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="python"><code># Total time
+print(f&quot;Total time was {sum(Ts)} seconds in Python.&quot;)</code></pre>
+<pre><code>## Total time was 24.07692269596737 seconds in Python.</code></pre>
+</div>
+<div id="julia" class="section level2">
+<h2>Julia</h2>
+<pre class="julia"><code>using Plots;
+
+# Define recursion function for fibonacci sequence
+fib = function(n)
+  if n == 0
+    return 0
+  elseif n &lt;= 2
+    return 1
+  else
+    return fib(n - 1) + fib(n - 2)
+  end  
+end;
+
+# Define range of sequence to explore, 1 through 40
+Ns = 0:40;
+
+# Estimate the time taken for each run
+Ts = [@elapsed fib(x) for x in Ns];
+
+# Plot the results
+plot(Ns, Ts, 
+     xlabel = &quot;N&quot;, ylabel = &quot;time (s)&quot;, 
+     title = &quot;Recursive calculation of Fibonacci numbers (Julia)&quot;)</code></pre>
+<p><img src="https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/index.en_files/figure-html/unnamed-chunk-3-J1.png" width="300" /></p>
+<pre class="julia"><code>
+# Total time
+print(&quot;Total time was $(sum(Ts)) seconds in Julia&quot;)</code></pre>
+<pre><code>## Total time was 10.863438192 seconds in Julia</code></pre>
+</div>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>Calculating the first 40 elements of the Fibonacci sequence using a recursive algorithm took about 152, 24, and 11 seconds, for R, Python, and Julia, respectively. Overall pretty fast, and pretty significant differences among the languages. Notably, we didn’t account for start up time, time to check syntax, time to set up the environment, and other overheard. The R code was easily written in base R without the need for any additional packages. The Python environment was notably the slowest to set up and required installing <code>matplotlib</code> into a virtual environment that would run within Rstudio, which was used to render this document. The Julia example required installing and loading the <code>Plots</code> library, but this was already done as the same local environment I use was called by Rstudio without any additional configuration. Which language do you reach for first? When in Rome…</p>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>As an extra bonus, this notebook is a great example of how to use R, Python, and Julia together in a single notebook!<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/&amp;text=Benchmarking%20Recursion%20Speed%20in%20R,%20Python,%20and%20Julia" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/&amp;t=Benchmarking%20Recursion%20Speed%20in%20R,%20Python,%20and%20Julia" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Benchmarking%20Recursion%20Speed%20in%20R,%20Python,%20and%20Julia&amp;body=https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/&amp;title=Benchmarking%20Recursion%20Speed%20in%20R,%20Python,%20and%20Julia" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Benchmarking%20Recursion%20Speed%20in%20R,%20Python,%20and%20Julia%20https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://gweissman.github.io/post/benchmarking-recursion-speed-in-r-python-and-julia/&amp;title=Benchmarking%20Recursion%20Speed%20in%20R,%20Python,%20and%20Julia" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://gweissman.github.io"><img class="avatar mr-3 avatar-circle" src="/author/avatar_hu93d7998d05c3aae9d97f6908a9bcdfba_158631_270x270_fill_q75_lanczos_center.jpg" alt=""></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://gweissman.github.io"></a></h5>
+      <h6 class="card-subtitle">Assistant Professor of Medicine and Informatics</h6>
+      <p class="card-text">I am a pulmonary and critical care physician at the University of Pennsylvania Perelman School of Medicine, and core faculty member at the Palliative and Advanced Illness Research (PAIR) Center. My work seeks to translate innovations in artificial intelligence methods into bedside clinical decision support systems that alleviate uncertainty in critical clinical decisions. My research interests include clinical informatics, artificial intelligence, natural language processing, machine learning, population health, and pragmatic trials.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/garyweissman" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?hl=en&amp;user=Ollx0JMAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/weissman-lab" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js"></script>
+
+    
+    
+    
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.d68ecd57c0ec1f1f61d65fd568f1c3a0.js"></script>
+
+    
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</body>
+</html>
